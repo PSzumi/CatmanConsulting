@@ -1109,129 +1109,6 @@ function InfoPanel() {
         <ClientPortalPreview />
       </motion.div>
 
-      {/* Team profiles */}
-      <motion.div
-        className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-      >
-        <h4 className="text-sm font-medium text-gray-400 mb-5 flex items-center gap-2">
-          <Users className="w-4 h-4" />
-          Porozmawiasz z ekspertami
-        </h4>
-        <div className="space-y-4">
-          {teamProfiles.map((profile, index) => (
-            <motion.div
-              key={profile.name}
-              className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-800/30 transition-colors group"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4 + index * 0.1 }}
-            >
-              <div
-                className="w-14 h-14 rounded-xl flex items-center justify-center font-bold text-xl transition-transform group-hover:scale-105"
-                style={{
-                  backgroundColor: `${profile.color}20`,
-                  color: profile.color,
-                }}
-              >
-                {profile.avatar}
-              </div>
-              <div className="flex-1">
-                <div className="font-semibold text-white">{profile.name}</div>
-                <div className="text-sm text-gray-500">{profile.role}</div>
-                <div className="text-xs text-gray-600 mt-0.5">{profile.specialty}</div>
-              </div>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg hover:bg-gray-700/50"
-              >
-                <Linkedin className="w-4 h-4 text-gray-400" />
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-
-      {/* Contact info */}
-      <motion.div
-        className="space-y-3"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-      >
-        <a
-          href={`mailto:${contactContent.email}`}
-          className="flex items-center gap-4 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
-        >
-          <div className="w-11 h-11 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors">
-            <Mail className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
-          </div>
-          <div>
-            <div className="text-xs text-gray-500 mb-0.5">Email</div>
-            <div className="text-sm text-white font-medium">{contactContent.email}</div>
-          </div>
-        </a>
-
-        <a
-          href={`tel:${contactContent.phone.replace(/\s/g, "")}`}
-          className="flex items-center gap-4 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
-        >
-          <div className="w-11 h-11 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors">
-            <Phone className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
-          </div>
-          <div>
-            <div className="text-xs text-gray-500 mb-0.5">Telefon</div>
-            <div className="text-sm text-white font-medium">{contactContent.phone}</div>
-          </div>
-        </a>
-
-        <div className="flex items-center gap-4 p-4 rounded-xl bg-gray-900/30 border border-gray-800/50">
-          <div className="w-11 h-11 rounded-lg bg-gray-800/50 flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-gray-400" />
-          </div>
-          <div>
-            <div className="text-xs text-gray-500 mb-0.5">Lokalizacja</div>
-            <div className="text-sm text-white font-medium">Warszawa, Polska</div>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Social links & trust badge */}
-      <motion.div
-        className="flex items-center justify-between"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-      >
-        {/* Social links */}
-        <div className="flex items-center gap-2">
-          {socialLinks.map((social) => {
-            const Icon = social.icon;
-            return (
-              <a
-                key={social.label}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-gray-800/50 flex items-center justify-center hover:bg-[#b8860b]/20 transition-colors group"
-                aria-label={social.label}
-              >
-                <Icon className="w-4 h-4 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
-              </a>
-            );
-          })}
-        </div>
-
-        {/* Trust badge */}
-        <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-          <Sparkles className="w-4 h-4 text-emerald-400" />
-          <span className="text-xs text-emerald-300 font-medium">95% poleca</span>
-        </div>
-      </motion.div>
     </div>
   );
 }
@@ -1655,6 +1532,102 @@ export function Contact() {
           <div className="order-1 lg:order-2 lg:sticky lg:top-24">
             <InfoPanel />
           </div>
+        </motion.div>
+
+        {/* Bottom section - Team + Contact info side by side */}
+        <motion.div
+          className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          {/* Left - Team profiles */}
+          <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50">
+            <h4 className="text-sm font-medium text-gray-400 mb-5 flex items-center gap-2">
+              <Users className="w-4 h-4" />
+              Porozmawiasz z ekspertami
+            </h4>
+            <div className="flex flex-col sm:flex-row gap-4">
+              {teamProfiles.map((profile) => (
+                <div
+                  key={profile.name}
+                  className="flex items-center gap-4 p-3 rounded-xl bg-gray-800/30 flex-1"
+                >
+                  <div
+                    className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0"
+                    style={{
+                      backgroundColor: `${profile.color}20`,
+                      color: profile.color,
+                    }}
+                  >
+                    {profile.avatar}
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-white">{profile.name}</div>
+                    <div className="text-sm text-gray-500">{profile.role}</div>
+                    <div className="text-xs text-gray-600">{profile.specialty}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right - Contact info tiles */}
+          <div className="grid grid-cols-3 gap-4">
+            <a
+              href={`mailto:${contactContent.email}`}
+              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
+                <Mail className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
+              </div>
+              <div className="text-xs text-gray-500 mb-1">Email</div>
+              <div className="text-sm text-white font-medium break-all">{contactContent.email}</div>
+            </a>
+
+            <a
+              href={`tel:${contactContent.phone.replace(/\s/g, "")}`}
+              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
+            >
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
+                <Phone className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
+              </div>
+              <div className="text-xs text-gray-500 mb-1">Telefon</div>
+              <div className="text-sm text-white font-medium">{contactContent.phone}</div>
+            </a>
+
+            <div className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50">
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center mb-3">
+                <MapPin className="w-5 h-5 text-gray-400" />
+              </div>
+              <div className="text-xs text-gray-500 mb-1">Lokalizacja</div>
+              <div className="text-sm text-white font-medium">Warszawa, Polska</div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Social links - bottom */}
+        <motion.div
+          className="mt-8 flex items-center justify-center gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
+          transition={{ duration: 0.6, delay: 0.7 }}
+        >
+          {socialLinks.map((social) => {
+            const Icon = social.icon;
+            return (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-800/50 flex items-center justify-center hover:border-[#b8860b]/30 hover:bg-[#b8860b]/10 transition-all group"
+                aria-label={social.label}
+              >
+                <Icon className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
+              </a>
+            );
+          })}
         </motion.div>
       </div>
     </section>
