@@ -396,13 +396,13 @@ export function Process() {
     <section
       ref={containerRef}
       id="process"
-      className="relative py-32 md:py-40 bg-[#0a0a0f] overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-32 lg:py-40 bg-[#0a0a0f] overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="absolute top-0 left-1/4 w-[800px] h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-[#6366F1]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-0 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
+        <div className="hidden md:block absolute bottom-0 right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#6366F1]/5 rounded-full blur-[150px]" />
 
         {/* Grid pattern */}
         <div
@@ -415,7 +415,7 @@ export function Process() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           className="text-center mb-20"

@@ -190,7 +190,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#b8860b] hover:border-[#b8860b]/50 hover:bg-[#b8860b]/10 transition-all duration-300"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#b8860b] hover:border-[#b8860b]/50 hover:bg-[#b8860b]/10 transition-all duration-300"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}

@@ -324,7 +324,7 @@ export function About() {
     <section
       ref={sectionRef}
       id="o-nas"
-      className="relative py-32 lg:py-40 bg-[#1a1a1a] overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-32 lg:py-40 bg-[#1a1a1a] overflow-hidden"
     >
       {/* Animated background elements */}
       <motion.div
@@ -333,7 +333,7 @@ export function About() {
       >
         {/* Large gradient orbs */}
         <motion.div
-          className="absolute top-0 left-0 w-[800px] h-[800px] rounded-full"
+          className="hidden md:block absolute top-0 left-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full"
           style={{
             background: 'radial-gradient(circle, rgba(184, 134, 11, 0.08) 0%, transparent 70%)',
           }}
@@ -348,7 +348,7 @@ export function About() {
           }}
         />
         <motion.div
-          className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full"
+          className="hidden md:block absolute bottom-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full"
           style={{
             background: 'radial-gradient(circle, rgba(184, 134, 11, 0.06) 0%, transparent 70%)',
           }}
@@ -376,11 +376,11 @@ export function About() {
         />
       </motion.div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           ref={headerRef}
-          className="text-center mb-24 lg:mb-32"
+          className="text-center mb-12 sm:mb-16 md:mb-24 lg:mb-32"
         >
           {/* Badge */}
           <motion.div
@@ -396,7 +396,7 @@ export function About() {
 
           {/* Main heading */}
           <motion.h2
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-5 sm:mb-8 leading-[1.1]"
             initial={{ opacity: 0, y: 40 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.4, 0.25, 1] }}
@@ -447,7 +447,7 @@ export function About() {
         </motion.div>
 
         {/* Team Members - Split Screen Design */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-32">
+        <div className="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 mb-16 sm:mb-24 md:mb-32">
           <TeamMemberCard
             member={teamContent.members[0]}
             index={0}
@@ -488,7 +488,7 @@ export function About() {
           <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-[#242424] to-[#1a1a1a] border border-[#3a3a3a]" />
 
           {/* Stats grid */}
-          <div className="relative grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4 p-8 lg:p-12">
+          <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-4 p-5 sm:p-8 lg:p-12">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
               return (

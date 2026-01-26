@@ -198,7 +198,7 @@ function FAQItem({
 
           {/* Toggle icon */}
           <motion.div
-            className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center mt-1 transition-all duration-300 ${
+            className={`shrink-0 w-10 h-10 md:w-8 md:h-8 rounded-full flex items-center justify-center mt-1 transition-all duration-300 ${
               isOpen
                 ? "bg-[#b8860b]/20"
                 : "bg-white/[0.03] group-hover:bg-white/[0.05]"
@@ -445,13 +445,13 @@ export function FAQ() {
     <section
       ref={containerRef}
       id="faq"
-      className="relative py-32 md:py-40 bg-[#0a0a0f] overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-32 lg:py-40 bg-[#0a0a0f] overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
-        <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-[#b8860b]/3 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-1/4 -left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
+        <div className="hidden md:block absolute bottom-1/4 -right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/3 rounded-full blur-[150px]" />
 
         {/* Grid pattern */}
         <div
@@ -473,9 +473,9 @@ export function FAQ() {
         />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-6">
+      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         {/* Section header */}
-        <div ref={headerRef} className="text-center mb-12 md:mb-16">
+        <div ref={headerRef} className="text-center mb-8 sm:mb-12 md:mb-16">
           <motion.div
             className="inline-flex items-center gap-3 mb-8"
             initial={{ opacity: 0, scale: 0.9 }}

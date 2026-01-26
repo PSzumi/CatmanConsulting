@@ -369,7 +369,7 @@ function AnimatedCheckbox({
         />
         <motion.div
           className={cn(
-            "w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors",
+            "w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors",
             checked
               ? "bg-[#b8860b] border-[#b8860b]"
               : "bg-gray-800/50 border-gray-600 group-hover:border-gray-500"
@@ -1330,7 +1330,7 @@ export function Contact() {
     <section
       ref={containerRef}
       id="kontakt"
-      className="relative py-24 md:py-32 lg:py-40 bg-gray-950 overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-40 bg-gray-950 overflow-hidden"
     >
       {/* Konfetti celebration */}
       <Konfetti active={showKonfetti} particleCount={200} />
@@ -1339,7 +1339,7 @@ export function Contact() {
       <div className="absolute inset-0">
         {/* Gradient orbs */}
         <motion.div
-          className="absolute top-0 left-1/4 w-[600px] h-[600px] rounded-full blur-[120px] opacity-20"
+          className="hidden md:block absolute top-0 left-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full blur-[120px] opacity-20"
           style={{ background: `radial-gradient(circle, ${ACCENT_COLOR} 0%, transparent 70%)` }}
           animate={{
             x: [0, 50, 0],
@@ -1348,7 +1348,7 @@ export function Contact() {
           transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-0 right-1/4 w-[500px] h-[500px] rounded-full blur-[100px] opacity-15"
+          className="hidden md:block absolute bottom-0 right-1/4 w-[250px] md:w-[500px] h-[250px] md:h-[500px] rounded-full blur-[100px] opacity-15"
           style={{ background: `radial-gradient(circle, #2d5a7b 0%, transparent 70%)` }}
           animate={{
             x: [0, -30, 0],
@@ -1375,10 +1375,10 @@ export function Contact() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.8 }}
@@ -1393,7 +1393,7 @@ export function Contact() {
             {t("tagline")}
           </motion.span>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6">
             {t("title")}{" "}
             <span
               className="relative"
@@ -1407,21 +1407,21 @@ export function Contact() {
             </span>
           </h2>
 
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
             {t("subtitle")}
           </p>
         </motion.div>
 
         {/* Main content - Split screen layout */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 40 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           {/* Left side - Form */}
           <div className="order-2 lg:order-1">
-            <div className="p-8 md:p-10 rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
+            <div className="p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
               <AnimatePresence mode="wait">
                 {isSubmitted ? (
                   <SuccessMessage key="success" t={t} />
@@ -1480,7 +1480,7 @@ export function Contact() {
                         {currentStep > 1 ? (
                           <button
                             onClick={handleBack}
-                            className="flex items-center gap-2 px-4 py-2 text-gray-400 hover:text-white transition-colors"
+                            className="flex items-center gap-2 px-5 py-3 text-gray-400 hover:text-white transition-colors min-h-[44px]"
                           >
                             <ArrowLeft className="w-4 h-4" />
                             Wstecz
@@ -1515,7 +1515,7 @@ export function Contact() {
                       >
                         <button
                           onClick={handleBack}
-                          className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors"
+                          className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors py-2 min-h-[44px]"
                         >
                           <ArrowLeft className="w-4 h-4" />
                           Wroc do poprzedniego kroku
@@ -1536,14 +1536,14 @@ export function Contact() {
 
         {/* Bottom section - Team + Contact info side by side */}
         <motion.div
-          className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch"
+          className="mt-8 sm:mt-12 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 items-stretch"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 30 }}
           transition={{ duration: 0.8, delay: 0.5 }}
         >
           {/* Left - Team profiles */}
-          <div className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50">
-            <h4 className="text-sm font-medium text-gray-400 mb-5 flex items-center gap-2">
+          <div className="p-4 sm:p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50">
+            <h4 className="text-sm font-medium text-gray-400 mb-4 sm:mb-5 flex items-center gap-2">
               <Users className="w-4 h-4" />
               Porozmawiasz z ekspertami
             </h4>
@@ -1573,7 +1573,7 @@ export function Contact() {
           </div>
 
           {/* Right - Contact info tiles */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <a
               href={`mailto:${contactContent.email}`}
               className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
@@ -1608,7 +1608,7 @@ export function Contact() {
 
         {/* Social links - bottom */}
         <motion.div
-          className="mt-8 flex items-center justify-center gap-4"
+          className="mt-6 sm:mt-8 flex items-center justify-center gap-3 sm:gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 20 }}
           transition={{ duration: 0.6, delay: 0.7 }}
@@ -1621,7 +1621,7 @@ export function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-gray-900/50 border border-gray-800/50 flex items-center justify-center hover:border-[#b8860b]/30 hover:bg-[#b8860b]/10 transition-all group"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-900/50 border border-gray-800/50 flex items-center justify-center hover:border-[#b8860b]/30 hover:bg-[#b8860b]/10 transition-all group"
                 aria-label={social.label}
               >
                 <Icon className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />

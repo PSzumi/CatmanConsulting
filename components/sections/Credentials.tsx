@@ -324,13 +324,13 @@ export function Credentials() {
     <section
       ref={containerRef}
       id="credentials"
-      className="relative py-32 md:py-40 bg-[#0a0a0f] overflow-hidden"
+      className="relative py-20 sm:py-28 md:py-32 lg:py-40 bg-[#0a0a0f] overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="absolute top-1/4 left-0 w-[600px] h-[600px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-0 w-[500px] h-[500px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
+        <div className="hidden md:block absolute top-1/4 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute bottom-1/4 right-0 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
 
         {/* Grid */}
         <div
@@ -342,7 +342,7 @@ export function Credentials() {
         />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           className="text-center mb-20"

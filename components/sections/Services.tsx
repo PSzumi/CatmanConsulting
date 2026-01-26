@@ -376,7 +376,7 @@ function ServiceCard({
         )}
 
         {/* Card content */}
-        <div className={`relative h-full flex flex-col ${isLarge ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}>
+        <div className={`relative h-full flex flex-col ${isLarge ? 'p-5 sm:p-6 md:p-8 lg:p-10' : 'p-4 sm:p-5 md:p-6 lg:p-8'}`}>
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <AnimatedIcon
@@ -764,7 +764,7 @@ export function Services() {
     <section
       ref={containerRef}
       id="oferta"
-      className="relative py-24 md:py-32 overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden"
       style={{ background: "#0a0a0f" }}
     >
       {/* Background elements */}
@@ -776,13 +776,13 @@ export function Services() {
       >
         {/* Large gradient orbs */}
         <div
-          className="absolute top-0 left-1/4 w-[1000px] h-[1000px] rounded-full blur-[120px] opacity-20"
+          className="hidden md:block absolute top-0 left-1/4 w-[500px] md:w-[1000px] h-[500px] md:h-[1000px] rounded-full blur-[120px] opacity-20"
           style={{
             background: "radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
           }}
         />
         <div
-          className="absolute bottom-0 right-1/4 w-[800px] h-[800px] rounded-full blur-[100px] opacity-15"
+          className="hidden md:block absolute bottom-0 right-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full blur-[100px] opacity-15"
           style={{
             background: "radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%)",
           }}
@@ -801,7 +801,7 @@ export function Services() {
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div ref={headerRef} className="text-center mb-16 md:mb-20">
+        <div ref={headerRef} className="text-center mb-10 sm:mb-16 md:mb-20">
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
             style={{

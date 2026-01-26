@@ -175,7 +175,7 @@ export function AsSeenIn() {
   return (
     <section
       ref={containerRef}
-      className="relative py-20 md:py-28 bg-[#0a0a0f] overflow-hidden"
+      className="relative py-16 sm:py-20 md:py-28 bg-[#0a0a0f] overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
@@ -189,7 +189,7 @@ export function AsSeenIn() {
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           className="text-center mb-16"

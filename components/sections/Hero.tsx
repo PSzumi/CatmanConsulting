@@ -49,9 +49,9 @@ export function Hero() {
       {/* Content */}
       <motion.div
         style={{ scale, opacity, y: textY, overflow: "visible" }}
-        className="relative z-10 max-w-5xl mx-auto px-6 py-32 text-center"
+        className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28 md:py-32 text-center"
       >
-        <div className="space-y-8" style={{ overflow: "visible" }}>
+        <div className="space-y-5 sm:space-y-8" style={{ overflow: "visible" }}>
           {/* Dynamic Greeting */}
           <DynamicGreeting className="text-foreground-muted text-sm tracking-wide" />
 
@@ -64,13 +64,13 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight" style={{ overflow: "visible" }}>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight break-words" style={{ overflow: "visible" }}>
             <span className="block">{locale === "pl" ? "Prosto o rzeczach" : "We transform"}</span>
             <span className="block mt-2" style={{ overflow: "visible" }}>
               <ShatteredWord
                 word={shatteredWord}
                 className=""
-                letterClassName="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight gradient-text"
+                letterClassName="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight gradient-text"
                 shardsPerLetter={12}
                 duration={2.5}
                 staggerAmount={0.7}

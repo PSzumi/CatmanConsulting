@@ -130,8 +130,8 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         className="absolute inset-0 pointer-events-none"
         style={{ y: smoothBgY }}
       >
-        <div className="absolute top-1/4 left-1/4 w-[800px] h-[800px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
-        <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
+        <div className="hidden md:block absolute top-1/4 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute bottom-1/4 right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
       </motion.div>
 
       {/* Grid */}
@@ -165,7 +165,7 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         </motion.div>
 
         <motion.h2
-          className="text-6xl md:text-8xl lg:text-[10rem] font-bold text-white leading-none mb-6"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-[10rem] font-bold text-white leading-none mb-4 sm:mb-6"
           style={{ y: smoothTitleY }}
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -175,7 +175,7 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         </motion.h2>
 
         <motion.p
-          className="text-2xl md:text-4xl lg:text-5xl text-white/40 font-light"
+          className="text-lg sm:text-xl md:text-3xl lg:text-4xl xl:text-5xl text-white/40 font-light"
           style={{ y: smoothSubtitleY }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -185,7 +185,7 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         </motion.p>
 
         <motion.div
-          className="mt-16"
+          className="mt-8 sm:mt-12 md:mt-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5 }}
@@ -318,12 +318,12 @@ function PrincipleCard({
           </div>
 
           {/* Title */}
-          <h3 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-none mb-4">
+          <h3 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white leading-none mb-3 sm:mb-4">
             {principle.title}
           </h3>
 
           {/* Subtitle */}
-          <span className="text-3xl md:text-5xl lg:text-6xl font-light text-white/30 mb-12">
+          <span className="text-xl sm:text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-light text-white/30 mb-6 sm:mb-10 md:mb-12">
             {principle.subtitle}
           </span>
 
@@ -334,7 +334,7 @@ function PrincipleCard({
           />
 
           {/* Description */}
-          <p className={`text-xl md:text-2xl text-white/50 leading-relaxed max-w-xl ${isEven ? "" : "lg:ml-auto"}`}>
+          <p className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/50 leading-relaxed max-w-xl ${isEven ? "" : "lg:ml-auto"}`}>
             {principle.description}
           </p>
         </div>

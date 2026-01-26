@@ -107,7 +107,7 @@ function CaseStudySlide({
 
   return (
     <motion.div
-      className="relative min-w-[85vw] md:min-w-[70vw] lg:min-w-[60vw] h-[600px] md:h-[650px] mx-4 first:ml-[10vw] last:mr-[10vw]"
+      className="relative min-w-[85vw] md:min-w-[70vw] lg:min-w-[60vw] h-[480px] sm:h-[550px] md:h-[650px] mx-4 first:ml-[10vw] last:mr-[10vw]"
       animate={{
         scale: isActive ? 1 : 0.95,
         opacity: isActive ? 1 : 0.5,
@@ -130,7 +130,7 @@ function CaseStudySlide({
         />
 
         {/* Content grid */}
-        <div className="relative h-full grid lg:grid-cols-2 gap-8 p-8 md:p-12 lg:p-16">
+        <div className="relative h-full grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 p-5 sm:p-8 md:p-12 lg:p-16">
           {/* Left column - Info */}
           <div className="flex flex-col justify-between">
             {/* Header */}
@@ -385,9 +385,9 @@ export function Casebook() {
       </div>
 
       {/* Summary stats */}
-      <div className="max-w-6xl mx-auto px-6 mt-24 md:mt-32">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 mt-16 sm:mt-24 md:mt-32">
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 p-8 md:p-12 rounded-3xl bg-gradient-to-br from-accent/5 to-transparent border border-accent/10"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-12 p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-accent/5 to-transparent border border-accent/10"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}

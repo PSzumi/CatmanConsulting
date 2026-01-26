@@ -208,7 +208,7 @@ function CommandPalette({
 
           {/* Modal */}
           <motion.div
-            className="fixed top-[20%] left-1/2 -translate-x-1/2 w-full max-w-lg z-[101]"
+            className="fixed top-[15%] sm:top-[20%] left-1/2 -translate-x-1/2 w-full max-w-[calc(100%-2rem)] sm:max-w-md md:max-w-lg z-[101]"
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
@@ -425,7 +425,7 @@ export function Navbar() {
               {mounted && (
                 <motion.button
                   onClick={toggleTheme}
-                  className="relative z-10 p-2 rounded-full hover:bg-card-hover transition-colors"
+                  className="relative z-10 w-10 h-10 flex items-center justify-center rounded-full hover:bg-card-hover transition-colors"
                   whileHover={{ scale: 1.1, rotate: 15 }}
                   whileTap={{ scale: 0.9 }}
                   aria-label="Toggle theme"

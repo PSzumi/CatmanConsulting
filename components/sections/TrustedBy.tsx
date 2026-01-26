@@ -321,8 +321,8 @@ export function TrustedBy() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-radial from-[#2d5a7b]/10 via-transparent to-transparent opacity-50" />
 
         {/* Accent glows */}
-        <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-[#2d5a7b]/5 rounded-full blur-[150px]" />
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#b8860b]/5 rounded-full blur-[120px]" />
+        <div className="hidden md:block absolute bottom-0 left-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#2d5a7b]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/5 rounded-full blur-[120px]" />
 
         {/* Grid pattern overlay */}
         <div
@@ -336,8 +336,8 @@ export function TrustedBy() {
       </div>
 
       {/* Header Section */}
-      <div className="relative pt-32 pb-16">
-        <div className="max-w-7xl mx-auto px-6">
+      <div className="relative pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
