@@ -1,0 +1,519 @@
+@import "tailwindcss";
+
+/* Lenis overflow override - allow animations to extend beyond viewport */
+html.lenis,
+html.lenis body,
+.lenis.lenis-smooth,
+.lenis.lenis-stopped {
+  overflow: visible !important;
+  overflow-y: visible !important;
+}
+
+/* ============================================
+   CATMAN CONSULTING - DESIGN SYSTEM
+   "Intellectual Warmth" - Premium consulting aesthetic
+   Warm blacks, cream whites, dark goldenrod accent
+   ============================================ */
+
+/* Color Palette */
+:root {
+  /* Background - Warm light */
+  --background: #fafaf9;
+  --background-secondary: #f5f5f4;
+  --background-tertiary: #e7e5e4;
+
+  /* Foreground */
+  --foreground: #1c1917;
+  --foreground-secondary: #44403c;
+  --foreground-muted: #78716c;
+
+  /* Accent - Dark goldenrod (premium gold) */
+  --accent: #b8860b;
+  --accent-light: #d4a843;
+  --accent-dark: #8b6508;
+
+  /* Secondary accent - Deep teal */
+  --accent-secondary: #2d5a7b;
+  --accent-secondary-light: #3d7a9e;
+  --accent-secondary-dark: #1e3d52;
+
+  /* Borders */
+  --border: #d6d3d1;
+  --border-secondary: #a8a29e;
+
+  /* Cards */
+  --card: #ffffff;
+  --card-hover: #fafaf9;
+}
+
+.dark {
+  /* Background - Warm black */
+  --background: #1a1a1a;
+  --background-secondary: #242424;
+  --background-tertiary: #2e2e2e;
+
+  /* Foreground - Cream white */
+  --foreground: #fafaf9;
+  --foreground-secondary: #a3a3a3;
+  --foreground-muted: #737373;
+
+  /* Accent - Dark goldenrod (premium gold) */
+  --accent: #b8860b;
+  --accent-light: #d4a843;
+  --accent-dark: #8b6508;
+
+  /* Secondary accent - Deep teal */
+  --accent-secondary: #2d5a7b;
+  --accent-secondary-light: #3d7a9e;
+  --accent-secondary-dark: #1e3d52;
+
+  /* Borders */
+  --border: #3a3a3a;
+  --border-secondary: #4a4a4a;
+
+  /* Cards */
+  --card: #242424;
+  --card-hover: #2e2e2e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-foreground: var(--foreground);
+  --color-foreground-secondary: var(--foreground-secondary);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-accent-secondary-light: var(--accent-secondary-light);
+  --color-accent-secondary-dark: var(--accent-secondary-dark);
+  --color-border: var(--border);
+  --color-border-secondary: var(--border-secondary);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+/* Scrollbar (dark theme) */
+.dark::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dark::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+.dark::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 4px;
+}
+
+.dark::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground-muted);
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Gradient utilities */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent-light), var(--accent), var(--accent-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-border {
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--accent-light), var(--accent), transparent);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Spotlight effect for cards */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(184, 134, 11, 0.12),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.spotlight-card:hover::before {
+  opacity: 1;
+}
+
+/* Gradient orb animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -30px) scale(1.05);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.95);
+  }
+}
+
+.gradient-orb {
+  animation: float 20s ease-in-out infinite;
+}
+
+/* Text reveal animation helper */
+.text-reveal {
+  clip-path: inset(0 100% 0 0);
+}
+
+.text-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  /* Reduce animation complexity on mobile */
+  .gradient-orb {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Smooth card hover transitions */
+.card-hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -15px rgba(184, 134, 11, 0.15);
+}
+
+/* Glow effect utility */
+.glow-accent {
+  box-shadow: 0 0 30px -5px rgba(184, 134, 11, 0.25);
+}
+
+/* Animated underline for links */
+.animated-underline {
+  position: relative;
+}
+
+.animated-underline::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transition: width 0.3s ease;
+}
+
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* Perspective for 3D effects */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* ============================================
+   PREMIUM SCROLLBAR
+   ============================================ */
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent), var(--accent-dark));
+  border-radius: 5px;
+  border: 2px solid var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accent-light), var(--accent));
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--background-secondary);
+}
+
+/* ============================================
+   NOISE/GRAIN TEXTURE OVERLAY
+   Premium film grain effect
+   ============================================ */
+
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Animated grain - subtle movement */
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-1%, -1%); }
+  20% { transform: translate(1%, 1%); }
+  30% { transform: translate(-1%, 1%); }
+  40% { transform: translate(1%, -1%); }
+  50% { transform: translate(-1%, 0%); }
+  60% { transform: translate(1%, 0%); }
+  70% { transform: translate(0%, 1%); }
+  80% { transform: translate(0%, -1%); }
+  90% { transform: translate(1%, 1%); }
+}
+
+.noise-overlay-animated {
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  animation: grain 8s steps(10) infinite;
+}
+
+/* ============================================
+   ANIMATED LINK UNDERLINES - Enhanced
+   ============================================ */
+
+.link-hover-sweep {
+  position: relative;
+  display: inline-block;
+}
+
+.link-hover-sweep::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light), var(--accent));
+  background-size: 200% 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.link-hover-sweep:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ============================================
+   BUTTON SHINE EFFECT
+   Premium button hover animation
+   ============================================ */
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-shine:hover::before {
+  left: 100%;
+}
+
+/* ============================================
+   FOCUS GLOW - Premium focus states
+   ============================================ */
+
+.focus-glow:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px var(--background),
+    0 0 0 4px var(--accent),
+    0 0 20px rgba(184, 134, 11, 0.3);
+}
+
+/* ============================================
+   PREMIUM IMAGE REVEAL
+   ============================================ */
+
+.image-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.image-reveal.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+.image-reveal-up {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.image-reveal-up.revealed {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ============================================
+   KONFETTI / CELEBRATION PARTICLES
+   ============================================ */
+
+@keyframes konfetti-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.konfetti-particle {
+  position: fixed;
+  top: 0;
+  width: 10px;
+  height: 10px;
+  animation: konfetti-fall 3s ease-in-out forwards;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  .noise-overlay,
+  .noise-overlay-animated {
+    display: none;
+  }
+}

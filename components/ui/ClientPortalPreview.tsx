@@ -277,7 +277,7 @@ export function ClientPortalPreview({ className }: ClientPortalPreviewProps) {
 
             {/* Portal preview */}
             <motion.div
-              className="relative w-full max-w-2xl"
+              className="relative w-full max-w-[calc(100%-1rem)] sm:max-w-xl md:max-w-2xl"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -286,13 +286,13 @@ export function ClientPortalPreview({ className }: ClientPortalPreviewProps) {
               {/* Close button */}
               <button
                 onClick={() => setIsOpen(false)}
-                className="absolute -top-12 right-0 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+                className="absolute -top-10 right-0 sm:-top-12 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
               >
                 <X className="w-5 h-5 text-white" />
               </button>
 
               {/* Browser frame */}
-              <div className="rounded-2xl overflow-hidden border border-gray-700 bg-gray-900 shadow-2xl">
+              <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-gray-700 bg-gray-900 shadow-2xl">
                 {/* Browser header */}
                 <div className="flex items-center gap-3 px-4 py-3 bg-gray-800 border-b border-gray-700">
                   <div className="flex gap-1.5">

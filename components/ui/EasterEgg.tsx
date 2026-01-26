@@ -158,7 +158,7 @@ export function EasterEgg() {
             <AnimatePresence>
               {showModal && (
                 <motion.div
-                  className="relative max-w-lg w-full p-8 rounded-3xl text-center overflow-visible"
+                  className="relative max-w-[calc(100%-2rem)] sm:max-w-lg w-full p-5 sm:p-8 rounded-2xl sm:rounded-3xl text-center overflow-visible"
                   style={{
                     background: "linear-gradient(145deg, #2a2517 0%, #1a1a1a 100%)",
                     border: "2px solid #b8860b",
@@ -177,7 +177,7 @@ export function EasterEgg() {
                   {/* Close button */}
                   <motion.button
                     onClick={handleClose}
-                    className="absolute top-4 right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+                    className="absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.5 }}

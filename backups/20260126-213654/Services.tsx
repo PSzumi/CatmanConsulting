@@ -376,7 +376,7 @@ function ServiceCard({
         )}
 
         {/* Card content */}
-        <div className={`relative h-full flex flex-col ${isLarge ? 'p-5 sm:p-6 md:p-8 lg:p-10' : 'p-4 sm:p-5 md:p-6 lg:p-8'}`}>
+        <div className={`relative h-full flex flex-col ${isLarge ? 'p-8 md:p-10' : 'p-6 md:p-8'}`}>
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
             <AnimatedIcon
@@ -486,7 +486,7 @@ function ServiceModal({
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex items-end md:items-center justify-center md:p-8"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -501,22 +501,17 @@ function ServiceModal({
         onClick={onClose}
       />
 
-      {/* Modal content - slides up from bottom on mobile, centered on desktop */}
+      {/* Modal content */}
       <motion.div
-        className="relative w-full md:max-w-4xl h-[95vh] md:h-auto md:max-h-[90vh] overflow-y-auto rounded-t-3xl md:rounded-3xl"
-        initial={{ opacity: 0, y: "100%" }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: "100%" }}
-        transition={{ type: "spring", damping: 30, stiffness: 300 }}
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl"
+        initial={{ opacity: 0, scale: 0.9, y: 40 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 40 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
       >
-        {/* Drag handle for mobile */}
-        <div className="sticky top-0 z-20 flex justify-center pt-3 pb-2 md:hidden bg-[#0a0a0f] rounded-t-3xl">
-          <div className="w-12 h-1.5 rounded-full bg-white/20" />
-        </div>
-
         {/* Background */}
         <div
-          className="absolute inset-0 rounded-t-3xl md:rounded-3xl"
+          className="absolute inset-0 rounded-3xl"
           style={{
             background: `linear-gradient(135deg, ${service.color}15 0%, rgba(10, 10, 15, 0.98) 30%, rgba(10, 10, 15, 0.98) 70%, ${service.secondaryColor}10 100%)`,
           }}
@@ -524,7 +519,7 @@ function ServiceModal({
 
         {/* Gradient border */}
         <div
-          className="absolute inset-0 rounded-t-3xl md:rounded-3xl"
+          className="absolute inset-0 rounded-3xl"
           style={{
             padding: "1px",
             background: `linear-gradient(135deg, ${service.color}60 0%, ${service.secondaryColor}40 50%, ${service.color}20 100%)`,
@@ -535,10 +530,10 @@ function ServiceModal({
         />
 
         {/* Content */}
-        <div className="relative px-4 pb-8 pt-2 md:p-12">
-          {/* Close button - hidden on mobile where drag handle exists */}
+        <div className="relative p-8 md:p-12">
+          {/* Close button */}
           <motion.button
-            className="absolute top-2 right-3 md:top-6 md:right-6 p-2 md:p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
             onClick={onClose}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -547,31 +542,31 @@ function ServiceModal({
           </motion.button>
 
           {/* Header */}
-          <div className="flex items-start sm:items-center gap-4 sm:gap-6 mb-6 sm:mb-10">
+          <div className="flex items-center gap-6 mb-10">
             <div
-              className="w-14 h-14 sm:w-20 sm:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center shrink-0"
+              className="w-20 h-20 rounded-2xl flex items-center justify-center shrink-0"
               style={{
                 background: `linear-gradient(135deg, ${service.color}30 0%, ${service.color}10 100%)`,
                 border: `2px solid ${service.color}50`,
               }}
             >
-              <Icon className="w-7 h-7 sm:w-10 sm:h-10" style={{ color: service.color }} />
+              <Icon className="w-10 h-10" style={{ color: service.color }} />
             </div>
             <div>
               <p className="text-lg font-medium mb-1" style={{ color: service.color }}>
                 {service.subtitle}
               </p>
-              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">{service.title}</h3>
+              <h3 className="text-3xl md:text-4xl font-bold text-white">{service.title}</h3>
             </div>
           </div>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-white/70 mb-6 sm:mb-10 leading-relaxed">
+          <p className="text-lg text-white/70 mb-10 leading-relaxed">
             {service.description}
           </p>
 
           {/* Details grid */}
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 md:gap-10 mb-6 sm:mb-10">
+          <div className="grid md:grid-cols-2 gap-10 mb-10">
             {/* What we do */}
             <div>
               <h4 className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-white/40 mb-5">
@@ -676,7 +671,7 @@ function ServiceModal({
           </div>
 
           {/* Related services */}
-          <div className="mb-6 md:mb-10">
+          <div className="mb-10">
             <h4 className="flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-white/40 mb-4">
               <Building2 className="w-4 h-4" />
               {t("relatedServices")}
@@ -769,7 +764,7 @@ export function Services() {
     <section
       ref={containerRef}
       id="oferta"
-      className="relative py-16 sm:py-20 md:py-28 lg:py-32 overflow-hidden"
+      className="relative py-24 md:py-32 overflow-hidden"
       style={{ background: "#0a0a0f" }}
     >
       {/* Background elements */}
@@ -781,13 +776,13 @@ export function Services() {
       >
         {/* Large gradient orbs */}
         <div
-          className="hidden md:block absolute top-0 left-1/4 w-[500px] md:w-[1000px] h-[500px] md:h-[1000px] rounded-full blur-[120px] opacity-20"
+          className="absolute top-0 left-1/4 w-[1000px] h-[1000px] rounded-full blur-[120px] opacity-20"
           style={{
             background: "radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
           }}
         />
         <div
-          className="hidden md:block absolute bottom-0 right-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] rounded-full blur-[100px] opacity-15"
+          className="absolute bottom-0 right-1/4 w-[800px] h-[800px] rounded-full blur-[100px] opacity-15"
           style={{
             background: "radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%)",
           }}
@@ -806,7 +801,7 @@ export function Services() {
 
       <div className="relative max-w-7xl mx-auto px-4 md:px-6">
         {/* Section header */}
-        <div ref={headerRef} className="text-center mb-10 sm:mb-16 md:mb-20">
+        <div ref={headerRef} className="text-center mb-16 md:mb-20">
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
             style={{

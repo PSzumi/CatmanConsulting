@@ -98,14 +98,14 @@ export function DigitalBadge({
           />
 
           <motion.div
-            className="relative w-full max-w-xl"
+            className="relative w-full max-w-[calc(100%-1rem)] sm:max-w-md md:max-w-xl"
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
           >
             <button
               onClick={onClose}
-              className="absolute -top-12 right-0 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors"
+              className="absolute -top-10 right-0 sm:-top-12 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
             >
               <X className="w-5 h-5 text-white" />
             </button>
@@ -113,7 +113,7 @@ export function DigitalBadge({
             {/* Certificate */}
             <div
               ref={certificateRef}
-              className="relative p-8 md:p-10 rounded-2xl overflow-hidden"
+              className="relative p-5 sm:p-8 md:p-10 rounded-xl sm:rounded-2xl overflow-hidden"
               style={{
                 background: "linear-gradient(145deg, #0a0a0f 0%, #1a1a2e 100%)",
                 border: `2px solid ${colors.border}40`,
