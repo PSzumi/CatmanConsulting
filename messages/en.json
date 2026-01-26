@@ -1,0 +1,868 @@
+{
+  "nav": {
+    "services": "Services",
+    "process": "Process",
+    "about": "About",
+    "caseStudies": "Case Studies",
+    "contact": "Contact",
+    "bookCall": "Book a Call"
+  },
+  "hero": {
+    "tagline": "Organizational transformation",
+    "headline": "Simply about",
+    "headlineAccent": "complex things",
+    "subtitle": "We take on a limited number of projects per year. Each client receives our full commitment — from diagnosis through implementation to lasting results.",
+    "cta": "Apply for a conversation",
+    "ctaSecondary": "See results",
+    "scroll": "Scroll down",
+    "trustIndicators": {
+      "clients": "Trusted clients",
+      "experience": "Years of experience",
+      "roi": "Average ROI increase",
+      "categories": "Completed projects"
+    },
+    "stats": {
+      "experience": "years of experience",
+      "leaders": "leaders developed",
+      "satisfaction": "client satisfaction"
+    }
+  },
+  "asSeenIn": {
+    "tagline": "Our experts in the media",
+    "title": "As Seen In"
+  },
+  "about": {
+    "tagline": "Who We Are",
+    "title": "Partners",
+    "titleHighlight": "",
+    "description": "We take on a limited number of projects per year. Each client receives our full commitment.",
+    "experience": "years of experience",
+    "projects": "completed projects",
+    "partner": {
+      "title": "Managing Partner / Strategist",
+      "name": "Tomek",
+      "bio": "Extensive experience in leading complex transformation projects for international organizations. Specializes in building a culture of accountability and operational efficiency.",
+      "quote": "35 years in management, including 25 years in transformation consulting"
+    },
+    "team": {
+      "partner1": {
+        "name": "Tomek",
+        "role": "Managing Partner / Strategist",
+        "bio": "Extensive experience in leading complex transformation projects for international organizations. Specializes in building a culture of accountability and operational efficiency.",
+        "experience": "35 years in management, including 25 years in transformation consulting"
+      },
+      "partner2": {
+        "name": "Mariusz",
+        "role": "Partner / Organizational Psychologist",
+        "bio": "Combines deep psychological knowledge with a pragmatic approach to organizational change. Leads leadership development programs and culture transformation for boards and management.",
+        "experience": "Expert in organizational psychology and leadership competency development"
+      }
+    },
+    "stats": {
+      "projects": "Completed projects",
+      "satisfaction": "Satisfied clients",
+      "growth": "Average efficiency increase"
+    },
+    "values": {
+      "title": "Our Values",
+      "datadriven": {
+        "title": "Data-driven decisions",
+        "description": "Every recommendation is backed by solid analysis and facts."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "We build long-term relationships based on trust and mutual success."
+      },
+      "innovation": {
+        "title": "Innovation",
+        "description": "We combine proven methods with modern approaches."
+      },
+      "results": {
+        "title": "Results-oriented",
+        "description": "We measure success by the concrete business results of our clients."
+      }
+    }
+  },
+  "services": {
+    "tagline": "Our Services",
+    "title": "Comprehensive support for",
+    "titleHighlight": "transformation",
+    "description": "From diagnosis, through coaching, to implementing change. We tailor tools to your needs.",
+    "subtitle": "From diagnosis, through coaching, to implementing change. We tailor tools to your needs.",
+    "cta": "Not sure which service is right for you?",
+    "ctaHighlight": "Let's discuss your challenges.",
+    "ctaButton": "Schedule a free consultation",
+    "learnMore": "Learn more",
+    "detailsBelow": "Details below",
+    "effectiveness": "Effectiveness",
+    "duration": "Duration",
+    "includes": "What's included",
+    "idealFor": "Ideal for",
+    "relatedServices": "Related services",
+    "askDetails": "Ask for details",
+    "items": {
+      "executiveCoaching": {
+        "title": "Executive Coaching",
+        "subtitle": "Individual leader development",
+        "description": "We support the development of key leadership competencies, help with strategic decision-making, and build an authentic management style.",
+        "duration": "6-12 months",
+        "details": [
+          "Competency and leadership style diagnosis",
+          "Individual coaching sessions",
+          "Working on specific business challenges",
+          "360-degree feedback",
+          "Personal development plan"
+        ],
+        "idealFor": [
+          "CEOs and boards",
+          "Department directors",
+          "High potentials",
+          "New leaders"
+        ]
+      },
+      "teamDevelopment": {
+        "title": "Team Development",
+        "subtitle": "Building effective teams",
+        "description": "We help teams achieve high performance through work on communication, trust, and shared goals.",
+        "duration": "3-6 months",
+        "details": [
+          "Team dynamics diagnosis",
+          "Integration workshops",
+          "Team coaching",
+          "Developing collaboration norms",
+          "Progress monitoring"
+        ],
+        "idealFor": [
+          "New teams",
+          "Teams in transformation",
+          "Project teams",
+          "Management boards"
+        ]
+      },
+      "organizationalTransformation": {
+        "title": "Organizational Transformation",
+        "subtitle": "Comprehensive change management",
+        "description": "We design and implement organizational transformation processes, from strategy to culture.",
+        "duration": "12-24 months",
+        "details": [
+          "Organization diagnosis",
+          "Change design",
+          "Communication and engagement",
+          "Implementation and monitoring",
+          "Sustaining changes"
+        ],
+        "idealFor": [
+          "Growing companies",
+          "Post-merger organizations",
+          "Companies in restructuring",
+          "Scaling startups"
+        ]
+      },
+      "leadershipPrograms": {
+        "title": "Leadership Development Programs",
+        "subtitle": "Systematic talent development",
+        "description": "Comprehensive development programs for management staff at various organizational levels.",
+        "duration": "6-18 months",
+        "details": [
+          "Development needs diagnosis",
+          "Program design",
+          "Training and workshops",
+          "Group coaching",
+          "Implementation projects"
+        ],
+        "idealFor": [
+          "Middle management",
+          "Talent pipeline",
+          "New managers",
+          "Team leaders"
+        ]
+      },
+      "cultureChange": {
+        "title": "Organizational Culture Change",
+        "subtitle": "Shaping values and behaviors",
+        "description": "We help define and implement the desired organizational culture that supports business strategy.",
+        "duration": "12-36 months",
+        "details": [
+          "Current culture assessment",
+          "Defining target culture",
+          "Ambassador programs",
+          "Changing systems and processes",
+          "Progress measurement"
+        ],
+        "idealFor": [
+          "Companies in transformation",
+          "Post-merger organizations",
+          "Companies changing strategy",
+          "Organizations with retention issues"
+        ]
+      },
+      "strategicAdvisory": {
+        "title": "Strategic Advisory",
+        "subtitle": "Support in key decisions",
+        "description": "We support boards in making strategic decisions about people and organization.",
+        "duration": "Ongoing project",
+        "details": [
+          "Situation analysis",
+          "Options and recommendations",
+          "Implementation support",
+          "Sparring partnership",
+          "Monitoring and adjustments"
+        ],
+        "idealFor": [
+          "CEOs and boards",
+          "HR Directors",
+          "Business owners",
+          "PE/VC investors"
+        ]
+      }
+    }
+  },
+  "process": {
+    "tagline": "How We Work",
+    "title": "Proven",
+    "titleHighlight": "process",
+    "description": "Every project follows our proven methodology that guarantees measurable results.",
+    "subtitle": "Every project follows our proven methodology that guarantees measurable results.",
+    "activities": "Activities",
+    "deliverables": "Deliverables",
+    "phases": {
+      "discovery": {
+        "title": "Discovery",
+        "description": "We get to know your organization, business goals, and challenges. We conduct diagnostics and identify areas for work.",
+        "duration": "1-2 weeks",
+        "activities": [
+          "Interviews with key stakeholders",
+          "Documentation and data analysis",
+          "Team observation",
+          "Diagnostic workshops"
+        ],
+        "deliverables": [
+          "Diagnostic report",
+          "Stakeholder map",
+          "Initial recommendations"
+        ]
+      },
+      "design": {
+        "title": "Design",
+        "description": "We develop a detailed action plan, define goals, KPIs, and timeline.",
+        "duration": "1-2 weeks",
+        "activities": [
+          "Strategic workshops",
+          "Intervention design",
+          "KPI definition",
+          "Resource planning"
+        ],
+        "deliverables": [
+          "Project plan",
+          "Timeline",
+          "Success definitions"
+        ]
+      },
+      "implementation": {
+        "title": "Implementation",
+        "description": "We execute planned activities, conducting regular sessions and workshops.",
+        "duration": "3-12 months",
+        "activities": [
+          "Coaching sessions",
+          "Development workshops",
+          "Meeting facilitation",
+          "Ongoing support"
+        ],
+        "deliverables": [
+          "Session reports",
+          "Development materials",
+          "Homework assignments"
+        ]
+      },
+      "monitoring": {
+        "title": "Monitoring",
+        "description": "We continuously monitor progress, collect feedback, and adjust activities.",
+        "duration": "Continuous",
+        "activities": [
+          "Regular check-ins",
+          "Feedback collection",
+          "KPI analysis",
+          "Plan adjustments"
+        ],
+        "deliverables": [
+          "Progress reports",
+          "KPI analyses",
+          "Adjustment recommendations"
+        ]
+      },
+      "consolidation": {
+        "title": "Consolidation",
+        "description": "We summarize the project, consolidate changes, and plan further development.",
+        "duration": "2-4 weeks",
+        "activities": [
+          "Project evaluation",
+          "Results summary",
+          "Knowledge transfer",
+          "Continuation planning"
+        ],
+        "deliverables": [
+          "Final report",
+          "Future recommendations",
+          "Continuation plan"
+        ]
+      }
+    }
+  },
+  "credentials": {
+    "tagline": "Quality Standards",
+    "title": "Certifications and",
+    "titleHighlight": "tools",
+    "subtitle": "We work according to the highest international standards, using proven diagnostic tools.",
+    "description": "We work according to the highest international standards, using proven diagnostic tools.",
+    "certifications": "Certifications",
+    "tools": "Diagnostic Tools",
+    "methodologies": "Methodologies",
+    "items": {
+      "certifications": {
+        "title": "Certifications and Accreditations",
+        "list": [
+          "ICF Professional Certified Coach (PCC)",
+          "Hogan Assessment Certification",
+          "MBTI Certified Practitioner",
+          "Change Management Practitioner"
+        ]
+      },
+      "tools": {
+        "title": "Diagnostic Tools",
+        "list": [
+          "Hogan Assessments",
+          "MBTI / 16PF",
+          "360-degree assessment",
+          "Organizational climate surveys"
+        ]
+      },
+      "experience": {
+        "title": "Industry Experience",
+        "years": "35+",
+        "yearsLabel": "years of experience",
+        "projects": "200+",
+        "projectsLabel": "completed projects",
+        "industries": [
+          "Finance and banking",
+          "Technology",
+          "FMCG",
+          "Manufacturing"
+        ]
+      },
+      "recognition": {
+        "title": "Recognition",
+        "list": [
+          "Top 10 coaching firms in Poland",
+          "HR conference speakers",
+          "Industry publication authors"
+        ]
+      }
+    }
+  },
+  "casebook": {
+    "tagline": "Case Studies",
+    "title": "Success",
+    "titleHighlight": "stories",
+    "subtitle": "Discover examples of our work and measurable results achieved with clients.",
+    "description": "Discover examples of our work and measurable results achieved with clients.",
+    "challenge": "Challenge",
+    "solution": "Solution",
+    "results": "Results",
+    "testimonial": "Client Testimonial",
+    "viewAll": "View all case studies",
+    "cta": "Discuss your project",
+    "cases": {
+      "transformation": {
+        "title": "Organizational Culture Transformation",
+        "client": "International technology company",
+        "challenge": "After rapid growth, the company struggled with silos, poor communication, and declining engagement.",
+        "solution": "18-month culture transformation program including diagnosis, leadership workshops, and ambassador programs.",
+        "results": [
+          "25-point increase in engagement",
+          "40% decrease in turnover",
+          "35-point improvement in employee NPS"
+        ],
+        "duration": "18 months",
+        "testimonial": "The program transformed our organization. Today we have a shared culture we can be proud of."
+      },
+      "leadership": {
+        "title": "Leadership Development Program",
+        "client": "Large manufacturing company",
+        "challenge": "Lack of prepared candidates for management positions, low effectiveness of first-line managers.",
+        "solution": "12-month development program for 40 managers including training, coaching, and implementation projects.",
+        "results": [
+          "85% of participants promoted",
+          "30% increase in team effectiveness",
+          "320% program ROI"
+        ],
+        "duration": "12 months",
+        "testimonial": "Our managers are now true leaders, not just supervisors. It shows in the results."
+      },
+      "coaching": {
+        "title": "Executive Coaching for Leadership Team",
+        "client": "Fintech startup after Series B",
+        "challenge": "Young leadership team facing challenges of rapid scaling and building a mature organization.",
+        "solution": "6-month coaching program for 5 leadership team members plus team sessions.",
+        "results": [
+          "Successful Series C (3x higher valuation)",
+          "Smooth scaling from 50 to 200 people",
+          "Built second-tier management"
+        ],
+        "duration": "6 months",
+        "testimonial": "Coaching helped us understand that effective leadership is not just vision, but daily behaviors."
+      }
+    }
+  },
+  "trustedBy": {
+    "tagline": "Trusted By",
+    "title": "We work with",
+    "titleHighlight": "leaders",
+    "subtitle": "From startups to international corporations - we help organizations at every stage of development.",
+    "description": "From startups to international corporations - we help organizations at every stage of development.",
+    "clients": {
+      "corporate": "Corporations",
+      "technology": "Technology",
+      "finance": "Finance",
+      "startups": "Startups"
+    }
+  },
+  "manifest": {
+    "tagline": "What we stand for",
+    "title": "What we",
+    "titleHighlight": "stand for",
+    "description": "Our principles are the foundation of every collaboration.",
+    "principles": {
+      "transparency": {
+        "title": "Transparency instead of guesswork",
+        "description": "Clear rules and conversations that move things forward."
+      },
+      "accountability": {
+        "title": "Accountability instead of control",
+        "description": "We make agreements, not multiply reports."
+      },
+      "simplicity": {
+        "title": "Simple, but not simplistic",
+        "description": "We speak clearly — we implement difficult things."
+      }
+    },
+    "beliefs": [
+      {
+        "title": "Transparency instead of guesswork",
+        "description": "Clear rules and conversations that move things forward."
+      },
+      {
+        "title": "Accountability instead of control",
+        "description": "We make agreements, not multiply reports."
+      },
+      {
+        "title": "Simple, but not simplistic",
+        "description": "We speak clearly — we implement difficult things."
+      }
+    ]
+  },
+  "faq": {
+    "tagline": "FAQ",
+    "title": "Frequently Asked",
+    "titleHighlight": "Questions",
+    "subtitle": "Answers to the most common questions. Didn't find your answer? Contact us.",
+    "description": "Answers to the most common questions. Didn't find your answer? Contact us.",
+    "searchPlaceholder": "Search questions...",
+    "categories": {
+      "all": "All",
+      "general": "General",
+      "process": "Process",
+      "pricing": "Pricing",
+      "results": "Results"
+    },
+    "contact": "Didn't find your answer?",
+    "contactCta": "Contact us",
+    "items": [
+      {
+        "question": "What does a typical collaboration project look like?",
+        "answer": "Every project starts with a Discovery phase where we get to know your organization and goals. Then we move through design, implementation, and consolidation of changes. A typical project lasts 3 to 18 months, depending on scope."
+      },
+      {
+        "question": "Do you work with small companies?",
+        "answer": "Yes, we work with both large corporations and smaller companies from around 50 employees. We adjust the scope and intensity of collaboration to the client's needs and capabilities."
+      },
+      {
+        "question": "How much do your services cost?",
+        "answer": "Prices depend on project scope and client needs. Coaching sessions start from 1500 PLN, and larger projects are priced individually. The first consultation is always free."
+      },
+      {
+        "question": "Do you offer results guarantees?",
+        "answer": "We believe in our competencies and methods. We define clear KPIs at the start of every project and monitor them regularly. In some projects, we offer a success fee model."
+      },
+      {
+        "question": "How quickly can results be seen?",
+        "answer": "First changes are often visible within 4-6 weeks. Full effects of development programs are measurable after 6-12 months from the start."
+      },
+      {
+        "question": "Do you conduct online sessions?",
+        "answer": "Yes, we work both in-person and online. Many of our clients prefer a hybrid model - key workshops in-person, coaching sessions online."
+      }
+    ]
+  },
+  "offerings": {
+    "tagline": "How We Help",
+    "title": "Proven",
+    "titleHighlight": "solutions",
+    "subtitle": "Each package is the result of years of experience. Specific scope, measurable results, full process transparency.",
+    "mostPopular": "Most Popular",
+    "askDetails": "Ask for details",
+    "bottomNote": "We tailor every project to your organization's context.",
+    "bottomNoteCta": "Let's talk",
+    "bottomNoteEnd": "about your challenges.",
+    "packages": {
+      "diagnostyka": {
+        "name": "360° Diagnostics",
+        "subtitle": "Light",
+        "duration": "2 weeks",
+        "description": "Quick, precise diagnosis of organizational situation. The foundation of every effective change.",
+        "deliverables": [
+          "5-7 in-depth 1:1 conversations",
+          "A4 report with key insights",
+          "90-day action map"
+        ]
+      },
+      "lider": {
+        "name": "Leader 2.0",
+        "subtitle": "Competency Development",
+        "duration": "1 day + 2 sessions",
+        "description": "Intensive program for leaders. Difficult conversations, feedback, building accountability.",
+        "deliverables": [
+          "One-day workshop (8h)",
+          "2 online follow-up sessions",
+          "Practical tools toolkit"
+        ]
+      },
+      "teamReset": {
+        "name": "Team Reset",
+        "subtitle": "Team Intervention",
+        "duration": "2 days",
+        "description": "Conflict facilitation and collaboration rebuilding. Clear rules, team contract, fresh start.",
+        "deliverables": [
+          "2 days of intensive team work",
+          "Difficult conversation facilitation",
+          "Written team contract"
+        ]
+      },
+      "kultura": {
+        "name": "Culture of Accountability",
+        "subtitle": "Transformation",
+        "duration": "8-12 weeks",
+        "description": "Comprehensive organizational culture change. Working with leadership, new rules, rituals and metrics.",
+        "deliverables": [
+          "Diagnosis and change design",
+          "Working with management",
+          "Implementation of rules and rituals",
+          "Effectiveness metrics system"
+        ]
+      }
+    }
+  },
+  "roiCalculator": {
+    "tagline": "ROI Calculator",
+    "title": "What is",
+    "titleHighlight": "inaction costing you?",
+    "subtitle": "Calculate the hidden costs of organizational problems in your company.",
+    "description": "See how much you can save by investing in leadership and team development.",
+    "employees": "Number of employees",
+    "avgSalary": "Average salary (PLN)",
+    "turnover": "Annual turnover (%)",
+    "calculate": "Calculate costs",
+    "inputs": {
+      "employees": {
+        "label": "Number of employees",
+        "placeholder": "e.g. 100"
+      },
+      "avgSalary": {
+        "label": "Average gross salary (PLN/month)",
+        "placeholder": "e.g. 12000"
+      },
+      "turnover": {
+        "label": "Annual turnover (%)",
+        "placeholder": "e.g. 15"
+      },
+      "conflictHours": {
+        "label": "Hours lost to conflicts/inefficiency (weekly/person)",
+        "placeholder": "e.g. 5"
+      }
+    },
+    "results": {
+      "title": "Potential Results",
+      "currentCost": "Current turnover cost",
+      "potentialSavings": "Potential savings",
+      "roi": "First year ROI",
+      "engagementIncrease": "Engagement increase",
+      "turnoverReduction": "Turnover reduction",
+      "annualBenefit": "Annual benefit",
+      "disclaimer": "Calculation based on SHRM and Gallup research. Actual costs may vary.",
+      "turnoverCost": "Turnover cost",
+      "conflictCost": "Conflict cost",
+      "productivityLoss": "Productivity loss",
+      "totalCost": "Total annual cost of problems",
+      "employeesLeaving": "{count} people leaving annually",
+      "conflictHoursPerWeek": "{hours}h/week x {employees} people",
+      "disengagedEmployees": "Disengaged employees",
+      "savingsNote": "With 40% efficiency improvement (our average results)"
+    },
+    "cta": "Let's talk about solutions",
+    "ctaDescription": "Want to learn how we can help your organization?"
+  },
+  "availability": {
+    "tagline": "Availability",
+    "title": "Let's start",
+    "titleHighlight": "working together",
+    "description": "We currently have available slots starting from",
+    "cta": "Book a slot",
+    "limited": "Limited availability",
+    "close": "Close",
+    "status": {
+      "available": "Available",
+      "limited": "Limited availability",
+      "busy": "Fully booked"
+    },
+    "currentStatus": "We currently have available slots for new projects.",
+    "nextAvailable": "Next available slot",
+    "bookingInfo": "Initial conversation is free and non-binding.",
+    "progress": {
+      "availability": "Availability",
+      "booked": "booked"
+    },
+    "inline": {
+      "headline": "Currently accepting",
+      "newClients": "new clients",
+      "forQuarter": "for",
+      "description": "We work with a limited number of clients to ensure the highest quality of service. Every project is treated individually.",
+      "projectsPerYear": "projects per year",
+      "slotsAvailable": "slots available"
+    },
+    "sticky": {
+      "slots": "slots",
+      "availableFor": "available for",
+      "book": "Book"
+    },
+    "floating": {
+      "available": "Available",
+      "slotsFor": "slots for",
+      "nextAvailable": "Next available:",
+      "checkAvailability": "Check availability"
+    }
+  },
+  "contact": {
+    "tagline": "Contact",
+    "title": "Start the",
+    "titleHighlight": "conversation",
+    "subtitle": "Initial consultation — no obligations",
+    "description": "Initial consultation — no obligations",
+    "form": {
+      "name": {
+        "label": "Full name",
+        "placeholder": "John Smith"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "john@company.com"
+      },
+      "company": {
+        "label": "Company",
+        "placeholder": "Company name"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+48 123 456 789"
+      },
+      "subject": {
+        "label": "Subject",
+        "placeholder": "Select a subject",
+        "options": {
+          "coaching": "Executive Coaching",
+          "teams": "Team Development",
+          "transformation": "Organizational Transformation",
+          "training": "Training Programs",
+          "other": "Other"
+        }
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Briefly describe your challenge or question..."
+      },
+      "consent": "I consent to the processing of my personal data to respond to my inquiry.",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success": "Thank you! We'll get back to you soon.",
+      "error": "An error occurred. Please try again."
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "contact@catman.pl",
+      "phone": "+48 123 456 789",
+      "address": "Warsaw, Poland",
+      "hours": "Mon-Fri: 9:00 AM - 5:00 PM"
+    },
+    "hours": "Business hours",
+    "hoursValue": "Mon-Fri: 9:00 AM - 5:00 PM",
+    "social": {
+      "title": "Find us",
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter"
+    }
+  },
+  "footer": {
+    "description": "A boutique consulting firm specializing in organizational transformation and leadership development.",
+    "services": "Services",
+    "company": "Company",
+    "legal": "Legal",
+    "navigation": {
+      "title": "Navigation",
+      "services": "Services",
+      "process": "Process",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "servicesLinks": {
+      "title": "Services",
+      "coaching": "Executive Coaching",
+      "teams": "Team Development",
+      "transformation": "Organizational Transformation",
+      "training": "Development Programs"
+    },
+    "legalLinks": {
+      "title": "Legal Information",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "description": "Subscribe to our weekly insights on leadership and transformation.",
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "success": "Thank you for subscribing!",
+      "socialProof": "Join 500+ leaders",
+      "privacy": "We respect your privacy. You can unsubscribe at any time.",
+      "checkEmail": "Check your inbox."
+    },
+    "links": {
+      "aboutUs": "About Us",
+      "careers": "Careers",
+      "blog": "Blog",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookies"
+    },
+    "copyright": "All rights reserved.",
+    "madeWith": "Made with",
+    "inPoland": "in Poland",
+    "backToTop": "Back to top",
+    "social": {
+      "linkedin": "LinkedIn",
+      "twitter": "Twitter",
+      "youtube": "YouTube"
+    }
+  },
+  "aiConcierge": {
+    "title": "AI Concierge",
+    "subtitle": "Instant responses",
+    "welcome": "Hello! I'm your virtual assistant. How can I help you?",
+    "placeholder": "Write a message...",
+    "listening": "Listening... speak now",
+    "poweredBy": "Powered by AI",
+    "greeting": "Hello! I'm the AI assistant for CatMan Consulting.\n\nI can help you learn about our services, answer questions, or schedule a free consultation.\n\nHow can I help you today?",
+    "quickActions": {
+      "services": "Explore Services",
+      "booking": "Book Consultation",
+      "coaching": "Executive Coaching"
+    },
+    "suggestions": [
+      "What services do you offer?",
+      "How much does it cost?",
+      "What does the process look like?",
+      "I want to schedule a call"
+    ],
+    "thinking": "Thinking...",
+    "error": "Sorry, an error occurred. Please try again.",
+    "offline": "Assistant is currently unavailable.",
+    "typing": "Typing...",
+    "sendButton": "Send",
+    "closeButton": "Close",
+    "minimizeButton": "Minimize"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "retry": "Try again",
+    "close": "Close",
+    "open": "Open",
+    "next": "Next",
+    "previous": "Previous",
+    "back": "Back",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "view": "View",
+    "download": "Download",
+    "upload": "Upload",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and",
+    "more": "More",
+    "less": "Less",
+    "showMore": "Show more",
+    "showLess": "Show less",
+    "readMore": "Read more",
+    "learnMore": "Learn more",
+    "getStarted": "Get started",
+    "contactUs": "Contact us",
+    "bookCall": "Book a call",
+    "freeConsultation": "Free consultation",
+    "backToTop": "Back to top",
+    "home": "Home",
+    "menu": "Menu",
+    "language": "Language",
+    "polish": "Polish",
+    "english": "English",
+    "currency": "PLN",
+    "viewAll": "View all",
+    "success": "Success",
+    "years": "years",
+    "months": "months",
+    "weeks": "weeks",
+    "days": "days",
+    "date": {
+      "today": "Today",
+      "yesterday": "Yesterday",
+      "tomorrow": "Tomorrow",
+      "days": "days",
+      "weeks": "weeks",
+      "months": "months",
+      "years": "years"
+    },
+    "validation": {
+      "required": "This field is required",
+      "email": "Please enter a valid email address",
+      "phone": "Please enter a valid phone number",
+      "minLength": "Minimum length is {min} characters",
+      "maxLength": "Maximum length is {max} characters"
+    },
+    "status": {
+      "success": "Success",
+      "error": "Error",
+      "warning": "Warning",
+      "info": "Information",
+      "pending": "Pending",
+      "processing": "Processing",
+      "completed": "Completed"
+    }
+  }
+}
