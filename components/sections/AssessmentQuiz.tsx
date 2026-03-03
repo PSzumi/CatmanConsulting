@@ -117,7 +117,7 @@ function getResult(score: number): Result {
         "Fundamenty są solidne, ale widzisz obszary do poprawy. To normalne — każda organizacja może się rozwijać.",
       recommendation:
         "Zidentyfikuj 2-3 kluczowe obszary i zacznij od nich. Systemowe podejście da lepsze efekty niż gaszenie pożarów.",
-      color: "#8b1a1a",
+      color: "#b8860b",
     };
   } else if (percentage >= 40) {
     return {
@@ -243,7 +243,7 @@ export function AssessmentQuiz() {
           </div>
           <div className="h-2 bg-background-tertiary rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#2d5a7b] to-[#8b1a1a] rounded-full"
+              className="h-full bg-gradient-to-r from-[#2d5a7b] to-[#b8860b] rounded-full"
               initial={{ width: 0 }}
               animate={{ width: `${progress}%` }}
               transition={{ duration: 0.5 }}
@@ -381,7 +381,7 @@ export function AssessmentQuiz() {
                 <div className="flex flex-col sm:flex-row gap-4 mb-4">
                   <a
                     href="#kontakt"
-                    className="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#8b1a1a] text-white font-semibold hover:bg-[#b32424] transition-colors"
+                    className="flex-1 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#b8860b] text-white font-semibold hover:bg-[#d4a843] transition-colors"
                   >
                     Porozmawiajmy
                     <ArrowRight className="w-5 h-5" />
@@ -398,7 +398,7 @@ export function AssessmentQuiz() {
                 {/* Certificate button */}
                 <button
                   onClick={() => setShowBadge(true)}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-[#8b1a1a]/30 text-[#8b1a1a] font-medium hover:bg-[#8b1a1a]/10 transition-colors"
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3 rounded-xl border border-[#b8860b]/30 text-[#b8860b] font-medium hover:bg-[#b8860b]/10 transition-colors"
                 >
                   <Award className="w-5 h-5" />
                   Pobierz certyfikat

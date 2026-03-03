@@ -69,8 +69,8 @@ interface ValidationState {
 // CONSTANTS & CONFIGURATION
 // ============================================================================
 
-const ACCENT_COLOR = "#8b1a1a";
-const ACCENT_LIGHT = "#b32424";
+const ACCENT_COLOR = "#b8860b";
+const ACCENT_LIGHT = "#d4a843";
 const ACCENT_DARK = "#8b6914";
 
 // Contact method options
@@ -230,7 +230,7 @@ function AnimatedInput({
       : showSuccess
       ? "text-emerald-400"
       : isFocused
-      ? "text-[#8b1a1a]"
+      ? "text-[#b8860b]"
       : "text-gray-500"
   );
 
@@ -371,7 +371,7 @@ function AnimatedCheckbox({
           className={cn(
             "w-6 h-6 rounded-md border-2 flex items-center justify-center transition-colors",
             checked
-              ? "bg-[#8b1a1a] border-[#8b1a1a]"
+              ? "bg-[#b8860b] border-[#b8860b]"
               : "bg-gray-800/50 border-gray-600 group-hover:border-gray-500"
           )}
           whileTap={{ scale: 0.9 }}
@@ -441,9 +441,9 @@ function StepIndicator({
                 className={cn(
                   "w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300",
                   isCompleted
-                    ? "bg-[#8b1a1a] text-white"
+                    ? "bg-[#b8860b] text-white"
                     : isActive
-                    ? "bg-[#8b1a1a]/20 text-[#8b1a1a] border-2 border-[#8b1a1a]"
+                    ? "bg-[#b8860b]/20 text-[#b8860b] border-2 border-[#b8860b]"
                     : "bg-gray-800 text-gray-500 border-2 border-gray-700"
                 )}
               >
@@ -831,7 +831,7 @@ function ContactFormStep({
       {/* Video message option */}
       <div className="relative">
         <div className="flex items-center gap-2 mb-3">
-          <Video className="w-4 h-4 text-[#8b1a1a]" />
+          <Video className="w-4 h-4 text-[#b8860b]" />
           <span className="text-sm font-medium text-gray-300">
             Lub nagraj wiadomość wideo
           </span>
@@ -859,7 +859,7 @@ function ContactFormStep({
         label={
           <>
             Wyrazam zgode na przetwarzanie danych osobowych w celu kontaktu zgodnie z{" "}
-            <a href="/polityka-prywatnosci" className="text-[#8b1a1a] hover:underline">
+            <a href="/polityka-prywatnosci" className="text-[#b8860b] hover:underline">
               polityka prywatnosci
             </a>
             .
@@ -1084,7 +1084,7 @@ function InfoPanel() {
 
           <CalendlyButton
             url={contactContent.calendlyUrl}
-            className="w-full justify-center bg-[#8b1a1a] hover:bg-[#b32424] border-none"
+            className="w-full justify-center bg-[#b8860b] hover:bg-[#d4a843] border-none"
             variant="primary"
           />
         </div>
@@ -1495,7 +1495,7 @@ export function Contact() {
                           className={cn(
                             "flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all",
                             canProceed()
-                              ? "bg-[#8b1a1a] text-white hover:bg-[#b32424]"
+                              ? "bg-[#b8860b] text-white hover:bg-[#d4a843]"
                               : "bg-gray-800 text-gray-500 cursor-not-allowed"
                           )}
                           whileHover={canProceed() ? { scale: 1.02 } : {}}
@@ -1576,10 +1576,10 @@ export function Contact() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <a
               href={`mailto:${contactContent.email}`}
-              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#8b1a1a]/30 transition-all group"
+              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#8b1a1a]/20 transition-colors mb-3">
-                <Mail className="w-5 h-5 text-gray-400 group-hover:text-[#8b1a1a] transition-colors" />
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
+                <Mail className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
               </div>
               <div className="text-xs text-gray-500 mb-1">Email</div>
               <div className="text-sm text-white font-medium break-all">{contactContent.email}</div>
@@ -1587,10 +1587,10 @@ export function Contact() {
 
             <a
               href={`tel:${contactContent.phone.replace(/\s/g, "")}`}
-              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#8b1a1a]/30 transition-all group"
+              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
             >
-              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#8b1a1a]/20 transition-colors mb-3">
-                <Phone className="w-5 h-5 text-gray-400 group-hover:text-[#8b1a1a] transition-colors" />
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
+                <Phone className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
               </div>
               <div className="text-xs text-gray-500 mb-1">Telefon</div>
               <div className="text-sm text-white font-medium">{contactContent.phone}</div>
@@ -1621,10 +1621,10 @@ export function Contact() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-900/50 border border-gray-800/50 flex items-center justify-center hover:border-[#8b1a1a]/30 hover:bg-[#8b1a1a]/10 transition-all group"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gray-900/50 border border-gray-800/50 flex items-center justify-center hover:border-[#b8860b]/30 hover:bg-[#b8860b]/10 transition-all group"
                 aria-label={social.label}
               >
-                <Icon className="w-5 h-5 text-gray-400 group-hover:text-[#8b1a1a] transition-colors" />
+                <Icon className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
               </a>
             );
           })}

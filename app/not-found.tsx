@@ -12,7 +12,7 @@ export default function NotFound() {
         <div
           className="absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-10"
           style={{
-            background: "radial-gradient(circle, rgba(139, 26, 26, 0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(184, 134, 11, 0.3) 0%, transparent 70%)",
           }}
         />
         <div
@@ -31,7 +31,7 @@ export default function NotFound() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-[150px] md:text-[200px] font-bold leading-none select-none">
-            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#8b1a1a] via-[#b32424] to-[#2d5a7b]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-[#b8860b] via-[#d4a843] to-[#2d5a7b]">
               404
             </span>
           </h1>
@@ -61,7 +61,7 @@ export default function NotFound() {
         >
           <Link
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#8b1a1a] text-white font-semibold hover:bg-[#b32424] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#b8860b] text-white font-semibold hover:bg-[#d4a843] transition-colors"
           >
             <Home className="w-5 h-5" />
             Strona główna

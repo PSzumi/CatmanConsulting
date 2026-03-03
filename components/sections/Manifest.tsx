@@ -17,7 +17,7 @@ const manifestPrinciples = [
     description:
       "Jasne zasady i rozmowy, które przesuwają sprawy do przodu. Nie zgadujemy — pytamy, słuchamy, nazywamy rzeczy po imieniu.",
     keyword: "CLARITY",
-    accent: "#8b1a1a",
+    accent: "#b8860b",
   },
   {
     id: "principle-02",
@@ -37,7 +37,7 @@ const manifestPrinciples = [
     description:
       "Mówimy zrozumiale — wdrażamy rzeczy trudne. Złożoność jest w implementacji, nie w komunikacji.",
     keyword: "ESSENCE",
-    accent: "#8b1a1a",
+    accent: "#b8860b",
   },
 ];
 
@@ -77,7 +77,7 @@ function FloatingShape({
       }}
     >
       <div
-        className="w-full h-full rounded-3xl border border-[#8b1a1a]"
+        className="w-full h-full rounded-3xl border border-[#b8860b]"
         style={{ opacity: shape.opacity }}
       />
     </motion.div>
@@ -130,7 +130,7 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         className="absolute inset-0 pointer-events-none"
         style={{ y: smoothBgY }}
       >
-        <div className="hidden md:block absolute top-1/4 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#8b1a1a]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-1/4 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
         <div className="hidden md:block absolute bottom-1/4 right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
       </motion.div>
 
@@ -139,8 +139,8 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(139,26,26,0.3) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(139,26,26,0.3) 1px, transparent 1px)
+            linear-gradient(rgba(184,134,11,0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(184,134,11,0.3) 1px, transparent 1px)
           `,
           backgroundSize: "100px 100px",
         }}
@@ -153,14 +153,14 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
       >
         <motion.div className="mb-8" style={{ y: smoothTitleY }}>
           <motion.span
-            className="inline-flex items-center gap-4 text-sm md:text-base font-medium tracking-[0.4em] uppercase text-[#8b1a1a]"
+            className="inline-flex items-center gap-4 text-sm md:text-base font-medium tracking-[0.4em] uppercase text-[#b8860b]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            <span className="w-12 h-px bg-[#8b1a1a]" />
+            <span className="w-12 h-px bg-[#b8860b]" />
             {t("tagline")}
-            <span className="w-12 h-px bg-[#8b1a1a]" />
+            <span className="w-12 h-px bg-[#b8860b]" />
           </motion.span>
         </motion.div>
 
@@ -196,7 +196,7 @@ function IntroSection({ scrollProgress, t }: { scrollProgress: MotionValue<numbe
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
             <span className="text-xs tracking-widest text-white/30 uppercase">Przewin</span>
-            <div className="w-px h-12 bg-gradient-to-b from-[#8b1a1a] to-transparent" />
+            <div className="w-px h-12 bg-gradient-to-b from-[#b8860b] to-transparent" />
           </motion.div>
         </motion.div>
       </motion.div>
@@ -375,7 +375,7 @@ function ClosingSection({ scrollProgress }: { scrollProgress: MotionValue<number
         className="absolute top-1/4 left-1/4 pointer-events-none select-none"
         style={{ y: smoothQuoteMarkY }}
       >
-        <span className="text-[30vw] font-serif text-[#8b1a1a]/[0.04] leading-none">
+        <span className="text-[30vw] font-serif text-[#b8860b]/[0.04] leading-none">
           &ldquo;
         </span>
       </motion.div>
@@ -391,21 +391,21 @@ function ClosingSection({ scrollProgress }: { scrollProgress: MotionValue<number
           </p>
         </blockquote>
 
-        <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#8b1a1a] to-transparent mx-auto mb-6" />
+        <div className="w-24 h-px bg-gradient-to-r from-transparent via-[#b8860b] to-transparent mx-auto mb-6" />
 
-        <p className="text-base text-[#8b1a1a] font-medium tracking-wider">
+        <p className="text-base text-[#b8860b] font-medium tracking-wider">
           Tomek & Mariusz
         </p>
       </motion.div>
 
       {/* Bottom accents */}
       <div className="absolute bottom-10 left-10 flex items-center gap-2">
-        <div className="w-2 h-2 rounded-full bg-[#8b1a1a]/50" />
-        <div className="w-10 h-px bg-[#8b1a1a]/30" />
+        <div className="w-2 h-2 rounded-full bg-[#b8860b]/50" />
+        <div className="w-10 h-px bg-[#b8860b]/30" />
       </div>
       <div className="absolute bottom-10 right-10 flex items-center gap-2">
-        <div className="w-10 h-px bg-[#8b1a1a]/30" />
-        <div className="w-2 h-2 rounded-full bg-[#8b1a1a]/50" />
+        <div className="w-10 h-px bg-[#b8860b]/30" />
+        <div className="w-2 h-2 rounded-full bg-[#b8860b]/50" />
       </div>
     </motion.div>
   );
@@ -436,7 +436,7 @@ export function Manifest() {
     >
       {/* Progress bar */}
       <motion.div
-        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#8b1a1a] to-[#b32424] z-50 origin-left"
+        className="fixed top-0 left-0 h-[2px] bg-gradient-to-r from-[#b8860b] to-[#d4a843] z-50 origin-left"
         style={{ width: progressWidth }}
       />
 

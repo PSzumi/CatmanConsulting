@@ -112,7 +112,7 @@ export function LanguageSwitcher() {
                   key={lang.code}
                   className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
                     language === lang.code
-                      ? "bg-[#8b1a1a]/20 text-white"
+                      ? "bg-[#b8860b]/20 text-white"
                       : "text-white/70 hover:bg-white/5 hover:text-white"
                   }`}
                   onClick={() => handleLanguageChange(lang.code)}
@@ -130,7 +130,7 @@ export function LanguageSwitcher() {
                       animate={{ scale: 1 }}
                       transition={{ type: "spring", stiffness: 500, damping: 30 }}
                     >
-                      <Check className="w-4 h-4 text-[#8b1a1a]" />
+                      <Check className="w-4 h-4 text-[#b8860b]" />
                     </motion.div>
                   )}
                 </motion.button>

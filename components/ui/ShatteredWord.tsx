@@ -42,7 +42,7 @@ export function ShatteredWord({
   duration = 1.5,
   staggerAmount = 0.4,
   autoPlayDelay = 0,
-  glowColor = "rgba(139, 26, 26, 0.5)",
+  glowColor = "rgba(184, 134, 11, 0.5)",
 }: ShatteredWordProps) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);

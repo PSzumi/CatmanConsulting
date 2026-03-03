@@ -48,7 +48,7 @@ const phases = [
     subtitle: "Projektowanie rozwiązania",
     duration: "1-2 tygodnie",
     icon: Target,
-    color: "#8b1a1a",
+    color: "#b8860b",
     description:
       "Wspólne wypracowanie planu działania. Definiowanie celów, KPI, kamieni milowych i zasobów potrzebnych do transformacji.",
     activities: [
@@ -186,7 +186,7 @@ function PhaseCard({
         <div
           className={`absolute -top-3 -left-3 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
             isActive
-              ? "bg-[#8b1a1a] text-white"
+              ? "bg-[#b8860b] text-white"
               : "bg-white/10 text-white/50"
           }`}
         >
@@ -223,7 +223,7 @@ function PhaseCard({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <div className="w-px h-8 bg-gradient-to-b from-[#8b1a1a] to-transparent mx-auto" />
+            <div className="w-px h-8 bg-gradient-to-b from-[#b8860b] to-transparent mx-auto" />
           </motion.div>
         )}
       </motion.div>
@@ -349,7 +349,7 @@ function MobileTimeline({ activePhase, setActivePhase }: {
         {/* Progress line */}
         <div className="absolute top-1/2 left-0 right-0 h-1 bg-white/10 -translate-y-1/2" />
         <motion.div
-          className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-[#8b1a1a] to-[#d4a94d] -translate-y-1/2"
+          className="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-[#b8860b] to-[#d4a94d] -translate-y-1/2"
           initial={{ width: "0%" }}
           animate={{ width: `${((activePhase - 1) / (phases.length - 1)) * 100}%` }}
           transition={{ duration: 0.5 }}
@@ -365,7 +365,7 @@ function MobileTimeline({ activePhase, setActivePhase }: {
             <motion.div
               className={`w-12 h-12 rounded-full flex items-center justify-center text-sm font-bold transition-all duration-300 ${
                 activePhase >= phase.id
-                  ? "bg-[#8b1a1a] text-white"
+                  ? "bg-[#b8860b] text-white"
                   : "bg-[#1a1a1f] border-2 border-white/20 text-white/50"
               }`}
               whileTap={{ scale: 0.95 }}
@@ -374,7 +374,7 @@ function MobileTimeline({ activePhase, setActivePhase }: {
             </motion.div>
             <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap">
               <span className={`text-xs font-medium ${
-                activePhase === phase.id ? "text-[#8b1a1a]" : "text-white/40"
+                activePhase === phase.id ? "text-[#b8860b]" : "text-white/40"
               }`}>
                 {phase.name}
               </span>
@@ -401,7 +401,7 @@ export function Process() {
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="hidden md:block absolute top-0 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#8b1a1a]/5 rounded-full blur-[200px]" />
+        <div className="hidden md:block absolute top-0 left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
         <div className="hidden md:block absolute bottom-0 right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#6366F1]/5 rounded-full blur-[150px]" />
 
         {/* Grid pattern */}
@@ -429,17 +429,17 @@ export function Process() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#8b1a1a]" />
-            <span className="px-5 py-2.5 rounded-full border border-[#8b1a1a]/30 bg-[#8b1a1a]/5 text-sm font-medium text-[#8b1a1a] uppercase tracking-widest flex items-center gap-2">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b8860b]" />
+            <span className="px-5 py-2.5 rounded-full border border-[#b8860b]/30 bg-[#b8860b]/5 text-sm font-medium text-[#b8860b] uppercase tracking-widest flex items-center gap-2">
               <Compass className="w-4 h-4" />
               {t("tagline")}
             </span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#8b1a1a]" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b8860b]" />
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             {t("title")}{" "}
-            <span className="bg-gradient-to-r from-[#8b1a1a] via-[#d4a94d] to-[#8b1a1a] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#b8860b] via-[#d4a94d] to-[#b8860b] bg-clip-text text-transparent">
               {t("titleHighlight")}
             </span>
           </h2>
@@ -486,14 +486,14 @@ export function Process() {
             return (
               <motion.div
                 key={advantage.title}
-                className="relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-[#8b1a1a]/20 transition-colors group"
+                className="relative p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-[#b8860b]/20 transition-colors group"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
               >
-                <div className="w-12 h-12 rounded-xl bg-[#8b1a1a]/10 flex items-center justify-center mb-4 group-hover:bg-[#8b1a1a]/20 transition-colors">
-                  <Icon className="w-6 h-6 text-[#8b1a1a]" />
+                <div className="w-12 h-12 rounded-xl bg-[#b8860b]/10 flex items-center justify-center mb-4 group-hover:bg-[#b8860b]/20 transition-colors">
+                  <Icon className="w-6 h-6 text-[#b8860b]" />
                 </div>
                 <h4 className="font-semibold text-white mb-2">{advantage.title}</h4>
                 <p className="text-sm text-white/40">{advantage.description}</p>
@@ -504,14 +504,14 @@ export function Process() {
 
         {/* Total Duration Banner */}
         <motion.div
-          className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#8b1a1a]/10 via-[#8b1a1a]/5 to-[#8b1a1a]/10 border border-[#8b1a1a]/20 text-center"
+          className="mt-16 p-8 rounded-3xl bg-gradient-to-r from-[#b8860b]/10 via-[#b8860b]/5 to-[#b8860b]/10 border border-[#b8860b]/20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
             <div>
-              <div className="text-4xl md:text-5xl font-bold text-[#8b1a1a] mb-2">
+              <div className="text-4xl md:text-5xl font-bold text-[#b8860b] mb-2">
                 4-8 miesięcy
               </div>
               <div className="text-white/50">Typowy czas pełnej transformacji</div>
@@ -545,7 +545,7 @@ export function Process() {
           </p>
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#8b1a1a] text-white font-semibold hover:bg-[#d4a94d] transition-all hover:scale-[1.02]"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#b8860b] text-white font-semibold hover:bg-[#d4a94d] transition-all hover:scale-[1.02]"
           >
             Umów bezpłatną konsultację
             <ArrowRight className="w-5 h-5" />

@@ -10,7 +10,7 @@ interface KonfettiProps {
   zIndex?: number;
 }
 
-const colors = ["#8b1a1a", "#b32424", "#2d5a7b", "#3d7a9e", "#ffffff", "#fafaf9", "#FFD700", "#FFA500"];
+const colors = ["#b8860b", "#d4a843", "#2d5a7b", "#3d7a9e", "#ffffff", "#fafaf9", "#FFD700", "#FFA500"];
 
 function randomBetween(min: number, max: number) {
   return Math.random() * (max - min) + min;

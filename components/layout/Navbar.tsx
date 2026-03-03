@@ -91,7 +91,7 @@ const MagneticNavLink = forwardRef<
       <motion.div
         className="absolute inset-0 rounded-full opacity-0 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(139,26,26,0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%)",
         }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
@@ -365,16 +365,16 @@ export function Navbar() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-foreground group-hover:text-accent transition-colors duration-300">
+              <span className="text-foreground group-hover:text-brand-red transition-colors duration-300">
                 {siteConfig.name.split(" ")[0]}
               </span>
-              <span className="text-accent ml-1">
+              <span className="text-brand-red ml-1">
                 {siteConfig.name.split(" ")[1]}
               </span>
 
               {/* Animated dot */}
               <motion.span
-                className="absolute -right-2 -top-1 w-1.5 h-1.5 rounded-full bg-accent"
+                className="absolute -right-2 -top-1 w-1.5 h-1.5 rounded-full bg-brand-red"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [1, 0.7, 1],

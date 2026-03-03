@@ -15,7 +15,7 @@ export function BeamEffect({ className }: BeamEffectProps) {
         className="absolute top-1/3 -translate-y-1/2 w-full h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(139,26,26,0.2), transparent)",
+            "linear-gradient(90deg, transparent, rgba(184,134,11,0.2), transparent)",
         }}
         animate={{
           x: ["-100%", "100%"],

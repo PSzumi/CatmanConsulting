@@ -12,7 +12,7 @@ html.lenis body,
 /* ============================================
    CATMAN CONSULTING - DESIGN SYSTEM
    "Intellectual Warmth" - Premium consulting aesthetic
-   Warm blacks, cream whites, CATMAN brand red accent
+   Warm blacks, cream whites, dark goldenrod accent + brand red micro-accents
    ============================================ */
 
 /* Color Palette */
@@ -27,10 +27,15 @@ html.lenis body,
   --foreground-secondary: #44403c;
   --foreground-muted: #78716c;
 
-  /* Accent - CATMAN brand red */
-  --accent: #8b1a1a;
-  --accent-light: #b32424;
-  --accent-dark: #6b1212;
+  /* Accent - Dark goldenrod (premium gold) */
+  --accent: #b8860b;
+  --accent-light: #d4a843;
+  --accent-dark: #8b6508;
+
+  /* Brand red - CATMAN corporate identity (logo, cursor, micro-accents) */
+  --brand-red: #8b1a1a;
+  --brand-red-light: #b32424;
+  --brand-red-dark: #6b1212;
 
   /* Secondary accent - Deep teal */
   --accent-secondary: #2d5a7b;
@@ -57,10 +62,15 @@ html.lenis body,
   --foreground-secondary: #a3a3a3;
   --foreground-muted: #737373;
 
-  /* Accent - CATMAN brand red */
-  --accent: #8b1a1a;
-  --accent-light: #b32424;
-  --accent-dark: #6b1212;
+  /* Accent - Dark goldenrod (premium gold) */
+  --accent: #b8860b;
+  --accent-light: #d4a843;
+  --accent-dark: #8b6508;
+
+  /* Brand red - CATMAN corporate identity (logo, cursor, micro-accents) */
+  --brand-red: #8b1a1a;
+  --brand-red-light: #b32424;
+  --brand-red-dark: #6b1212;
 
   /* Secondary accent - Deep teal */
   --accent-secondary: #2d5a7b;
@@ -89,6 +99,9 @@ html.lenis body,
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-secondary-light: var(--accent-secondary-light);
   --color-accent-secondary-dark: var(--accent-secondary-dark);
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-light: var(--brand-red-light);
+  --color-brand-red-dark: var(--brand-red-dark);
   --color-border: var(--border);
   --color-border-secondary: var(--border-secondary);
   --color-card: var(--card);
@@ -113,7 +126,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: var(--accent);
+  background: var(--brand-red);
   color: white;
 }
 
@@ -195,7 +208,7 @@ body {
   inset: 0;
   background: radial-gradient(
     600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(139, 26, 26, 0.12),
+    rgba(184, 134, 11, 0.12),
     transparent 40%
   );
   opacity: 0;
@@ -265,16 +278,16 @@ body {
 
 .card-hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(139, 26, 26, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(184, 134, 11, 0.15);
 }
 
 /* Glow effect utility */
 .glow-accent {
-  box-shadow: 0 0 30px -5px rgba(139, 26, 26, 0.25);
+  box-shadow: 0 0 30px -5px rgba(184, 134, 11, 0.25);
 }
 
 .glow-brand {
-  box-shadow: 0 0 30px -5px rgba(139, 26, 26, 0.3);
+  box-shadow: 0 0 30px -5px rgba(184, 134, 11, 0.3);
 }
 
 /* Animated underline for links */
@@ -449,7 +462,7 @@ body {
   box-shadow:
     0 0 0 2px var(--background),
     0 0 0 4px var(--accent),
-    0 0 20px rgba(139, 26, 26, 0.3);
+    0 0 20px rgba(184, 134, 11, 0.3);
 }
 
 /* ============================================
