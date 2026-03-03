@@ -61,16 +61,17 @@ export function CursorGlow() {
           x: cursorXSpring,
           y: cursorYSpring,
           background:
-            "radial-gradient(circle, rgba(184,134,11,0.08) 0%, rgba(184,134,11,0.02) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(139,26,26,0.10) 0%, rgba(139,26,26,0.03) 40%, transparent 70%)",
         }}
       />
 
       {/* Inner bright spot */}
       <motion.div
-        className="absolute w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/20 blur-sm"
+        className="absolute w-4 h-4 -translate-x-1/2 -translate-y-1/2 rounded-full blur-sm"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
+          backgroundColor: "rgba(139, 26, 26, 0.25)",
         }}
       />
     </motion.div>

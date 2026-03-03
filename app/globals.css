@@ -37,6 +37,11 @@ html.lenis body,
   --accent-secondary-light: #3d7a9e;
   --accent-secondary-dark: #1e3d52;
 
+  /* Brand red - CATMAN corporate identity */
+  --brand-red: #8b1a1a;
+  --brand-red-light: #b32424;
+  --brand-red-dark: #6b1212;
+
   /* Borders */
   --border: #d6d3d1;
   --border-secondary: #a8a29e;
@@ -67,6 +72,11 @@ html.lenis body,
   --accent-secondary-light: #3d7a9e;
   --accent-secondary-dark: #1e3d52;
 
+  /* Brand red - CATMAN corporate identity */
+  --brand-red: #8b1a1a;
+  --brand-red-light: #b32424;
+  --brand-red-dark: #6b1212;
+
   /* Borders */
   --border: #3a3a3a;
   --border-secondary: #4a4a4a;
@@ -89,6 +99,9 @@ html.lenis body,
   --color-accent-secondary: var(--accent-secondary);
   --color-accent-secondary-light: var(--accent-secondary-light);
   --color-accent-secondary-dark: var(--accent-secondary-dark);
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-light: var(--brand-red-light);
+  --color-brand-red-dark: var(--brand-red-dark);
   --color-border: var(--border);
   --color-border-secondary: var(--border-secondary);
   --color-card: var(--card);
@@ -113,7 +126,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: var(--accent);
+  background: var(--brand-red);
   color: white;
 }
 
@@ -195,7 +208,7 @@ body {
   inset: 0;
   background: radial-gradient(
     600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(184, 134, 11, 0.12),
+    rgba(139, 26, 26, 0.12),
     transparent 40%
   );
   opacity: 0;
@@ -265,12 +278,16 @@ body {
 
 .card-hover-lift:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 40px -15px rgba(184, 134, 11, 0.15);
+  box-shadow: 0 20px 40px -15px rgba(139, 26, 26, 0.15);
 }
 
 /* Glow effect utility */
 .glow-accent {
   box-shadow: 0 0 30px -5px rgba(184, 134, 11, 0.25);
+}
+
+.glow-brand {
+  box-shadow: 0 0 30px -5px rgba(139, 26, 26, 0.3);
 }
 
 /* Animated underline for links */
