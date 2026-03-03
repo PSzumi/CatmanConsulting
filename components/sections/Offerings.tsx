@@ -65,7 +65,7 @@ function PackageCard({
       {/* Featured badge */}
       {pkg.featured && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-block px-4 py-1.5 text-xs font-medium tracking-wider uppercase bg-[#8b1a1a] text-white rounded-full">
+          <span className="inline-block px-4 py-1.5 text-xs font-medium tracking-wider uppercase bg-[#b8860b] text-white rounded-full">
             {t("mostPopular")}
           </span>
         </div>
@@ -74,20 +74,20 @@ function PackageCard({
       <div
         className={`relative h-full p-8 lg:p-10 rounded-2xl transition-all duration-500 ${
           pkg.featured
-            ? "bg-gradient-to-b from-[#8b1a1a]/10 to-card border-2 border-[#8b1a1a]/30"
-            : "bg-card border border-border hover:border-[#8b1a1a]/20"
+            ? "bg-gradient-to-b from-[#b8860b]/10 to-card border-2 border-[#b8860b]/30"
+            : "bg-card border border-border hover:border-[#b8860b]/20"
         }`}
       >
         {/* Subtle gradient overlay on hover */}
-        <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#8b1a1a]/0 to-[#8b1a1a]/0 group-hover:from-[#8b1a1a]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
+        <div className="absolute inset-0 rounded-2xl bg-gradient-to-b from-[#b8860b]/0 to-[#b8860b]/0 group-hover:from-[#b8860b]/5 group-hover:to-transparent transition-all duration-500 pointer-events-none" />
 
         <div className="relative">
           {/* Icon */}
           <div
             className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-colors duration-300 ${
               pkg.featured
-                ? "bg-[#8b1a1a]/20 text-[#8b1a1a]"
-                : "bg-background-tertiary text-foreground-muted group-hover:bg-[#8b1a1a]/10 group-hover:text-[#8b1a1a]"
+                ? "bg-[#b8860b]/20 text-[#b8860b]"
+                : "bg-background-tertiary text-foreground-muted group-hover:bg-[#b8860b]/10 group-hover:text-[#b8860b]"
             }`}
           >
             <Icon className="w-7 h-7" strokeWidth={1.5} />
@@ -96,7 +96,7 @@ function PackageCard({
           {/* Title */}
           <div className="mb-4">
             <h3 className="text-2xl font-bold text-foreground mb-1">{t(`packages.${pkg.translationKey}.name`)}</h3>
-            <p className="text-sm text-[#8b1a1a] font-medium">{t(`packages.${pkg.translationKey}.subtitle`)}</p>
+            <p className="text-sm text-[#b8860b] font-medium">{t(`packages.${pkg.translationKey}.subtitle`)}</p>
           </div>
 
           {/* Duration */}
@@ -122,7 +122,7 @@ function PackageCard({
               >
                 <CheckCircle2
                   className={`w-5 h-5 mt-0.5 shrink-0 ${
-                    pkg.featured ? "text-[#8b1a1a]" : "text-[#2d5a7b]"
+                    pkg.featured ? "text-[#b8860b]" : "text-[#2d5a7b]"
                   }`}
                   strokeWidth={1.5}
                 />
@@ -136,8 +136,8 @@ function PackageCard({
             href="#kontakt"
             className={`inline-flex items-center gap-2 font-medium transition-all duration-300 ${
               pkg.featured
-                ? "text-[#8b1a1a] hover:gap-3"
-                : "text-foreground-secondary hover:text-[#8b1a1a] hover:gap-3"
+                ? "text-[#b8860b] hover:gap-3"
+                : "text-foreground-secondary hover:text-[#b8860b] hover:gap-3"
             }`}
           >
             <span>{t("askDetails")}</span>
@@ -162,7 +162,7 @@ export function Offerings() {
     >
       {/* Subtle background accent */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#8b1a1a]/3 rounded-full blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#b8860b]/3 rounded-full blur-[120px]" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -184,7 +184,7 @@ export function Offerings() {
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6">
             {t("title")}{" "}
-            <span className="text-[#8b1a1a]">{t("titleHighlight")}</span>
+            <span className="text-[#b8860b]">{t("titleHighlight")}</span>
           </h2>
 
           <p className="text-lg text-foreground-secondary leading-relaxed">
@@ -207,7 +207,7 @@ export function Offerings() {
           transition={{ delay: 0.8 }}
         >
           {t("bottomNote")}{" "}
-          <a href="#kontakt" className="text-[#8b1a1a] hover:underline">
+          <a href="#kontakt" className="text-[#b8860b] hover:underline">
             {t("bottomNoteCta")}
           </a>{" "}
           {t("bottomNoteEnd")}

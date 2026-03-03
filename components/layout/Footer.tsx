@@ -152,13 +152,13 @@ export function Footer() {
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(139, 26, 26, 0.5) 1px, transparent 0)`,
+          backgroundImage: `radial-gradient(circle at 1px 1px, rgba(184, 134, 11, 0.5) 1px, transparent 0)`,
           backgroundSize: "40px 40px",
         }}
       />
 
       {/* Gradient accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b8860b]/50 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Main footer content */}
@@ -171,10 +171,10 @@ export function Footer() {
           {/* Column 1: Brand & Social */}
           <motion.div variants={itemVariants} className="lg:col-span-3">
             <a href="#" className="inline-block mb-6 group">
-              <span className="text-2xl font-bold text-white group-hover:text-[#8b1a1a] transition-colors duration-300">
+              <span className="text-2xl font-bold text-white group-hover:text-[#b8860b] transition-colors duration-300">
                 Catman
               </span>
-              <span className="text-2xl font-bold text-[#8b1a1a] ml-1">
+              <span className="text-2xl font-bold text-[#b8860b] ml-1">
                 Consulting
               </span>
             </a>
@@ -190,7 +190,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#8b1a1a] hover:border-[#8b1a1a]/50 hover:bg-[#8b1a1a]/10 transition-all duration-300"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#b8860b] hover:border-[#b8860b]/50 hover:bg-[#b8860b]/10 transition-all duration-300"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}
@@ -211,7 +211,7 @@ export function Footer() {
                 <li key={link.nameKey}>
                   <motion.a
                     href={link.href}
-                    className="group flex items-center text-gray-400 hover:text-[#8b1a1a] transition-colors duration-300 text-sm"
+                    className="group flex items-center text-gray-400 hover:text-[#b8860b] transition-colors duration-300 text-sm"
                     initial="rest"
                     whileHover="hover"
                   >
@@ -238,7 +238,7 @@ export function Footer() {
                 <li key={link.nameKey}>
                   <motion.a
                     href={link.href}
-                    className="group flex items-center text-gray-400 hover:text-[#8b1a1a] transition-colors duration-300 text-sm"
+                    className="group flex items-center text-gray-400 hover:text-[#b8860b] transition-colors duration-300 text-sm"
                     initial="rest"
                     whileHover="hover"
                   >
@@ -265,7 +265,7 @@ export function Footer() {
                 <li key={link.nameKey}>
                   <motion.a
                     href={link.href}
-                    className="group flex items-center text-gray-400 hover:text-[#8b1a1a] transition-colors duration-300 text-sm"
+                    className="group flex items-center text-gray-400 hover:text-[#b8860b] transition-colors duration-300 text-sm"
                     initial="rest"
                     whileHover="hover"
                   >
@@ -298,7 +298,7 @@ export function Footer() {
                   <div
                     className={`relative rounded-xl overflow-hidden transition-all duration-500 ${
                       isFocused
-                        ? "shadow-[0_0_20px_rgba(139,26,26,0.3)]"
+                        ? "shadow-[0_0_20px_rgba(184,134,11,0.3)]"
                         : ""
                     }`}
                   >
@@ -307,7 +307,7 @@ export function Footer() {
                       className="absolute inset-0 rounded-xl"
                       style={{
                         backgroundImage: isFocused
-                          ? "linear-gradient(90deg, #8b1a1a, #b32424, #8b1a1a)"
+                          ? "linear-gradient(90deg, #b8860b, #d4a853, #b8860b)"
                           : "none",
                         backgroundColor: isFocused ? "transparent" : "transparent",
                         backgroundSize: "200% 100%",
@@ -341,7 +341,7 @@ export function Footer() {
                       <motion.button
                         type="submit"
                         disabled={isSubmitting}
-                        className="px-4 py-3 bg-[#8b1a1a] text-white hover:bg-[#b32424] transition-colors duration-300 disabled:opacity-50"
+                        className="px-4 py-3 bg-[#b8860b] text-white hover:bg-[#d4a853] transition-colors duration-300 disabled:opacity-50"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
@@ -369,7 +369,7 @@ export function Footer() {
                     {[1, 2, 3].map((i) => (
                       <div
                         key={i}
-                        className="w-6 h-6 rounded-full bg-gradient-to-br from-[#8b1a1a] to-[#b32424] border-2 border-[#0a0a0f] flex items-center justify-center"
+                        className="w-6 h-6 rounded-full bg-gradient-to-br from-[#b8860b] to-[#d4a853] border-2 border-[#0a0a0f] flex items-center justify-center"
                       >
                         <span className="text-[8px] text-white font-bold">
                           {i}
@@ -392,14 +392,14 @@ export function Footer() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="p-6 rounded-xl bg-[#8b1a1a]/10 border border-[#8b1a1a]/30 text-center"
+                className="p-6 rounded-xl bg-[#b8860b]/10 border border-[#b8860b]/30 text-center"
               >
                 <motion.div
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
                 >
-                  <CheckCircle className="w-12 h-12 text-[#8b1a1a] mx-auto mb-3" />
+                  <CheckCircle className="w-12 h-12 text-[#b8860b] mx-auto mb-3" />
                 </motion.div>
                 <p className="text-white font-medium mb-1">{t("newsletter.success")}</p>
                 <p className="text-gray-400 text-sm">
@@ -426,15 +426,15 @@ export function Footer() {
                 className="group"
               >
                 <motion.div
-                  className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#8b1a1a]/30 hover:bg-[#8b1a1a]/5 transition-all duration-500 cursor-default"
+                  className="relative p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-[#b8860b]/30 hover:bg-[#b8860b]/5 transition-all duration-500 cursor-default"
                   whileHover={{ y: -4 }}
                 >
                   {/* Glassmorphism effect */}
                   <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                   <div className="relative flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-lg bg-[#8b1a1a]/10 flex items-center justify-center flex-shrink-0">
-                      <badge.icon className="w-5 h-5 text-[#8b1a1a]" />
+                    <div className="w-10 h-10 rounded-lg bg-[#b8860b]/10 flex items-center justify-center flex-shrink-0">
+                      <badge.icon className="w-5 h-5 text-[#b8860b]" />
                     </div>
                     <div>
                       <p className="text-white font-medium text-sm">
@@ -464,14 +464,14 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <a
                 href="/polityka-prywatnosci"
-                className="text-xs text-gray-500 hover:text-[#8b1a1a] transition-colors duration-300"
+                className="text-xs text-gray-500 hover:text-[#b8860b] transition-colors duration-300"
               >
                 {t("links.privacy")}
               </a>
               <span className="text-gray-700">|</span>
               <a
                 href="/regulamin"
-                className="text-xs text-gray-500 hover:text-[#8b1a1a] transition-colors duration-300"
+                className="text-xs text-gray-500 hover:text-[#b8860b] transition-colors duration-300"
               >
                 {t("links.terms")}
               </a>
@@ -494,7 +494,7 @@ export function Footer() {
             {/* Back to top */}
             <motion.button
               onClick={scrollToTop}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#8b1a1a]/10 border border-[#8b1a1a]/30 text-[#8b1a1a] hover:bg-[#8b1a1a] hover:text-white transition-all duration-300 text-sm font-medium"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-[#b8860b]/10 border border-[#b8860b]/30 text-[#b8860b] hover:bg-[#b8860b] hover:text-white transition-all duration-300 text-sm font-medium"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -506,7 +506,7 @@ export function Footer() {
       </div>
 
       {/* Bottom gradient accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b8860b]/30 to-transparent" />
     </footer>
   );
 }

@@ -13,7 +13,7 @@ function FloatingSparkles() {
       {[...Array(8)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-2 h-2 rounded-full bg-[#b32424]"
+          className="absolute w-2 h-2 rounded-full bg-[#d4a843]"
           style={{
             left: "50%",
             top: "50%",
@@ -44,7 +44,7 @@ function PulsingRings() {
       {[0, 1, 2].map((i) => (
         <motion.div
           key={i}
-          className="absolute inset-0 rounded-full border-2 border-[#8b1a1a]/40"
+          className="absolute inset-0 rounded-full border-2 border-[#b8860b]/40"
           initial={{ scale: 1, opacity: 0 }}
           animate={{
             scale: [1, 2, 2.5],
@@ -146,7 +146,7 @@ export function EasterEgg() {
             <motion.div
               className="absolute inset-0"
               style={{
-                background: "radial-gradient(circle at 50% 50%, rgba(139, 26, 26, 0.15) 0%, rgba(10, 10, 15, 0.98) 70%)",
+                background: "radial-gradient(circle at 50% 50%, rgba(184, 134, 11, 0.15) 0%, rgba(10, 10, 15, 0.98) 70%)",
               }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -161,8 +161,8 @@ export function EasterEgg() {
                   className="relative max-w-[calc(100%-2rem)] sm:max-w-lg w-full p-5 sm:p-8 rounded-2xl sm:rounded-3xl text-center overflow-visible"
                   style={{
                     background: "linear-gradient(145deg, #2a2517 0%, #1a1a1a 100%)",
-                    border: "2px solid #8b1a1a",
-                    boxShadow: "0 0 80px rgba(139, 26, 26, 0.5), 0 0 120px rgba(139, 26, 26, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
+                    border: "2px solid #b8860b",
+                    boxShadow: "0 0 80px rgba(184, 134, 11, 0.5), 0 0 120px rgba(184, 134, 11, 0.3), inset 0 1px 0 rgba(255,255,255,0.05)",
                   }}
                   initial={{ scale: 0.3, opacity: 0, y: 50 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -200,12 +200,12 @@ export function EasterEgg() {
                     <PulsingRings />
                     <FloatingSparkles />
                     <motion.div
-                      className="absolute inset-0 rounded-full bg-gradient-to-br from-[#b32424] to-[#8b1a1a] flex items-center justify-center shadow-lg"
+                      className="absolute inset-0 rounded-full bg-gradient-to-br from-[#d4a843] to-[#b8860b] flex items-center justify-center shadow-lg"
                       animate={{
                         boxShadow: [
-                          "0 0 20px rgba(139, 26, 26, 0.5)",
-                          "0 0 40px rgba(139, 26, 26, 0.8)",
-                          "0 0 20px rgba(139, 26, 26, 0.5)",
+                          "0 0 20px rgba(184, 134, 11, 0.5)",
+                          "0 0 40px rgba(184, 134, 11, 0.8)",
+                          "0 0 20px rgba(184, 134, 11, 0.5)",
                         ]
                       }}
                       transition={{ duration: 2, repeat: Infinity }}
@@ -243,8 +243,8 @@ export function EasterEgg() {
                     <motion.div
                       className="relative p-6 rounded-xl overflow-hidden mb-6"
                       style={{
-                        background: "linear-gradient(135deg, rgba(139, 26, 26, 0.2) 0%, rgba(45, 90, 123, 0.2) 100%)",
-                        border: "1px solid rgba(139, 26, 26, 0.4)",
+                        background: "linear-gradient(135deg, rgba(184, 134, 11, 0.2) 0%, rgba(45, 90, 123, 0.2) 100%)",
+                        border: "1px solid rgba(184, 134, 11, 0.4)",
                       }}
                       initial={{ opacity: 0, scale: 0.9 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -262,7 +262,7 @@ export function EasterEgg() {
 
                       <p className="text-sm text-foreground-muted mb-2 relative">Twój kod rabatowy:</p>
                       <motion.p
-                        className="font-mono text-3xl text-[#b32424] tracking-wider font-bold mb-3 relative"
+                        className="font-mono text-3xl text-[#d4a843] tracking-wider font-bold mb-3 relative"
                         animate={{
                           textShadow: [
                             "0 0 10px rgba(212, 168, 67, 0.5)",
@@ -275,7 +275,7 @@ export function EasterEgg() {
                         CZUJNY2026
                       </motion.p>
                       <p className="text-sm text-foreground-secondary relative">
-                        <span className="text-[#b32424] font-semibold text-lg">-15%</span> na pierwszą usługę doradczą
+                        <span className="text-[#d4a843] font-semibold text-lg">-15%</span> na pierwszą usługę doradczą
                       </p>
                     </motion.div>
 

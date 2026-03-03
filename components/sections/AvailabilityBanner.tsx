@@ -23,7 +23,7 @@ const availabilityConfig = {
 };
 
 // Pulsing dot component
-function PulsingDot({ color = "#8b1a1a" }: { color?: string }) {
+function PulsingDot({ color = "#b8860b" }: { color?: string }) {
   return (
     <span className="relative flex h-3 w-3">
       <span
@@ -68,21 +68,21 @@ function CountdownTimer({ targetDate }: { targetDate: Date }) {
   return (
     <div className="flex items-center gap-3">
       <div className="text-center">
-        <div className="text-lg font-bold text-[#8b1a1a]">{timeLeft.days}</div>
+        <div className="text-lg font-bold text-[#b8860b]">{timeLeft.days}</div>
         <div className="text-[10px] uppercase tracking-wider text-white/40">
           dni
         </div>
       </div>
       <span className="text-white/20">:</span>
       <div className="text-center">
-        <div className="text-lg font-bold text-[#8b1a1a]">{timeLeft.hours}</div>
+        <div className="text-lg font-bold text-[#b8860b]">{timeLeft.hours}</div>
         <div className="text-[10px] uppercase tracking-wider text-white/40">
           godz
         </div>
       </div>
       <span className="text-white/20">:</span>
       <div className="text-center">
-        <div className="text-lg font-bold text-[#8b1a1a]">
+        <div className="text-lg font-bold text-[#b8860b]">
           {timeLeft.minutes}
         </div>
         <div className="text-[10px] uppercase tracking-wider text-white/40">
@@ -107,7 +107,7 @@ function AvailabilityProgress({
     <div className={cn("relative", className)}>
       <div className="h-1.5 bg-white/[0.05] rounded-full overflow-hidden">
         <motion.div
-          className="h-full rounded-full bg-gradient-to-r from-[#8b1a1a] to-[#d4a94d]"
+          className="h-full rounded-full bg-gradient-to-r from-[#b8860b] to-[#d4a94d]"
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={{ duration: 1.5, ease: "easeOut", delay: 0.3 }}
@@ -143,14 +143,14 @@ function InlineBanner({
       transition={{ duration: 0.8 }}
     >
       {/* Outer glow */}
-      <div className="absolute -inset-px rounded-3xl bg-gradient-to-r from-[#8b1a1a]/20 via-[#8b1a1a]/10 to-[#8b1a1a]/20 blur-xl" />
+      <div className="absolute -inset-px rounded-3xl bg-gradient-to-r from-[#b8860b]/20 via-[#b8860b]/10 to-[#b8860b]/20 blur-xl" />
 
-      <div className="relative rounded-3xl bg-gradient-to-br from-[#0d0d12] to-[#0a0a0f] border border-[#8b1a1a]/20 overflow-hidden">
+      <div className="relative rounded-3xl bg-gradient-to-br from-[#0d0d12] to-[#0a0a0f] border border-[#b8860b]/20 overflow-hidden">
         {/* Background pattern */}
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `radial-gradient(circle at 2px 2px, #8b1a1a 1px, transparent 0)`,
+            backgroundImage: `radial-gradient(circle at 2px 2px, #b8860b 1px, transparent 0)`,
             backgroundSize: "32px 32px",
           }}
         />
@@ -169,7 +169,7 @@ function InlineBanner({
 
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
                 {t("inline.headline", { fallback: "Obecnie przyjmujemy" })}{" "}
-                <span className="text-[#8b1a1a]">
+                <span className="text-[#b8860b]">
                   {availabilityConfig.availableSlots} {t("inline.newClients", { fallback: "nowych klientow" })}
                 </span>{" "}
                 {t("inline.forQuarter", { fallback: "na" })} {availabilityConfig.currentQuarter}
@@ -185,13 +185,13 @@ function InlineBanner({
               {/* Stats row */}
               <div className="flex flex-wrap items-center gap-6 mt-6">
                 <div className="flex items-center gap-2 text-sm text-white/60">
-                  <Users className="w-4 h-4 text-[#8b1a1a]" />
+                  <Users className="w-4 h-4 text-[#b8860b]" />
                   <span>
                     {availabilityConfig.totalSlotsPerYear} {t("inline.projectsPerYear", { fallback: "projektow rocznie" })}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white/60">
-                  <Calendar className="w-4 h-4 text-[#8b1a1a]" />
+                  <Calendar className="w-4 h-4 text-[#b8860b]" />
                   <span>
                     {availabilityConfig.availableSlots} {t("inline.slotsAvailable", { fallback: "miejsca dostepne" })}
                   </span>
@@ -212,7 +212,7 @@ function InlineBanner({
 
               <a
                 href="#kontakt"
-                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#8b1a1a] hover:bg-[#d4a94d] text-white font-medium transition-all duration-300"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#b8860b] hover:bg-[#d4a94d] text-white font-medium transition-all duration-300"
               >
                 {t("cta")}
                 <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -234,7 +234,7 @@ function InlineBanner({
 
         {/* Decorative corner accent */}
         <div className="absolute top-0 right-0 w-40 h-40 opacity-10">
-          <div className="absolute inset-0 bg-gradient-to-bl from-[#8b1a1a] to-transparent rounded-bl-full" />
+          <div className="absolute inset-0 bg-gradient-to-bl from-[#b8860b] to-transparent rounded-bl-full" />
         </div>
       </div>
     </motion.div>
@@ -252,13 +252,13 @@ function StickyBannerContent({
   t: ReturnType<typeof useTranslations>;
 }) {
   return (
-    <div className="relative bg-gradient-to-r from-[#0d0d12] via-[#0a0a0f] to-[#0d0d12] border-b border-[#8b1a1a]/20">
+    <div className="relative bg-gradient-to-r from-[#0d0d12] via-[#0a0a0f] to-[#0d0d12] border-b border-[#b8860b]/20">
       {/* Subtle animated gradient */}
       <motion.div
         className="absolute inset-0 opacity-30"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(139, 26, 26, 0.1), transparent)",
+            "linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.1), transparent)",
           backgroundSize: "200% 100%",
         }}
         animate={{
@@ -276,7 +276,7 @@ function StickyBannerContent({
           {/* Pulsing indicator */}
           <div className="hidden sm:flex items-center gap-2">
             <PulsingDot />
-            <span className="text-xs font-medium text-[#8b1a1a] uppercase tracking-wider">
+            <span className="text-xs font-medium text-[#b8860b] uppercase tracking-wider">
               Live
             </span>
           </div>
@@ -284,7 +284,7 @@ function StickyBannerContent({
           {/* Main message */}
           <div className="flex items-center gap-2 text-sm md:text-base">
             <span className="text-white/80">
-              <span className="font-semibold text-[#8b1a1a]">
+              <span className="font-semibold text-[#b8860b]">
                 {availabilityConfig.availableSlots} {t("sticky.slots", { fallback: "miejsca" })}
               </span>{" "}
               {t("sticky.availableFor", { fallback: "dostepne na" })} {availabilityConfig.currentQuarter}
@@ -298,7 +298,7 @@ function StickyBannerContent({
           {/* CTA */}
           <a
             href="#kontakt"
-            className="flex items-center gap-1 px-4 py-1.5 rounded-full bg-[#8b1a1a]/20 border border-[#8b1a1a]/40 text-[#8b1a1a] text-sm font-medium hover:bg-[#8b1a1a]/30 transition-colors"
+            className="flex items-center gap-1 px-4 py-1.5 rounded-full bg-[#b8860b]/20 border border-[#b8860b]/40 text-[#b8860b] text-sm font-medium hover:bg-[#b8860b]/30 transition-colors"
           >
             {t("sticky.book", { fallback: "Zarezerwuj" })}
             <ChevronRight className="w-4 h-4" />
@@ -331,9 +331,9 @@ function FloatingBanner({ onDismiss, t }: { onDismiss: () => void; t: ReturnType
       transition={{ type: "spring", damping: 25, stiffness: 300 }}
     >
       {/* Glow */}
-      <div className="absolute -inset-2 bg-[#8b1a1a]/20 rounded-3xl blur-xl" />
+      <div className="absolute -inset-2 bg-[#b8860b]/20 rounded-3xl blur-xl" />
 
-      <div className="relative bg-gradient-to-br from-[#0d0d12] to-[#0a0a0f] rounded-2xl border border-[#8b1a1a]/30 p-5 shadow-2xl shadow-black/50 max-w-sm">
+      <div className="relative bg-gradient-to-br from-[#0d0d12] to-[#0a0a0f] rounded-2xl border border-[#b8860b]/30 p-5 shadow-2xl shadow-black/50 max-w-sm">
         {/* Close button */}
         <button
           onClick={onDismiss}
@@ -345,8 +345,8 @@ function FloatingBanner({ onDismiss, t }: { onDismiss: () => void; t: ReturnType
 
         <div className="flex items-start gap-4">
           {/* Icon */}
-          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#8b1a1a]/10 border border-[#8b1a1a]/20 flex items-center justify-center">
-            <Clock className="w-6 h-6 text-[#8b1a1a]" />
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-[#b8860b]/10 border border-[#b8860b]/20 flex items-center justify-center">
+            <Clock className="w-6 h-6 text-[#b8860b]" />
           </div>
 
           {/* Content */}
@@ -364,14 +364,14 @@ function FloatingBanner({ onDismiss, t }: { onDismiss: () => void; t: ReturnType
             </p>
             <p className="text-white/50 text-sm mb-4">
               {t("floating.nextAvailable", { fallback: "Nastepny wolny termin:" })}{" "}
-              <span className="text-[#8b1a1a]">
+              <span className="text-[#b8860b]">
                 {availabilityConfig.nextAvailableDate}
               </span>
             </p>
 
             <a
               href="#kontakt"
-              className="inline-flex items-center gap-1 text-[#8b1a1a] text-sm font-medium hover:text-[#d4a94d] transition-colors"
+              className="inline-flex items-center gap-1 text-[#b8860b] text-sm font-medium hover:text-[#d4a94d] transition-colors"
             >
               {t("floating.checkAvailability", { fallback: "Sprawdz dostepnosc" })}
               <ChevronRight className="w-4 h-4" />

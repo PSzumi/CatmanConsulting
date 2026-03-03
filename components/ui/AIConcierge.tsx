@@ -399,8 +399,8 @@ function NeuralThinking() {
               style={{
                 left: x - 4,
                 top: y - 4,
-                background: "linear-gradient(135deg, #8b1a1a, #d4a84b)",
-                boxShadow: "0 0 10px rgba(139, 26, 26, 0.5)",
+                background: "linear-gradient(135deg, #b8860b, #d4a84b)",
+                boxShadow: "0 0 10px rgba(184, 134, 11, 0.5)",
               }}
               animate={{
                 scale: [1, 1.5, 1],
@@ -419,15 +419,15 @@ function NeuralThinking() {
         <motion.div
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
           style={{
-            background: "radial-gradient(circle, #d4a84b 0%, #8b1a1a 100%)",
-            boxShadow: "0 0 20px rgba(139, 26, 26, 0.8)",
+            background: "radial-gradient(circle, #d4a84b 0%, #b8860b 100%)",
+            boxShadow: "0 0 20px rgba(184, 134, 11, 0.8)",
           }}
           animate={{
             scale: [1, 1.3, 1],
             boxShadow: [
-              "0 0 20px rgba(139, 26, 26, 0.8)",
-              "0 0 40px rgba(139, 26, 26, 1)",
-              "0 0 20px rgba(139, 26, 26, 0.8)",
+              "0 0 20px rgba(184, 134, 11, 0.8)",
+              "0 0 40px rgba(184, 134, 11, 1)",
+              "0 0 20px rgba(184, 134, 11, 0.8)",
             ],
           }}
           transition={{ duration: 1.5, repeat: Infinity }}
@@ -437,7 +437,7 @@ function NeuralThinking() {
         {[...Array(3)].map((_, i) => (
           <motion.div
             key={`orbit-${i}`}
-            className="absolute w-1.5 h-1.5 rounded-full bg-[#8b1a1a]"
+            className="absolute w-1.5 h-1.5 rounded-full bg-[#b8860b]"
             style={{
               left: 22,
               top: 22,
@@ -458,7 +458,7 @@ function NeuralThinking() {
 
         {/* Pulse ring */}
         <motion.div
-          className="absolute inset-0 rounded-full border border-[#8b1a1a]"
+          className="absolute inset-0 rounded-full border border-[#b8860b]"
           animate={{
             scale: [1, 2],
             opacity: [0.5, 0],
@@ -482,7 +482,7 @@ function NeuralThinking() {
           {[...Array(4)].map((_, i) => (
             <motion.div
               key={i}
-              className="w-1.5 h-1.5 rounded-full bg-[#8b1a1a]"
+              className="w-1.5 h-1.5 rounded-full bg-[#b8860b]"
               animate={{
                 y: [0, -6, 0],
                 opacity: [0.3, 1, 0.3],
@@ -512,7 +512,7 @@ function VoiceWaveform({ isActive }: { isActive: boolean }) {
           className="w-1 rounded-full"
           style={{
             background: isActive
-              ? "linear-gradient(180deg, #d4a84b 0%, #8b1a1a 100%)"
+              ? "linear-gradient(180deg, #d4a84b 0%, #b8860b 100%)"
               : "rgba(255,255,255,0.2)",
           }}
           animate={
@@ -560,7 +560,7 @@ function AuroraOrb({
         className="absolute -inset-2 rounded-full opacity-60 blur-xl"
         style={{
           background:
-            "conic-gradient(from 0deg, #8b1a1a, #6366f1, #ec4899, #8b1a1a)",
+            "conic-gradient(from 0deg, #b8860b, #6366f1, #ec4899, #b8860b)",
         }}
         animate={{
           rotate: [0, 360],
@@ -576,7 +576,7 @@ function AuroraOrb({
       <motion.div
         className="absolute inset-0 rounded-full blur-md"
         style={{
-          background: "linear-gradient(135deg, #8b1a1a 0%, #d4a84b 100%)",
+          background: "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)",
         }}
         animate={{
           opacity: [0.5, 0.8, 0.5],
@@ -593,16 +593,16 @@ function AuroraOrb({
       <motion.div
         className="absolute inset-1 rounded-full flex items-center justify-center overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #8b1a1a 0%, #8b6914 100%)",
+          background: "linear-gradient(135deg, #b8860b 0%, #8b6914 100%)",
           boxShadow: `
             inset 0 2px 20px rgba(255,255,255,0.3),
-            0 4px 30px rgba(139, 26, 26, 0.5)
+            0 4px 30px rgba(184, 134, 11, 0.5)
           `,
         }}
         animate={{
           boxShadow: isHovered
-            ? `inset 0 2px 20px rgba(255,255,255,0.4), 0 8px 50px rgba(139, 26, 26, 0.7)`
-            : `inset 0 2px 20px rgba(255,255,255,0.3), 0 4px 30px rgba(139, 26, 26, 0.5)`,
+            ? `inset 0 2px 20px rgba(255,255,255,0.4), 0 8px 50px rgba(184, 134, 11, 0.7)`
+            : `inset 0 2px 20px rgba(255,255,255,0.3), 0 4px 30px rgba(184, 134, 11, 0.5)`,
         }}
       >
         {/* Shine effect */}
@@ -634,7 +634,7 @@ function AuroraOrb({
 
       {/* Pulse rings */}
       <motion.div
-        className="absolute inset-0 rounded-full border-2 border-[#8b1a1a]"
+        className="absolute inset-0 rounded-full border-2 border-[#b8860b]"
         animate={{
           scale: [1, 1.8],
           opacity: [0.6, 0],
@@ -646,7 +646,7 @@ function AuroraOrb({
         }}
       />
       <motion.div
-        className="absolute inset-0 rounded-full border-2 border-[#8b1a1a]"
+        className="absolute inset-0 rounded-full border-2 border-[#b8860b]"
         animate={{
           scale: [1, 1.8],
           opacity: [0.6, 0],
@@ -678,10 +678,10 @@ function MessageBubble({ message }: { message: Message }) {
         className={`shrink-0 w-9 h-9 rounded-xl flex items-center justify-center ${
           isUser
             ? "bg-gradient-to-br from-[#6366f1]/30 to-[#6366f1]/10 border border-[#6366f1]/30"
-            : "bg-gradient-to-br from-[#8b1a1a] to-[#8b6914]"
+            : "bg-gradient-to-br from-[#b8860b] to-[#8b6914]"
         }`}
         style={{
-          boxShadow: isUser ? "none" : "0 4px 15px rgba(139, 26, 26, 0.3)",
+          boxShadow: isUser ? "none" : "0 4px 15px rgba(184, 134, 11, 0.3)",
         }}
       >
         {isUser ? (
@@ -745,7 +745,7 @@ function QuickActions({
       {actions.map((action, i) => (
         <motion.button
           key={action.label}
-          className="px-3 py-2 text-xs font-medium rounded-xl bg-white/[0.03] text-white/70 border border-white/10 hover:bg-[#8b1a1a]/20 hover:border-[#8b1a1a]/40 hover:text-[#d4a84b] transition-all duration-200"
+          className="px-3 py-2 text-xs font-medium rounded-xl bg-white/[0.03] text-white/70 border border-white/10 hover:bg-[#b8860b]/20 hover:border-[#b8860b]/40 hover:text-[#d4a84b] transition-all duration-200"
           onClick={() => handleClick(action.action)}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -984,7 +984,7 @@ export function AIConcierge() {
               border: "1px solid rgba(255,255,255,0.08)",
               boxShadow: `
                 0 25px 100px rgba(0,0,0,0.6),
-                0 0 80px rgba(139, 26, 26, 0.1),
+                0 0 80px rgba(184, 134, 11, 0.1),
                 inset 0 1px 0 rgba(255,255,255,0.05)
               `,
             }}
@@ -998,7 +998,7 @@ export function AIConcierge() {
               className="relative px-5 py-4 border-b border-white/[0.06] overflow-hidden"
               style={{
                 background:
-                  "linear-gradient(135deg, rgba(139, 26, 26, 0.12) 0%, rgba(10, 10, 15, 0.95) 100%)",
+                  "linear-gradient(135deg, rgba(184, 134, 11, 0.12) 0%, rgba(10, 10, 15, 0.95) 100%)",
               }}
             >
               {/* Animated aurora gradient */}
@@ -1006,7 +1006,7 @@ export function AIConcierge() {
                 className="absolute inset-0 opacity-40"
                 style={{
                   background:
-                    "linear-gradient(90deg, transparent, rgba(139, 26, 26, 0.2), rgba(99, 102, 241, 0.15), transparent)",
+                    "linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.2), rgba(99, 102, 241, 0.15), transparent)",
                   backgroundSize: "200% 100%",
                 }}
                 animate={{
@@ -1026,8 +1026,8 @@ export function AIConcierge() {
                       className="w-11 h-11 rounded-xl flex items-center justify-center"
                       style={{
                         background:
-                          "linear-gradient(135deg, #8b1a1a 0%, #8b6914 100%)",
-                        boxShadow: "0 4px 20px rgba(139, 26, 26, 0.4)",
+                          "linear-gradient(135deg, #b8860b 0%, #8b6914 100%)",
+                        boxShadow: "0 4px 20px rgba(184, 134, 11, 0.4)",
                       }}
                     >
                       <Sparkles className="w-5 h-5 text-white" />
@@ -1044,7 +1044,7 @@ export function AIConcierge() {
                   <div>
                     <h3 className="font-semibold text-white flex items-center gap-2">
                       AI Concierge
-                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-[#8b1a1a]/20 text-[#d4a84b]">
+                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-[#b8860b]/20 text-[#d4a84b]">
                         Pro
                       </span>
                     </h3>
@@ -1121,9 +1121,9 @@ export function AIConcierge() {
                       className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all hover:scale-[1.02]"
                       style={{
                         background:
-                          "linear-gradient(135deg, #8b1a1a 0%, #d4a84b 100%)",
+                          "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)",
                         color: "#0a0a0f",
-                        boxShadow: "0 8px 30px rgba(139, 26, 26, 0.4)",
+                        boxShadow: "0 8px 30px rgba(184, 134, 11, 0.4)",
                       }}
                     >
                       <Calendar className="w-4 h-4" />
@@ -1148,8 +1148,8 @@ export function AIConcierge() {
                     className="mb-3 p-4 rounded-xl"
                     style={{
                       background:
-                        "linear-gradient(135deg, rgba(139, 26, 26, 0.1) 0%, rgba(10, 10, 15, 0.9) 100%)",
-                      border: "1px solid rgba(139, 26, 26, 0.3)",
+                        "linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(10, 10, 15, 0.9) 100%)",
+                      border: "1px solid rgba(184, 134, 11, 0.3)",
                     }}
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
@@ -1179,12 +1179,12 @@ export function AIConcierge() {
                   <motion.button
                     className={`shrink-0 p-3 rounded-xl transition-all ${
                       isListening
-                        ? "bg-[#8b1a1a] text-white shadow-lg"
+                        ? "bg-[#b8860b] text-white shadow-lg"
                         : "bg-white/[0.03] text-white/40 hover:bg-white/[0.06] hover:text-white/60"
                     }`}
                     style={{
                       boxShadow: isListening
-                        ? "0 0 30px rgba(139, 26, 26, 0.5)"
+                        ? "0 0 30px rgba(184, 134, 11, 0.5)"
                         : "none",
                     }}
                     onClick={toggleVoice}
@@ -1214,7 +1214,7 @@ export function AIConcierge() {
                       }
                     }}
                     placeholder={t("placeholder")}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#8b1a1a]/40 focus:bg-white/[0.05] transition-all text-sm"
+                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#b8860b]/40 focus:bg-white/[0.05] transition-all text-sm"
                     disabled={isListening}
                   />
                 </div>
@@ -1225,12 +1225,12 @@ export function AIConcierge() {
                   style={{
                     background:
                       inputValue.trim() && !isThinking
-                        ? "linear-gradient(135deg, #8b1a1a 0%, #d4a84b 100%)"
+                        ? "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)"
                         : "rgba(255,255,255,0.03)",
                     color: inputValue.trim() && !isThinking ? "#0a0a0f" : "rgba(255,255,255,0.3)",
                     boxShadow:
                       inputValue.trim() && !isThinking
-                        ? "0 4px 20px rgba(139, 26, 26, 0.4)"
+                        ? "0 4px 20px rgba(184, 134, 11, 0.4)"
                         : "none",
                   }}
                   onClick={() => sendMessage(inputValue)}

@@ -119,7 +119,7 @@ export function ROICalculator() {
         <div
           className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full blur-3xl opacity-20"
           style={{
-            background: "radial-gradient(circle, rgba(139, 26, 26, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
           }}
         />
       </div>
@@ -132,13 +132,13 @@ export function ROICalculator() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8b1a1a]/10 text-[#8b1a1a] text-sm font-medium mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#b8860b]/10 text-[#b8860b] text-sm font-medium mb-4">
             <Calculator className="w-4 h-4" />
             {t("tagline")}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             {t("title")}{" "}
-            <span className="text-[#8b1a1a]">{t("titleHighlight")}</span>
+            <span className="text-[#b8860b]">{t("titleHighlight")}</span>
           </h2>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
             {t("subtitle")}
@@ -149,8 +149,8 @@ export function ROICalculator() {
         <motion.div
           className="rounded-3xl p-8 md:p-12"
           style={{
-            background: "linear-gradient(145deg, rgba(139, 26, 26, 0.05) 0%, rgba(26,26,26,0.8) 100%)",
-            border: "1px solid rgba(139, 26, 26, 0.2)",
+            background: "linear-gradient(145deg, rgba(184, 134, 11, 0.05) 0%, rgba(26,26,26,0.8) 100%)",
+            border: "1px solid rgba(184, 134, 11, 0.2)",
           }}
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -169,7 +169,7 @@ export function ROICalculator() {
                 max="500"
                 value={inputs.employees}
                 onChange={(e) => handleInputChange("employees", Number(e.target.value))}
-                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#8b1a1a]"
+                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#b8860b]"
               />
               <div className="flex justify-between mt-2">
                 <span className="text-sm text-foreground-muted">10</span>
@@ -190,7 +190,7 @@ export function ROICalculator() {
                 step="500"
                 value={inputs.avgSalary}
                 onChange={(e) => handleInputChange("avgSalary", Number(e.target.value))}
-                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#8b1a1a]"
+                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#b8860b]"
               />
               <div className="flex justify-between mt-2">
                 <span className="text-sm text-foreground-muted">5 000</span>
@@ -210,7 +210,7 @@ export function ROICalculator() {
                 max="50"
                 value={inputs.turnoverRate}
                 onChange={(e) => handleInputChange("turnoverRate", Number(e.target.value))}
-                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#8b1a1a]"
+                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#b8860b]"
               />
               <div className="flex justify-between mt-2">
                 <span className="text-sm text-foreground-muted">5%</span>
@@ -230,7 +230,7 @@ export function ROICalculator() {
                 max="15"
                 value={inputs.conflictHours}
                 onChange={(e) => handleInputChange("conflictHours", Number(e.target.value))}
-                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#8b1a1a]"
+                className="w-full h-2 bg-background-tertiary rounded-lg appearance-none cursor-pointer accent-[#b8860b]"
               />
               <div className="flex justify-between mt-2">
                 <span className="text-sm text-foreground-muted">1h</span>
@@ -244,7 +244,7 @@ export function ROICalculator() {
           {!showResults && (
             <motion.button
               onClick={handleCalculate}
-              className="w-full py-4 rounded-xl bg-[#8b1a1a] text-white font-semibold text-lg hover:bg-[#b32424] transition-colors btn-shine"
+              className="w-full py-4 rounded-xl bg-[#b8860b] text-white font-semibold text-lg hover:bg-[#d4a843] transition-colors btn-shine"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -260,7 +260,7 @@ export function ROICalculator() {
               transition={{ duration: 0.5 }}
             >
               {/* Divider */}
-              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/30 to-transparent my-8" />
+              <div className="w-full h-px bg-gradient-to-r from-transparent via-[#b8860b]/30 to-transparent my-8" />
 
               {/* Cost Breakdown */}
               <div className="grid md:grid-cols-3 gap-6 mb-8">
@@ -334,7 +334,7 @@ export function ROICalculator() {
                 </p>
                 <a
                   href="#kontakt"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#8b1a1a] text-white font-semibold text-lg hover:shadow-2xl hover:shadow-[#8b1a1a]/30 transition-all hover:scale-[1.02]"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#b8860b] text-white font-semibold text-lg hover:shadow-2xl hover:shadow-[#b8860b]/30 transition-all hover:scale-[1.02]"
                 >
                   {t("cta")}
                   <ArrowRight className="w-5 h-5" />

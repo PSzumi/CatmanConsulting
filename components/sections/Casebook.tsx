@@ -61,7 +61,7 @@ const caseStudies = [
       author: "Marek W.",
       role: "HR Director",
     },
-    accentColor: "#8b1a1a",
+    accentColor: "#b8860b",
     image: "/images/case-retail.jpg",
   },
   {

@@ -6,12 +6,12 @@ export function GradientMesh() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Animated gradient blobs - Intellectual Warmth palette */}
-      {/* Primary: Dark goldenrod (#8b1a1a) */}
+      {/* Primary: Dark goldenrod (#b8860b) */}
       <motion.div
         className="absolute -top-1/2 -right-1/2 w-[1000px] h-[1000px] rounded-full opacity-15"
         style={{
           background:
-            "radial-gradient(circle, rgba(139,26,26,0.25) 0%, rgba(139,26,26,0.08) 40%, transparent 70%)",
+            "radial-gradient(circle, rgba(184,134,11,0.25) 0%, rgba(184,134,11,0.08) 40%, transparent 70%)",
         }}
         animate={{
           x: [0, 40, 20, 0],

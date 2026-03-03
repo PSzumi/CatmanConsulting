@@ -42,7 +42,7 @@ export function ShatteredWord({
   duration = 1.5,
   staggerAmount = 0.4,
   autoPlayDelay = 0,
-  glowColor = "rgba(139, 26, 26, 0.5)",
+  glowColor = "rgba(184, 134, 11, 0.5)",
 }: ShatteredWordProps) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -55,8 +55,6 @@ export function ShatteredWord({
   const [isVisible, setIsVisible] = useState(false);
   const [animationComplete, setAnimationComplete] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false);
-  const [shouldRenderPortal, setShouldRenderPortal] = useState(false);
   const hasPlayedOnce = useRef(false);
   const seedRef = useRef<number | null>(null);
 
@@ -152,7 +150,6 @@ export function ShatteredWord({
     if (letterPositions.length === 0) return;
 
     setAnimationComplete(false);
-    setIsAnimating(true);
 
     // Position shards at screen edges
     shardElements.forEach((shard, index) => {
@@ -193,7 +190,6 @@ export function ShatteredWord({
     const tl = gsap.timeline({
       delay: autoPlayDelay,
       onComplete: () => {
-        setIsAnimating(false);
         setAnimationComplete(true);
       }
     });
@@ -239,25 +235,6 @@ export function ShatteredWord({
     hasPlayedOnce.current = true;
   }, [isReady, shardData, duration, staggerAmount, autoPlayDelay]);
 
-  // Hide shards when Hero section is not visible
-  useEffect(() => {
-    if (animationComplete) return;
-
-    const shardElements = shardsRef.current.filter(Boolean) as HTMLSpanElement[];
-
-    if (!isVisible && isAnimating) {
-      // Hero scrolled out of view - hide all shards immediately
-      shardElements.forEach((shard) => {
-        gsap.set(shard, { visibility: "hidden" });
-      });
-    } else if (isVisible && isAnimating) {
-      // Hero back in view - show shards
-      shardElements.forEach((shard) => {
-        gsap.set(shard, { visibility: "visible" });
-      });
-    }
-  }, [isVisible, isAnimating, animationComplete]);
-
   // Intersection Observer
   useEffect(() => {
     if (!containerRef.current) return;
@@ -275,64 +252,20 @@ export function ShatteredWord({
     return () => observer.disconnect();
   }, []);
 
-  // Step 1: Decide if we should render portal (only when Hero is truly visible)
+  // Trigger animation
   useEffect(() => {
-    if (!isReady || hasPlayedOnce.current || !mounted || shouldRenderPortal) return;
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    let cancelled = false;
-
-    const checkVisibility = () => {
-      if (cancelled || hasPlayedOnce.current || shouldRenderPortal) return;
-
-      const rect = container.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Element must be actually visible in viewport
-      const isInViewport = rect.top < viewportHeight && rect.bottom > 0 && rect.top > -rect.height;
-
-      if (isInViewport) {
-        setShouldRenderPortal(true);
-      }
-    };
-
-    // Wait for page to fully load and scroll to settle
-    if (document.readyState === 'complete') {
-      // Page already loaded - wait a bit for scroll restoration
-      const timer = setTimeout(checkVisibility, 500);
-      return () => { cancelled = true; clearTimeout(timer); };
-    } else {
-      // Wait for load event
-      const handleLoad = () => {
-        // After load, wait for scroll restoration
-        setTimeout(checkVisibility, 500);
-      };
-      window.addEventListener('load', handleLoad);
-      return () => { cancelled = true; window.removeEventListener('load', handleLoad); };
-    }
-  }, [isReady, mounted, shouldRenderPortal]);
-
-  // Step 2: Once portal is rendered, wait for DOM and start animation
-  useEffect(() => {
-    if (!shouldRenderPortal || hasPlayedOnce.current || animationComplete) return;
-
-    // Wait for portal to be in DOM
-    const timer = setTimeout(() => {
-      const shardElements = shardsRef.current.filter(Boolean);
-      if (shardElements.length > 0 && !hasPlayedOnce.current) {
+    if (isVisible && isReady && !hasPlayedOnce.current && mounted) {
+      // Small delay to ensure DOM is ready
+      requestAnimationFrame(() => {
         playAnimation();
-      }
-    }, 50);
-
-    return () => clearTimeout(timer);
-  }, [shouldRenderPortal, animationComplete, playAnimation]);
+      });
+    }
+  }, [isVisible, isReady, playAnimation, mounted]);
 
   const letters = word.split("");
 
-  // Portal shards (rendered ONLY when shouldRenderPortal and not complete)
-  const portalShards = mounted && shouldRenderPortal && !animationComplete ? createPortal(
+  // Portal shards (rendered at document body level with fixed positioning)
+  const portalShards = mounted && !animationComplete ? createPortal(
     <>
       {shardData.map((data, index) => (
         <span

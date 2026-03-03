@@ -216,7 +216,7 @@ export function VideoRecorder({
             key="start-btn"
             type="button"
             onClick={startCamera}
-            className="w-full p-6 rounded-2xl border-2 border-dashed border-gray-700 hover:border-[#8b1a1a]/50 bg-gray-900/30 hover:bg-gray-900/50 transition-all group"
+            className="w-full p-6 rounded-2xl border-2 border-dashed border-gray-700 hover:border-[#b8860b]/50 bg-gray-900/30 hover:bg-gray-900/50 transition-all group"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
@@ -224,8 +224,8 @@ export function VideoRecorder({
             whileTap={{ scale: 0.99 }}
           >
             <div className="flex flex-col items-center gap-4">
-              <div className="w-16 h-16 rounded-full bg-[#8b1a1a]/20 flex items-center justify-center group-hover:bg-[#8b1a1a]/30 transition-colors">
-                <Camera className="w-8 h-8 text-[#8b1a1a]" />
+              <div className="w-16 h-16 rounded-full bg-[#b8860b]/20 flex items-center justify-center group-hover:bg-[#b8860b]/30 transition-colors">
+                <Camera className="w-8 h-8 text-[#b8860b]" />
               </div>
               <div className="text-center">
                 <p className="font-semibold text-white mb-1">Nagraj wiadomość wideo</p>
