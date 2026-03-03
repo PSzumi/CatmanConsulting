@@ -91,7 +91,7 @@ const MagneticNavLink = forwardRef<
       <motion.div
         className="absolute inset-0 rounded-full opacity-0 pointer-events-none"
         style={{
-          background: "radial-gradient(circle, rgba(184,134,11,0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(139,26,26,0.15) 0%, transparent 70%)",
         }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.2 }}

@@ -128,7 +128,7 @@ export function DigitalBadge({
                 <div className="mb-4">
                   <span className="text-lg font-bold">
                     <span className="text-white">Catman</span>
-                    <span className="text-[#b8860b] ml-1">Consulting</span>
+                    <span className="text-[#8b1a1a] ml-1">Consulting</span>
                   </span>
                 </div>
 

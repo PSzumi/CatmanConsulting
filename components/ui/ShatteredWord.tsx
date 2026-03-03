@@ -42,7 +42,7 @@ export function ShatteredWord({
   duration = 1.5,
   staggerAmount = 0.4,
   autoPlayDelay = 0,
-  glowColor = "rgba(184, 134, 11, 0.5)",
+  glowColor = "rgba(139, 26, 26, 0.5)",
 }: ShatteredWordProps) {
   const containerRef = useRef<HTMLSpanElement>(null);
   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
@@ -277,31 +277,42 @@ export function ShatteredWord({
 
   // Step 1: Decide if we should render portal (only when Hero is truly visible)
   useEffect(() => {
-    if (!isVisible || !isReady || hasPlayedOnce.current || !mounted || shouldRenderPortal) return;
+    if (!isReady || hasPlayedOnce.current || !mounted || shouldRenderPortal) return;
 
     const container = containerRef.current;
     if (!container) return;
 
-    // Wait for scroll restoration to complete
-    const timer = setTimeout(() => {
-      if (hasPlayedOnce.current) return;
+    let cancelled = false;
 
-      // Check scroll position - if scrolled far down, Hero is not really visible
-      const scrollY = window.scrollY;
-      const viewportHeight = window.innerHeight;
-      if (scrollY > viewportHeight * 1.5) return;
+    const checkVisibility = () => {
+      if (cancelled || hasPlayedOnce.current || shouldRenderPortal) return;
 
-      // Check if container is really in viewport
       const rect = container.getBoundingClientRect();
-      const isReallyVisible = rect.top < viewportHeight && rect.bottom > 0;
+      const viewportHeight = window.innerHeight;
 
-      if (isReallyVisible) {
+      // Element must be actually visible in viewport
+      const isInViewport = rect.top < viewportHeight && rect.bottom > 0 && rect.top > -rect.height;
+
+      if (isInViewport) {
         setShouldRenderPortal(true);
       }
-    }, 300);
+    };
 
-    return () => clearTimeout(timer);
-  }, [isVisible, isReady, mounted, shouldRenderPortal]);
+    // Wait for page to fully load and scroll to settle
+    if (document.readyState === 'complete') {
+      // Page already loaded - wait a bit for scroll restoration
+      const timer = setTimeout(checkVisibility, 500);
+      return () => { cancelled = true; clearTimeout(timer); };
+    } else {
+      // Wait for load event
+      const handleLoad = () => {
+        // After load, wait for scroll restoration
+        setTimeout(checkVisibility, 500);
+      };
+      window.addEventListener('load', handleLoad);
+      return () => { cancelled = true; window.removeEventListener('load', handleLoad); };
+    }
+  }, [isReady, mounted, shouldRenderPortal]);
 
   // Step 2: Once portal is rendered, wait for DOM and start animation
   useEffect(() => {

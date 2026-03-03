@@ -288,19 +288,19 @@ function MethodologyItem({
     >
       {/* Connector dot */}
       <div className="relative mt-2">
-        <div className="w-2 h-2 rounded-full bg-[#b8860b]" />
+        <div className="w-2 h-2 rounded-full bg-[#8b1a1a]" />
         {index < methodologies.length - 1 && (
-          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-[#b8860b]/30 to-transparent" />
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-[#8b1a1a]/30 to-transparent" />
         )}
       </div>
 
       {/* Content */}
       <div className="flex-1">
         <div className="flex items-center gap-3 mb-1">
-          <h4 className="font-semibold text-white group-hover:text-[#b8860b] transition-colors">
+          <h4 className="font-semibold text-white group-hover:text-[#8b1a1a] transition-colors">
             {method.name}
           </h4>
-          <span className="px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider bg-[#b8860b]/10 text-[#b8860b]">
+          <span className="px-2 py-0.5 rounded text-[10px] font-medium uppercase tracking-wider bg-[#8b1a1a]/10 text-[#8b1a1a]">
             {method.category}
           </span>
         </div>
@@ -329,7 +329,7 @@ export function Credentials() {
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="hidden md:block absolute top-1/4 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/5 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-1/4 left-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8b1a1a]/5 rounded-full blur-[150px]" />
         <div className="hidden md:block absolute bottom-1/4 right-0 w-[250px] md:w-[500px] h-[250px] md:h-[500px] bg-[#2d5a7b]/5 rounded-full blur-[120px]" />
 
         {/* Grid */}
@@ -356,17 +356,17 @@ export function Credentials() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b8860b]" />
-            <span className="px-5 py-2.5 rounded-full border border-[#b8860b]/30 bg-[#b8860b]/5 text-sm font-medium text-[#b8860b] uppercase tracking-widest flex items-center gap-2">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#8b1a1a]" />
+            <span className="px-5 py-2.5 rounded-full border border-[#8b1a1a]/30 bg-[#8b1a1a]/5 text-sm font-medium text-[#8b1a1a] uppercase tracking-widest flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               {t("tagline")}
             </span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b8860b]" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#8b1a1a]" />
           </motion.div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
             {t("title")}{" "}
-            <span className="bg-gradient-to-r from-[#b8860b] via-[#d4a94d] to-[#b8860b] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#8b1a1a] via-[#d4a94d] to-[#8b1a1a] bg-clip-text text-transparent">
               {t("titleHighlight")}
             </span>
           </h2>
@@ -385,7 +385,7 @@ export function Credentials() {
         >
           {credentialStats.map((stat, index) => (
             <div key={stat.label} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-[#b8860b] mb-1">
+              <div className="text-3xl md:text-4xl font-bold text-[#8b1a1a] mb-1">
                 {stat.value}
               </div>
               <div className="text-sm text-white/60 font-medium">{stat.label}</div>
@@ -402,7 +402,7 @@ export function Credentials() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2 }}
           >
-            <Award className="w-4 h-4 text-[#b8860b]" />
+            <Award className="w-4 h-4 text-[#8b1a1a]" />
             {t("certifications")}
           </motion.h3>
 
@@ -426,7 +426,7 @@ export function Credentials() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.3 }}
           >
-            <Brain className="w-4 h-4 text-[#b8860b]" />
+            <Brain className="w-4 h-4 text-[#8b1a1a]" />
             {t("tools")}
           </motion.h3>
 
@@ -452,7 +452,7 @@ export function Credentials() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ delay: 0.4 }}
             >
-              <TrendingUp className="w-4 h-4 text-[#b8860b]" />
+              <TrendingUp className="w-4 h-4 text-[#8b1a1a]" />
               {t("methodologies")}
             </motion.h3>
 
@@ -475,24 +475,24 @@ export function Credentials() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
-            <div className="relative p-10 rounded-3xl bg-gradient-to-br from-[#b8860b]/10 to-transparent border border-[#b8860b]/20">
+            <div className="relative p-10 rounded-3xl bg-gradient-to-br from-[#8b1a1a]/10 to-transparent border border-[#8b1a1a]/20">
               {/* Decorative */}
               <div className="absolute top-6 right-6">
-                <Shield className="w-8 h-8 text-[#b8860b]/20" />
+                <Shield className="w-8 h-8 text-[#8b1a1a]/20" />
               </div>
 
               <blockquote className="relative">
                 <p className="text-2xl md:text-3xl font-light text-white leading-relaxed mb-8">
                   "Każde narzędzie, którego używamy, jest{" "}
-                  <span className="text-[#b8860b] font-medium">
+                  <span className="text-[#8b1a1a] font-medium">
                     naukowo zwalidowane
                   </span>{" "}
                   i sprawdzone w tysiącach organizacji na całym świecie."
                 </p>
 
                 <footer className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#b8860b]/30 to-[#2d5a7b]/30 flex items-center justify-center">
-                    <span className="text-lg font-bold text-[#b8860b]">CC</span>
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#8b1a1a]/30 to-[#2d5a7b]/30 flex items-center justify-center">
+                    <span className="text-lg font-bold text-[#8b1a1a]">CC</span>
                   </div>
                   <div>
                     <div className="font-semibold text-white">
@@ -534,7 +534,7 @@ export function Credentials() {
           </p>
           <a
             href="#kontakt"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#b8860b] text-white font-medium hover:bg-[#d4a94d] transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#8b1a1a] text-white font-medium hover:bg-[#d4a94d] transition-colors"
           >
             Porozmawiajmy o Twoich potrzebach
             <ChevronRight className="w-5 h-5" />

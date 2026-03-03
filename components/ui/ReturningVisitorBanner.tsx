@@ -48,10 +48,10 @@ export function ReturningVisitorBanner() {
           transition={{ type: "spring", damping: 25, stiffness: 300 }}
         >
           <div
-            className="relative p-5 rounded-2xl backdrop-blur-xl border border-[#b8860b]/30 shadow-2xl"
+            className="relative p-5 rounded-2xl backdrop-blur-xl border border-[#8b1a1a]/30 shadow-2xl"
             style={{
               background: "linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(45,90,123,0.2) 100%)",
-              boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5), 0 0 30px rgba(184,134,11,0.1)",
+              boxShadow: "0 25px 50px -12px rgba(0,0,0,0.5), 0 0 30px rgba(139,26,26,0.1)",
             }}
           >
             {/* Close button */}
@@ -65,11 +65,11 @@ export function ReturningVisitorBanner() {
 
             {/* Header */}
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-full bg-[#b8860b]/20 flex items-center justify-center">
-                <RefreshCw className="w-5 h-5 text-[#b8860b]" />
+              <div className="w-10 h-10 rounded-full bg-[#8b1a1a]/20 flex items-center justify-center">
+                <RefreshCw className="w-5 h-5 text-[#8b1a1a]" />
               </div>
               <div>
-                <p className="text-sm text-[#b8860b] font-medium">Witaj ponownie!</p>
+                <p className="text-sm text-[#8b1a1a] font-medium">Witaj ponownie!</p>
                 <p className="text-xs text-gray-500">
                   Wizyta #{visitorData.visitCount}
                 </p>
@@ -87,12 +87,12 @@ export function ReturningVisitorBanner() {
                 className="flex items-center justify-between p-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors group"
               >
                 <div>
-                  <p className="text-sm font-medium text-white group-hover:text-[#b8860b] transition-colors">
+                  <p className="text-sm font-medium text-white group-hover:text-[#8b1a1a] transition-colors">
                     {recommendation.action}
                   </p>
                   <p className="text-xs text-gray-500">{recommendation.reason}</p>
                 </div>
-                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-[#b8860b] group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-[#8b1a1a] group-hover:translate-x-1 transition-all" />
               </a>
             )}
 
@@ -101,7 +101,7 @@ export function ReturningVisitorBanner() {
               <div className="mt-3 pt-3 border-t border-white/10 flex items-center gap-4 text-xs text-gray-500">
                 {visitorData.quizCompleted && (
                   <span className="flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-[#b8860b]" />
+                    <Sparkles className="w-3 h-3 text-[#8b1a1a]" />
                     Diagnoza: {visitorData.quizScore}/30 pkt
                   </span>
                 )}

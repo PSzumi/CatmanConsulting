@@ -72,11 +72,11 @@ function MockDashboard() {
       <div className="p-3 rounded-lg bg-gray-800/50 border border-gray-700/50">
         <div className="flex items-center justify-between mb-2">
           <span className="text-xs text-gray-400">Faza 1: Świadomość</span>
-          <span className="text-xs text-[#b8860b]">45%</span>
+          <span className="text-xs text-[#8b1a1a]">45%</span>
         </div>
         <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-[#2d5a7b] to-[#b8860b] rounded-full"
+            className="h-full bg-gradient-to-r from-[#2d5a7b] to-[#8b1a1a] rounded-full"
             initial={{ width: 0 }}
             animate={{ width: "45%" }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -98,14 +98,14 @@ function MockDashboard() {
                 task.status === "completed"
                   ? "bg-emerald-500/20"
                   : task.status === "in_progress"
-                  ? "bg-[#b8860b]/20"
+                  ? "bg-[#8b1a1a]/20"
                   : "bg-gray-700/50"
               )}
             >
               {task.status === "completed" ? (
                 <CheckCircle2 className="w-3 h-3 text-emerald-400" />
               ) : task.status === "in_progress" ? (
-                <Clock className="w-3 h-3 text-[#b8860b]" />
+                <Clock className="w-3 h-3 text-[#8b1a1a]" />
               ) : (
                 <div className="w-2 h-2 rounded-full bg-gray-600" />
               )}
@@ -138,7 +138,7 @@ function MockDocuments() {
           key={doc.name}
           className="flex items-center gap-3 p-3 rounded-lg bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
         >
-          <FileText className="w-5 h-5 text-[#b8860b]" />
+          <FileText className="w-5 h-5 text-[#8b1a1a]" />
           <div className="flex-1">
             <p className="text-sm text-white">{doc.name}</p>
             <p className="text-xs text-gray-500">{doc.size}</p>
@@ -161,12 +161,12 @@ function MockMessages() {
           key={i}
           className={cn(
             "flex items-start gap-3 p-3 rounded-lg transition-colors",
-            msg.unread ? "bg-[#b8860b]/10 border border-[#b8860b]/20" : "bg-gray-800/30"
+            msg.unread ? "bg-[#8b1a1a]/10 border border-[#8b1a1a]/20" : "bg-gray-800/30"
           )}
         >
           <div
             className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold"
-            style={{ backgroundColor: msg.from === "Tomek" ? "#2d5a7b30" : "#b8860b30" }}
+            style={{ backgroundColor: msg.from === "Tomek" ? "#2d5a7b30" : "#8b1a1a30" }}
           >
             {msg.from[0]}
           </div>
@@ -177,7 +177,7 @@ function MockMessages() {
             </div>
             <p className="text-xs text-gray-400 mt-1 line-clamp-1">{msg.message}</p>
           </div>
-          {msg.unread && <div className="w-2 h-2 rounded-full bg-[#b8860b]" />}
+          {msg.unread && <div className="w-2 h-2 rounded-full bg-[#8b1a1a]" />}
         </div>
       ))}
     </div>
@@ -204,9 +204,9 @@ function MockCalendar() {
               className={cn(
                 "aspect-square flex items-center justify-center text-xs rounded-lg",
                 isToday
-                  ? "bg-[#b8860b] text-white font-bold"
+                  ? "bg-[#8b1a1a] text-white font-bold"
                   : hasEvent
-                  ? "bg-[#b8860b]/20 text-[#b8860b]"
+                  ? "bg-[#8b1a1a]/20 text-[#8b1a1a]"
                   : "text-gray-500 hover:bg-gray-800"
               )}
             >
@@ -244,20 +244,20 @@ export function ClientPortalPreview({ className }: ClientPortalPreviewProps) {
       <motion.button
         onClick={() => setIsOpen(true)}
         className={cn(
-          "group flex items-center gap-3 p-4 rounded-2xl border border-gray-800 bg-gray-900/50 hover:border-[#b8860b]/30 hover:bg-gray-900/80 transition-all",
+          "group flex items-center gap-3 p-4 rounded-2xl border border-gray-800 bg-gray-900/50 hover:border-[#8b1a1a]/30 hover:bg-gray-900/80 transition-all",
           className
         )}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
-        <div className="w-12 h-12 rounded-xl bg-[#b8860b]/10 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors">
-          <Eye className="w-6 h-6 text-[#b8860b]" />
+        <div className="w-12 h-12 rounded-xl bg-[#8b1a1a]/10 flex items-center justify-center group-hover:bg-[#8b1a1a]/20 transition-colors">
+          <Eye className="w-6 h-6 text-[#8b1a1a]" />
         </div>
         <div className="text-left">
           <p className="font-medium text-white">Zobacz portal klienta</p>
           <p className="text-sm text-gray-500">Podgląd panelu współpracy</p>
         </div>
-        <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-[#b8860b] group-hover:translate-x-1 transition-all ml-auto" />
+        <ArrowRight className="w-5 h-5 text-gray-600 group-hover:text-[#8b1a1a] group-hover:translate-x-1 transition-all ml-auto" />
       </motion.button>
 
       {/* Modal */}
@@ -311,11 +311,11 @@ export function ClientPortalPreview({ className }: ClientPortalPreviewProps) {
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-bold">
                       <span className="text-white">Catman</span>
-                      <span className="text-[#b8860b] ml-1">Portal</span>
+                      <span className="text-[#8b1a1a] ml-1">Portal</span>
                     </span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-7 h-7 rounded-full bg-[#b8860b]/20 flex items-center justify-center text-xs font-bold text-[#b8860b]">
+                    <div className="w-7 h-7 rounded-full bg-[#8b1a1a]/20 flex items-center justify-center text-xs font-bold text-[#8b1a1a]">
                       JK
                     </div>
                   </div>
@@ -333,7 +333,7 @@ export function ClientPortalPreview({ className }: ClientPortalPreviewProps) {
                         className={cn(
                           "flex-1 flex items-center justify-center gap-2 py-3 text-xs font-medium transition-all",
                           isActive
-                            ? "text-[#b8860b] border-b-2 border-[#b8860b] bg-[#b8860b]/5"
+                            ? "text-[#8b1a1a] border-b-2 border-[#8b1a1a] bg-[#8b1a1a]/5"
                             : "text-gray-500 hover:text-gray-300"
                         )}
                       >

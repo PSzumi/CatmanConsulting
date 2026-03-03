@@ -79,7 +79,7 @@ export function LeadScoreIndicator() {
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-800">
               <div className="flex items-center gap-2">
-                <BarChart3 className="w-5 h-5 text-[#b8860b]" />
+                <BarChart3 className="w-5 h-5 text-[#8b1a1a]" />
                 <span className="font-semibold text-white">Lead Analytics</span>
                 <span className="text-xs px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400">DEV</span>
               </div>
@@ -196,8 +196,8 @@ export function LeadScoreIndicator() {
 
             {/* Alerts */}
             {leadData.alerts.length > 0 && (
-              <div className="p-4 bg-gradient-to-r from-[#b8860b]/10 to-transparent border-b border-gray-800">
-                <p className="text-xs text-[#b8860b] mb-2 font-medium">Alerts</p>
+              <div className="p-4 bg-gradient-to-r from-[#8b1a1a]/10 to-transparent border-b border-gray-800">
+                <p className="text-xs text-[#8b1a1a] mb-2 font-medium">Alerts</p>
                 <ul className="space-y-1">
                   {leadData.alerts.slice(0, 4).map((alert, i) => (
                     <li key={i} className="text-sm text-white/80">

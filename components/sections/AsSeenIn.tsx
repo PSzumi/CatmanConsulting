@@ -94,7 +94,7 @@ function MediaLogo({
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at center, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
+            "radial-gradient(circle at center, rgba(139, 26, 26, 0.15) 0%, transparent 70%)",
         }}
       />
 
@@ -120,7 +120,7 @@ function MediaLogo({
             <span
               className={`
                 transition-all duration-500
-                ${isHovered ? "text-[#b8860b]" : "text-white/30"}
+                ${isHovered ? "text-[#8b1a1a]" : "text-white/30"}
               `}
             >
               {outlet.name}
@@ -129,7 +129,7 @@ function MediaLogo({
 
           {/* Subtle underline on hover */}
           <motion.div
-            className="absolute -bottom-1 left-1/2 h-px bg-gradient-to-r from-transparent via-[#b8860b] to-transparent"
+            className="absolute -bottom-1 left-1/2 h-px bg-gradient-to-r from-transparent via-[#8b1a1a] to-transparent"
             initial={{ width: 0, x: "-50%" }}
             animate={{
               width: isHovered ? "80%" : "0%",
@@ -180,7 +180,7 @@ export function AsSeenIn() {
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Subtle gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#b8860b]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#8b1a1a]/[0.02] to-transparent" />
 
         {/* Top gradient line */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/[0.05] to-transparent" />
@@ -203,12 +203,12 @@ export function AsSeenIn() {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.1 }}
           >
-            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#b8860b]/50" />
+            <div className="h-px w-8 bg-gradient-to-r from-transparent to-[#8b1a1a]/50" />
             <span className="flex items-center gap-2 text-xs font-medium text-white/40 uppercase tracking-[0.2em]">
-              <Newspaper className="w-3.5 h-3.5 text-[#b8860b]" />
+              <Newspaper className="w-3.5 h-3.5 text-[#8b1a1a]" />
               {t("tagline", { fallback: "Nasi eksperci w mediach" })}
             </span>
-            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#b8860b]/50" />
+            <div className="h-px w-8 bg-gradient-to-l from-transparent to-[#8b1a1a]/50" />
           </motion.div>
 
           <motion.h2
@@ -245,9 +245,9 @@ export function AsSeenIn() {
           transition={{ delay: 0.6 }}
         >
           <div className="flex items-center gap-4">
-            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#b8860b]/30" />
-            <div className="w-1.5 h-1.5 rounded-full bg-[#b8860b]/30" />
-            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#b8860b]/30" />
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#8b1a1a]/30" />
+            <div className="w-1.5 h-1.5 rounded-full bg-[#8b1a1a]/30" />
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#8b1a1a]/30" />
           </div>
         </motion.div>
       </div>

@@ -130,7 +130,7 @@ function FAQItem({
             transition={{ duration: 0.3 }}
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
+                "radial-gradient(ellipse at center, rgba(139, 26, 26, 0.15) 0%, transparent 70%)",
               filter: "blur(20px)",
             }}
           />
@@ -149,7 +149,7 @@ function FAQItem({
         transition={{ duration: 0.2 }}
         style={{
           border: isOpen
-            ? "1px solid rgba(184, 134, 11, 0.3)"
+            ? "1px solid rgba(139, 26, 26, 0.3)"
             : "1px solid rgba(255, 255, 255, 0.05)",
         }}
       >
@@ -162,7 +162,7 @@ function FAQItem({
             exit={{ opacity: 0 }}
             style={{
               background:
-                "linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, transparent 50%, rgba(184, 134, 11, 0.05) 100%)",
+                "linear-gradient(135deg, rgba(139, 26, 26, 0.1) 0%, transparent 50%, rgba(139, 26, 26, 0.05) 100%)",
             }}
           />
         )}
@@ -173,14 +173,14 @@ function FAQItem({
           <motion.div
             className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
               isOpen
-                ? "bg-[#b8860b]/20"
+                ? "bg-[#8b1a1a]/20"
                 : "bg-white/[0.03] group-hover:bg-white/[0.05]"
             }`}
             animate={{ scale: isOpen ? 1.05 : 1 }}
           >
             <Icon
               className={`w-5 h-5 transition-colors duration-300 ${
-                isOpen ? "text-[#b8860b]" : "text-white/40 group-hover:text-white/60"
+                isOpen ? "text-[#8b1a1a]" : "text-white/40 group-hover:text-white/60"
               }`}
             />
           </motion.div>
@@ -200,7 +200,7 @@ function FAQItem({
           <motion.div
             className={`shrink-0 w-10 h-10 md:w-8 md:h-8 rounded-full flex items-center justify-center mt-1 transition-all duration-300 ${
               isOpen
-                ? "bg-[#b8860b]/20"
+                ? "bg-[#8b1a1a]/20"
                 : "bg-white/[0.03] group-hover:bg-white/[0.05]"
             }`}
             animate={{ rotate: isOpen ? 45 : 0 }}
@@ -208,7 +208,7 @@ function FAQItem({
           >
             <Plus
               className={`w-4 h-4 transition-colors duration-300 ${
-                isOpen ? "text-[#b8860b]" : "text-white/40 group-hover:text-white/60"
+                isOpen ? "text-[#8b1a1a]" : "text-white/40 group-hover:text-white/60"
               }`}
             />
           </motion.div>
@@ -236,7 +236,7 @@ function FAQItem({
                   transition={{ duration: 0.4, delay: 0.1 }}
                   style={{
                     background:
-                      "linear-gradient(90deg, rgba(184, 134, 11, 0.3) 0%, rgba(184, 134, 11, 0.1) 50%, transparent 100%)",
+                      "linear-gradient(90deg, rgba(139, 26, 26, 0.3) 0%, rgba(139, 26, 26, 0.1) 50%, transparent 100%)",
                     transformOrigin: "left",
                   }}
                 />
@@ -285,7 +285,7 @@ function SearchInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
-        className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#b8860b]/40 focus:bg-white/[0.05] transition-all duration-300"
+        className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#8b1a1a]/40 focus:bg-white/[0.05] transition-all duration-300"
       />
     </motion.div>
   );
@@ -317,7 +317,7 @@ function CategoryFilter({
             onClick={() => onCategoryChange(category.id)}
             className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
               isActive
-                ? "bg-[#b8860b] text-white"
+                ? "bg-[#8b1a1a] text-white"
                 : "bg-white/[0.03] text-white/50 hover:bg-white/[0.06] hover:text-white/70 border border-white/[0.05]"
             }`}
             whileHover={{ scale: 1.02 }}
@@ -348,7 +348,7 @@ function ContactCTA({ t }: { t: (key: string) => string }) {
           className="absolute inset-0 opacity-100"
           style={{
             background:
-              "linear-gradient(135deg, rgba(184, 134, 11, 0.12) 0%, rgba(184, 134, 11, 0.03) 50%, rgba(184, 134, 11, 0.08) 100%)",
+              "linear-gradient(135deg, rgba(139, 26, 26, 0.12) 0%, rgba(139, 26, 26, 0.03) 50%, rgba(139, 26, 26, 0.08) 100%)",
           }}
         />
 
@@ -356,7 +356,7 @@ function ContactCTA({ t }: { t: (key: string) => string }) {
         <div
           className="absolute inset-0 rounded-3xl"
           style={{
-            border: "1px solid rgba(184, 134, 11, 0.2)",
+            border: "1px solid rgba(139, 26, 26, 0.2)",
           }}
         />
 
@@ -365,7 +365,7 @@ function ContactCTA({ t }: { t: (key: string) => string }) {
           className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-1/2 opacity-30"
           style={{
             background:
-              "radial-gradient(ellipse at center top, rgba(184, 134, 11, 0.4) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center top, rgba(139, 26, 26, 0.4) 0%, transparent 70%)",
             filter: "blur(40px)",
           }}
         />
@@ -378,8 +378,8 @@ function ContactCTA({ t }: { t: (key: string) => string }) {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <MessageCircle className="w-5 h-5 text-[#b8860b]" />
-            <span className="text-sm font-medium text-[#b8860b] uppercase tracking-widest">
+            <MessageCircle className="w-5 h-5 text-[#8b1a1a]" />
+            <span className="text-sm font-medium text-[#8b1a1a] uppercase tracking-widest">
               {t("contact")}
             </span>
           </motion.div>
@@ -394,7 +394,7 @@ function ContactCTA({ t }: { t: (key: string) => string }) {
 
           <motion.a
             href="#kontakt"
-            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#b8860b] text-white font-semibold hover:bg-[#d4a94d] transition-all group"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#8b1a1a] text-white font-semibold hover:bg-[#d4a94d] transition-all group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
@@ -450,8 +450,8 @@ export function FAQ() {
       {/* Background elements */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient orbs */}
-        <div className="hidden md:block absolute top-1/4 -left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#b8860b]/5 rounded-full blur-[200px]" />
-        <div className="hidden md:block absolute bottom-1/4 -right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/3 rounded-full blur-[150px]" />
+        <div className="hidden md:block absolute top-1/4 -left-1/4 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#8b1a1a]/5 rounded-full blur-[200px]" />
+        <div className="hidden md:block absolute bottom-1/4 -right-1/4 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8b1a1a]/3 rounded-full blur-[150px]" />
 
         {/* Grid pattern */}
         <div
@@ -482,12 +482,12 @@ export function FAQ() {
             animate={isHeaderInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ delay: 0.1 }}
           >
-            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b8860b]" />
-            <span className="px-5 py-2.5 rounded-full border border-[#b8860b]/30 bg-[#b8860b]/5 text-sm font-medium text-[#b8860b] uppercase tracking-widest flex items-center gap-2">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#8b1a1a]" />
+            <span className="px-5 py-2.5 rounded-full border border-[#8b1a1a]/30 bg-[#8b1a1a]/5 text-sm font-medium text-[#8b1a1a] uppercase tracking-widest flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               FAQ
             </span>
-            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b8860b]" />
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#8b1a1a]" />
           </motion.div>
 
           <motion.h2
@@ -497,7 +497,7 @@ export function FAQ() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {t("title")}{" "}
-            <span className="bg-gradient-to-r from-[#b8860b] via-[#d4a94d] to-[#b8860b] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#8b1a1a] via-[#d4a94d] to-[#8b1a1a] bg-clip-text text-transparent">
               {t("titleHighlight")}
             </span>
           </motion.h2>
@@ -569,7 +569,7 @@ export function FAQ() {
                   setSearchQuery("");
                   setActiveCategory("all");
                 }}
-                className="text-[#b8860b] hover:underline"
+                className="text-[#8b1a1a] hover:underline"
               >
                 wyczysc filtry
               </button>

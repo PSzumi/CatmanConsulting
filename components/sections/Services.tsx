@@ -58,7 +58,7 @@ const services = [
     title: "Diagnoza organizacji",
     subtitle: "Odkryj prawdziwy potencjał",
     icon: Search,
-    color: "#b8860b",
+    color: "#8b1a1a",
     secondaryColor: "#d4a84b",
     description:
       "Kompleksowa analiza kultury organizacyjnej, procesów i kompetencji. Identyfikujemy ukryte bariery i niewykorzystane możliwości rozwoju.",
@@ -203,7 +203,7 @@ function FloatingParticles() {
             top: `${particle.y}%`,
             width: particle.size,
             height: particle.size,
-            background: `rgba(184, 134, 11, ${particle.opacity})`,
+            background: `rgba(139, 26, 26, ${particle.opacity})`,
           }}
           animate={{
             y: [0, -30, 0],
@@ -783,7 +783,7 @@ export function Services() {
         <div
           className="hidden md:block absolute top-0 left-1/4 w-[500px] md:w-[1000px] h-[500px] md:h-[1000px] rounded-full blur-[120px] opacity-20"
           style={{
-            background: "radial-gradient(circle, rgba(184, 134, 11, 0.15) 0%, transparent 70%)",
+            background: "radial-gradient(circle, rgba(139, 26, 26, 0.15) 0%, transparent 70%)",
           }}
         />
         <div
@@ -810,15 +810,15 @@ export function Services() {
           <motion.div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
             style={{
-              background: "rgba(184, 134, 11, 0.1)",
-              border: "1px solid rgba(184, 134, 11, 0.2)",
+              background: "rgba(139, 26, 26, 0.1)",
+              border: "1px solid rgba(139, 26, 26, 0.2)",
             }}
             initial={{ opacity: 0, y: 20 }}
             animate={isHeaderInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <Sparkles className="w-4 h-4 text-[#b8860b]" />
-            <span className="text-sm font-medium tracking-wider uppercase text-[#b8860b]">
+            <Sparkles className="w-4 h-4 text-[#8b1a1a]" />
+            <span className="text-sm font-medium tracking-wider uppercase text-[#8b1a1a]">
               {t("tagline")}
             </span>
           </motion.div>
@@ -830,7 +830,7 @@ export function Services() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             {t("title")}{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#b8860b] to-[#d4a84b]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8b1a1a] to-[#d4a84b]">
               {t("titleHighlight")}
             </span>
           </motion.h2>
@@ -870,20 +870,20 @@ export function Services() {
           <div
             className="inline-block p-8 md:p-12 rounded-3xl relative overflow-hidden"
             style={{
-              background: "linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(10, 10, 15, 0.95) 100%)",
-              border: "1px solid rgba(184, 134, 11, 0.2)",
+              background: "linear-gradient(135deg, rgba(139, 26, 26, 0.1) 0%, rgba(10, 10, 15, 0.95) 100%)",
+              border: "1px solid rgba(139, 26, 26, 0.2)",
             }}
           >
             {/* Glow effect */}
             <div
               className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] blur-[100px] opacity-30"
-              style={{ background: "#b8860b" }}
+              style={{ background: "#8b1a1a" }}
             />
 
             <div className="relative">
               <p className="text-xl md:text-2xl text-white mb-6 max-w-xl">
                 {t("cta")}{" "}
-                <span className="text-[#b8860b] font-semibold">
+                <span className="text-[#8b1a1a] font-semibold">
                   {t("ctaHighlight")}
                 </span>
               </p>
@@ -891,9 +891,9 @@ export function Services() {
                 href="#kontakt"
                 className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all hover:scale-[1.02]"
                 style={{
-                  background: "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)",
+                  background: "linear-gradient(135deg, #8b1a1a 0%, #d4a84b 100%)",
                   color: "#0a0a0f",
-                  boxShadow: "0 15px 50px rgba(184, 134, 11, 0.4)",
+                  boxShadow: "0 15px 50px rgba(139, 26, 26, 0.4)",
                 }}
               >
                 {t("ctaButton")}

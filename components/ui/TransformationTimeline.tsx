@@ -58,7 +58,7 @@ const phases: TimelinePhase[] = [
       "Plan działania",
       "KPIs sukcesu",
     ],
-    color: "#b8860b",
+    color: "#8b1a1a",
   },
   {
     id: 3,
@@ -232,11 +232,11 @@ export function TransformationTimeline() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
       >
-        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#b8860b]/10 text-[#b8860b] text-sm font-medium mb-4">
+        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#8b1a1a]/10 text-[#8b1a1a] text-sm font-medium mb-4">
           Proces transformacji
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-          Jak przeprowadzamy <span className="text-[#b8860b]">zmianę</span>
+          Jak przeprowadzamy <span className="text-[#8b1a1a]">zmianę</span>
         </h2>
         <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
           Sprawdzony model w trzech fazach. Każdy etap buduje na poprzednim,
@@ -247,7 +247,7 @@ export function TransformationTimeline() {
       {/* Progress bar */}
       <div className="relative h-1 bg-gray-800 rounded-full mb-12 overflow-hidden">
         <motion.div
-          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#2d5a7b] via-[#b8860b] to-[#10b981]"
+          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-[#2d5a7b] via-[#8b1a1a] to-[#10b981]"
           style={{ width: progressWidth }}
         />
         {/* Phase markers */}

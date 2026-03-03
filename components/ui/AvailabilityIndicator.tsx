@@ -55,8 +55,8 @@ const consultantNames = {
 
 const consultantColors = {
   tomek: "#2d5a7b",
-  mariusz: "#b8860b",
-  both: "#b8860b",
+  mariusz: "#8b1a1a",
+  both: "#8b1a1a",
 };
 
 export function AvailabilityIndicator({
@@ -93,7 +93,7 @@ export function AvailabilityIndicator({
         <div
           className={cn(
             "w-2.5 h-2.5 rounded-full",
-            isAvailableNow ? "bg-emerald-500 animate-pulse" : "bg-[#b8860b]"
+            isAvailableNow ? "bg-emerald-500 animate-pulse" : "bg-[#8b1a1a]"
           )}
         />
         <span className="text-sm text-gray-400">
@@ -119,14 +119,14 @@ export function AvailabilityIndicator({
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Calendar className="w-4 h-4 text-[#b8860b]" />
+          <Calendar className="w-4 h-4 text-[#8b1a1a]" />
           <span className="text-sm font-medium text-white">Dostępność</span>
         </div>
         <div className="flex items-center gap-2">
           <div
             className={cn(
               "w-2 h-2 rounded-full",
-              isAvailableNow ? "bg-emerald-500 animate-pulse" : "bg-[#b8860b]"
+              isAvailableNow ? "bg-emerald-500 animate-pulse" : "bg-[#8b1a1a]"
             )}
           />
           <span className="text-xs text-gray-400">
@@ -170,7 +170,7 @@ export function AvailabilityIndicator({
                     "w-full flex items-center justify-between p-3 rounded-xl transition-all",
                     "border",
                     selectedSlot?.time === slot.time
-                      ? "border-[#b8860b] bg-[#b8860b]/10"
+                      ? "border-[#8b1a1a] bg-[#8b1a1a]/10"
                       : "border-gray-800 bg-gray-900/30 hover:border-gray-700 hover:bg-gray-900/50"
                   )}
                   initial={{ opacity: 0, y: 10 }}
@@ -197,7 +197,7 @@ export function AvailabilityIndicator({
                     </div>
                   </div>
                   {selectedSlot?.time === slot.time ? (
-                    <Check className="w-4 h-4 text-[#b8860b]" />
+                    <Check className="w-4 h-4 text-[#8b1a1a]" />
                   ) : (
                     <span className="text-xs text-gray-500">Wybierz</span>
                   )}
@@ -221,7 +221,7 @@ export function AvailabilityIndicator({
               href={`https://calendly.com/catman-consulting/20min?date=${encodeURIComponent(selectedSlot.time)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#b8860b] hover:bg-[#d4a843] text-white font-medium transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#8b1a1a] hover:bg-[#b32424] text-white font-medium transition-colors"
             >
               Zarezerwuj {selectedSlot.time.split(", ")[1]}
             </a>

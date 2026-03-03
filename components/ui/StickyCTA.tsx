@@ -50,13 +50,13 @@ export function StickyCTA() {
           {/* Main CTA button */}
           <motion.a
             href="#kontakt"
-            className="group relative flex items-center gap-3 px-6 py-4 rounded-full bg-[#b8860b] text-white font-medium shadow-lg shadow-[#b8860b]/20 hover:shadow-xl hover:shadow-[#b8860b]/30 transition-all duration-300"
+            className="group relative flex items-center gap-3 px-6 py-4 rounded-full bg-[#8b1a1a] text-white font-medium shadow-lg shadow-[#8b1a1a]/20 hover:shadow-xl hover:shadow-[#8b1a1a]/30 transition-all duration-300"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
             {/* Subtle pulse effect */}
             <motion.span
-              className="absolute inset-0 rounded-full bg-[#b8860b]"
+              className="absolute inset-0 rounded-full bg-[#8b1a1a]"
               animate={{
                 scale: [1, 1.05, 1],
                 opacity: [0.5, 0, 0.5],

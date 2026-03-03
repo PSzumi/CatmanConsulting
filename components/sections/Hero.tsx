@@ -75,7 +75,7 @@ export function Hero() {
                 duration={2.5}
                 staggerAmount={0.7}
                 autoPlayDelay={2.5}
-                glowColor="rgba(184, 134, 11, 0.5)"
+                glowColor="rgba(139, 26, 26, 0.5)"
               />
             </span>
           </h1>
@@ -114,7 +114,7 @@ export function Hero() {
           <div className="pt-8 flex flex-wrap items-center justify-center gap-6 text-sm text-foreground-muted">
             {trustIndicators.map((text) => (
               <span key={text} className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#b8860b]" />
+                <span className="w-2 h-2 rounded-full bg-[#8b1a1a]" />
                 {text}
               </span>
             ))}

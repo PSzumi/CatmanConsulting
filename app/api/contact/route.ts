@@ -139,7 +139,7 @@ export async function POST(request: NextRequest) {
           <div style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 25px; ${isHotLead ? "" : "border-radius: 10px 10px 0 0;"}">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <div>
-                <h1 style="margin: 0; font-size: 22px; color: #b8860b;">${siteConfig.name}</h1>
+                <h1 style="margin: 0; font-size: 22px; color: #8b1a1a;">${siteConfig.name}</h1>
                 <p style="margin: 8px 0 0; opacity: 0.7; font-size: 14px;">Nowe zapytanie ze strony</p>
               </div>
               <div style="text-align: right;">
@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
             </table>
             ${signals.length > 0 ? `
             <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #374151;">
-              <p style="margin: 0 0 10px; color: #b8860b; font-size: 12px; font-weight: bold;">SYGNAŁY ZAANGAŻOWANIA:</p>
+              <p style="margin: 0 0 10px; color: #8b1a1a; font-size: 12px; font-weight: bold;">SYGNAŁY ZAANGAŻOWANIA:</p>
               ${signals.map(s => `<p style="margin: 5px 0; color: #d1d5db; font-size: 13px;">${s}</p>`).join("")}
             </div>
             ` : ""}
@@ -181,7 +181,7 @@ export async function POST(request: NextRequest) {
 
           <!-- Contact Details -->
           <div style="background: white; padding: 25px; border: 1px solid #e5e7eb; border-top: none;">
-            <h2 style="color: #b8860b; margin: 0 0 20px; font-size: 16px;">👤 Dane kontaktowe</h2>
+            <h2 style="color: #8b1a1a; margin: 0 0 20px; font-size: 16px;">👤 Dane kontaktowe</h2>
 
             <table style="width: 100%; border-collapse: collapse;">
               <tr>
@@ -191,14 +191,14 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280; font-size: 14px;">Email:</td>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px;">
-                  <a href="mailto:${email}" style="color: #b8860b; text-decoration: none; font-weight: 500;">${email}</a>
+                  <a href="mailto:${email}" style="color: #8b1a1a; text-decoration: none; font-weight: 500;">${email}</a>
                 </td>
               </tr>
               ${phone ? `
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280; font-size: 14px;">Telefon:</td>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px;">
-                  <a href="tel:${phone}" style="color: #b8860b; text-decoration: none; font-weight: 500;">${phone}</a>
+                  <a href="tel:${phone}" style="color: #8b1a1a; text-decoration: none; font-weight: 500;">${phone}</a>
                 </td>
               </tr>
               ` : ""}
@@ -218,7 +218,7 @@ export async function POST(request: NextRequest) {
               <tr>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; color: #6b7280; font-size: 14px;">Temat:</td>
                 <td style="padding: 12px 0; border-bottom: 1px solid #f3f4f6; font-size: 14px;">
-                  <span style="background: #b8860b20; color: #b8860b; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">
+                  <span style="background: #8b1a1a20; color: #8b1a1a; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: 500;">
                     ${pathLabels[path] || path}
                   </span>
                 </td>
@@ -233,7 +233,7 @@ export async function POST(request: NextRequest) {
             </table>
 
             ${message ? `
-            <h2 style="color: #b8860b; margin: 25px 0 15px; font-size: 16px;">💬 Wiadomość</h2>
+            <h2 style="color: #8b1a1a; margin: 25px 0 15px; font-size: 16px;">💬 Wiadomość</h2>
             <div style="background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; font-size: 14px; line-height: 1.6;">${message}</div>
             ` : ""}
 

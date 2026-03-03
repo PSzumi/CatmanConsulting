@@ -123,9 +123,9 @@ function ClientLogo({ client }: { client: typeof clients[0] }) {
     <div className="group relative flex-shrink-0 px-10 py-8">
       <div className="relative">
         {/* Glow effect on hover */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#b8860b]/0 to-[#2d5a7b]/0 group-hover:from-[#b8860b]/10 group-hover:to-[#2d5a7b]/10 rounded-2xl blur-xl transition-all duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#8b1a1a]/0 to-[#2d5a7b]/0 group-hover:from-[#8b1a1a]/10 group-hover:to-[#2d5a7b]/10 rounded-2xl blur-xl transition-all duration-500" />
 
-        <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#b8860b]/30 rounded-2xl px-10 py-6 transition-all duration-500">
+        <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#8b1a1a]/30 rounded-2xl px-10 py-6 transition-all duration-500">
           {/* Placeholder for real logo */}
           <div className="text-center min-w-[140px]">
             <div className="text-xl font-semibold text-white/60 group-hover:text-white/90 transition-colors duration-300 tracking-tight">
@@ -168,7 +168,7 @@ function ImmersiveTestimonial({
               animate={{ scale: 1, rotate: 0 }}
               transition={{ duration: 1, ease: "easeOut" }}
             >
-              <Quote className="w-40 h-40 md:w-64 md:h-64 text-[#b8860b]" strokeWidth={1} />
+              <Quote className="w-40 h-40 md:w-64 md:h-64 text-[#8b1a1a]" strokeWidth={1} />
             </motion.div>
 
             {/* Metric badge */}
@@ -179,9 +179,9 @@ function ImmersiveTestimonial({
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-[#b8860b]/20 blur-2xl rounded-full" />
-                <div className="relative bg-gradient-to-br from-[#b8860b]/20 to-[#b8860b]/5 backdrop-blur-sm border border-[#b8860b]/30 rounded-2xl px-6 py-4">
-                  <div className="text-3xl md:text-4xl font-bold text-[#b8860b]">
+                <div className="absolute inset-0 bg-[#8b1a1a]/20 blur-2xl rounded-full" />
+                <div className="relative bg-gradient-to-br from-[#8b1a1a]/20 to-[#8b1a1a]/5 backdrop-blur-sm border border-[#8b1a1a]/30 rounded-2xl px-6 py-4">
+                  <div className="text-3xl md:text-4xl font-bold text-[#8b1a1a]">
                     {testimonial.metric}
                   </div>
                   <div className="text-xs text-white/50 uppercase tracking-widest mt-1">
@@ -199,9 +199,9 @@ function ImmersiveTestimonial({
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <span className="text-[#b8860b]">"</span>
+                <span className="text-[#8b1a1a]">"</span>
                 {testimonial.quote}
-                <span className="text-[#b8860b]">"</span>
+                <span className="text-[#8b1a1a]">"</span>
               </motion.p>
             </blockquote>
 
@@ -214,10 +214,10 @@ function ImmersiveTestimonial({
             >
               {/* Avatar with gradient ring */}
               <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#b8860b] to-[#2d5a7b] rounded-full blur-md opacity-50" />
-                <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#b8860b]/30 to-[#2d5a7b]/30 p-[2px]">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#8b1a1a] to-[#2d5a7b] rounded-full blur-md opacity-50" />
+                <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-[#8b1a1a]/30 to-[#2d5a7b]/30 p-[2px]">
                   <div className="w-full h-full rounded-full bg-[#0a0a0f] flex items-center justify-center">
-                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-br from-[#b8860b] to-[#d4a94d] bg-clip-text text-transparent">
+                    <span className="text-2xl md:text-3xl font-bold bg-gradient-to-br from-[#8b1a1a] to-[#d4a94d] bg-clip-text text-transparent">
                       {testimonial.author.charAt(0)}
                     </span>
                   </div>
@@ -229,7 +229,7 @@ function ImmersiveTestimonial({
                   {testimonial.author}
                 </div>
                 <div className="text-base md:text-lg text-white/50 mt-1">
-                  <span className="text-[#b8860b]">{testimonial.role}</span>
+                  <span className="text-[#8b1a1a]">{testimonial.role}</span>
                   <span className="mx-2 text-white/20">|</span>
                   {testimonial.company}
                 </div>
@@ -262,14 +262,14 @@ function StatCard({
       transition={{ duration: 0.6, delay: index * 0.1 }}
     >
       {/* Glow */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#b8860b]/5 to-[#2d5a7b]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#8b1a1a]/5 to-[#2d5a7b]/5 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-      <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#b8860b]/20 rounded-3xl p-8 md:p-10 text-center transition-all duration-500">
+      <div className="relative bg-white/[0.02] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#8b1a1a]/20 rounded-3xl p-8 md:p-10 text-center transition-all duration-500">
         <div className="text-5xl md:text-6xl lg:text-7xl font-bold">
-          <span className="bg-gradient-to-br from-[#b8860b] via-[#d4a94d] to-[#b8860b] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-br from-[#8b1a1a] via-[#d4a94d] to-[#8b1a1a] bg-clip-text text-transparent">
             {count}
           </span>
-          <span className="text-[#b8860b]/70">{stat.suffix}</span>
+          <span className="text-[#8b1a1a]/70">{stat.suffix}</span>
         </div>
         <div className="mt-4 text-sm md:text-base text-white/50 uppercase tracking-widest font-medium">
           {stat.label}
@@ -322,7 +322,7 @@ export function TrustedBy() {
 
         {/* Accent glows */}
         <div className="hidden md:block absolute bottom-0 left-0 w-[400px] md:w-[800px] h-[400px] md:h-[800px] bg-[#2d5a7b]/5 rounded-full blur-[150px]" />
-        <div className="hidden md:block absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#b8860b]/5 rounded-full blur-[120px]" />
+        <div className="hidden md:block absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#8b1a1a]/5 rounded-full blur-[120px]" />
 
         {/* Grid pattern overlay */}
         <div
@@ -350,21 +350,21 @@ export function TrustedBy() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2 }}
             >
-              <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#b8860b]" />
-              <span className="px-5 py-2.5 rounded-full border border-[#b8860b]/30 bg-[#b8860b]/5 text-sm font-medium text-[#b8860b] uppercase tracking-widest">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-[#8b1a1a]" />
+              <span className="px-5 py-2.5 rounded-full border border-[#8b1a1a]/30 bg-[#8b1a1a]/5 text-sm font-medium text-[#8b1a1a] uppercase tracking-widest">
                 {t("tagline")}
               </span>
-              <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#b8860b]" />
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-[#8b1a1a]" />
             </motion.div>
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 tracking-tight">
               {t("title")}{" "}
               <span className="relative">
-                <span className="bg-gradient-to-r from-[#b8860b] via-[#d4a94d] to-[#b8860b] bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#8b1a1a] via-[#d4a94d] to-[#8b1a1a] bg-clip-text text-transparent">
                   {t("titleHighlight")}
                 </span>
                 <motion.div
-                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#b8860b] to-[#d4a94d] rounded-full"
+                  className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#8b1a1a] to-[#d4a94d] rounded-full"
                   initial={{ scaleX: 0 }}
                   animate={isInView ? { scaleX: 1 } : {}}
                   transition={{ delay: 0.5, duration: 0.8 }}
@@ -397,7 +397,7 @@ export function TrustedBy() {
       <div className="relative py-24 md:py-32">
         {/* Decorative line */}
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-[#b8860b]/30 to-transparent"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-[#8b1a1a]/30 to-transparent"
           initial={{ scaleY: 0 }}
           animate={isInView ? { scaleY: 1 } : {}}
           transition={{ delay: 0.6, duration: 0.8 }}
@@ -429,11 +429,11 @@ export function TrustedBy() {
             {/* Previous button */}
             <button
               onClick={prevTestimonial}
-              className="group relative p-4 rounded-full border border-white/10 hover:border-[#b8860b]/50 transition-all duration-300"
+              className="group relative p-4 rounded-full border border-white/10 hover:border-[#8b1a1a]/50 transition-all duration-300"
               aria-label="Poprzednia opinia"
             >
-              <div className="absolute inset-0 bg-[#b8860b]/0 group-hover:bg-[#b8860b]/10 rounded-full transition-all duration-300" />
-              <ChevronLeft className="relative w-6 h-6 text-white/50 group-hover:text-[#b8860b] transition-colors" />
+              <div className="absolute inset-0 bg-[#8b1a1a]/0 group-hover:bg-[#8b1a1a]/10 rounded-full transition-all duration-300" />
+              <ChevronLeft className="relative w-6 h-6 text-white/50 group-hover:text-[#8b1a1a] transition-colors" />
             </button>
 
             {/* Progress dots */}
@@ -448,7 +448,7 @@ export function TrustedBy() {
                   <div
                     className={`relative h-3 rounded-full transition-all duration-500 ${
                       activeTestimonial === index
-                        ? "w-12 bg-gradient-to-r from-[#b8860b] to-[#d4a94d]"
+                        ? "w-12 bg-gradient-to-r from-[#8b1a1a] to-[#d4a94d]"
                         : "w-3 bg-white/20 hover:bg-white/40"
                     }`}
                   />
@@ -459,25 +459,25 @@ export function TrustedBy() {
             {/* Play/Pause button */}
             <button
               onClick={() => setIsPlaying(!isPlaying)}
-              className="group relative p-4 rounded-full border border-white/10 hover:border-[#b8860b]/50 transition-all duration-300"
+              className="group relative p-4 rounded-full border border-white/10 hover:border-[#8b1a1a]/50 transition-all duration-300"
               aria-label={isPlaying ? "Pauza" : "Odtwarzaj"}
             >
-              <div className="absolute inset-0 bg-[#b8860b]/0 group-hover:bg-[#b8860b]/10 rounded-full transition-all duration-300" />
+              <div className="absolute inset-0 bg-[#8b1a1a]/0 group-hover:bg-[#8b1a1a]/10 rounded-full transition-all duration-300" />
               {isPlaying ? (
-                <Pause className="relative w-5 h-5 text-white/50 group-hover:text-[#b8860b] transition-colors" />
+                <Pause className="relative w-5 h-5 text-white/50 group-hover:text-[#8b1a1a] transition-colors" />
               ) : (
-                <Play className="relative w-5 h-5 text-white/50 group-hover:text-[#b8860b] transition-colors" />
+                <Play className="relative w-5 h-5 text-white/50 group-hover:text-[#8b1a1a] transition-colors" />
               )}
             </button>
 
             {/* Next button */}
             <button
               onClick={nextTestimonial}
-              className="group relative p-4 rounded-full border border-white/10 hover:border-[#b8860b]/50 transition-all duration-300"
+              className="group relative p-4 rounded-full border border-white/10 hover:border-[#8b1a1a]/50 transition-all duration-300"
               aria-label="Następna opinia"
             >
-              <div className="absolute inset-0 bg-[#b8860b]/0 group-hover:bg-[#b8860b]/10 rounded-full transition-all duration-300" />
-              <ChevronRight className="relative w-6 h-6 text-white/50 group-hover:text-[#b8860b] transition-colors" />
+              <div className="absolute inset-0 bg-[#8b1a1a]/0 group-hover:bg-[#8b1a1a]/10 rounded-full transition-all duration-300" />
+              <ChevronRight className="relative w-6 h-6 text-white/50 group-hover:text-[#8b1a1a] transition-colors" />
             </button>
           </motion.div>
         </div>
@@ -486,7 +486,7 @@ export function TrustedBy() {
       {/* Stats Section */}
       <div ref={statsRef} className="relative py-24 md:py-32 border-t border-white/[0.05]">
         {/* Background accent */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#b8860b]/[0.02] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#8b1a1a]/[0.02] to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-6">
           <motion.div
@@ -518,7 +518,7 @@ export function TrustedBy() {
 
       {/* Bottom decorative element */}
       <div className="relative h-px">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#b8860b]/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#8b1a1a]/30 to-transparent" />
       </div>
     </section>
   );
