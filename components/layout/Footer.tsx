@@ -158,7 +158,7 @@ export function Footer() {
       />
 
       {/* Gradient accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b8860b]/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/60 to-transparent" />
 
       <div className="relative max-w-7xl mx-auto px-6">
         {/* Main footer content */}
@@ -171,10 +171,10 @@ export function Footer() {
           {/* Column 1: Brand & Social */}
           <motion.div variants={itemVariants} className="lg:col-span-3">
             <a href="#" className="inline-block mb-6 group">
-              <span className="text-2xl font-bold text-white group-hover:text-[#b8860b] transition-colors duration-300">
+              <span className="text-2xl font-bold text-white group-hover:text-[#8b1a1a] transition-colors duration-300">
                 Catman
               </span>
-              <span className="text-2xl font-bold text-[#b8860b] ml-1">
+              <span className="text-2xl font-bold text-[#8b1a1a] ml-1">
                 Consulting
               </span>
             </a>
@@ -190,7 +190,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#b8860b] hover:border-[#b8860b]/50 hover:bg-[#b8860b]/10 transition-all duration-300"
+                  className="w-11 h-11 rounded-xl flex items-center justify-center bg-white/5 border border-white/10 text-gray-400 hover:text-[#8b1a1a] hover:border-[#8b1a1a]/60 hover:bg-[#8b1a1a]/10 transition-all duration-300"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={social.name}
@@ -221,7 +221,7 @@ export function Footer() {
                     >
                       {t(link.nameKey)}
                     </motion.span>
-                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#8b1a1a]" />
                   </motion.a>
                 </li>
               ))}
@@ -248,7 +248,7 @@ export function Footer() {
                     >
                       {t(link.nameKey)}
                     </motion.span>
-                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#8b1a1a]" />
                   </motion.a>
                 </li>
               ))}
@@ -275,7 +275,7 @@ export function Footer() {
                     >
                       {t(link.nameKey)}
                     </motion.span>
-                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <ChevronRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-[#8b1a1a]" />
                   </motion.a>
                 </li>
               ))}
@@ -506,7 +506,7 @@ export function Footer() {
       </div>
 
       {/* Bottom gradient accent */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#b8860b]/30 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#8b1a1a]/40 to-transparent" />
     </footer>
   );
 }
