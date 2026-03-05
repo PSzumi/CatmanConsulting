@@ -395,7 +395,7 @@ export function Process() {
   return (
     <section
       ref={containerRef}
-      id="process"
+      id="proces"
       className="relative py-20 sm:py-28 md:py-32 lg:py-40 bg-[#0a0a0f] overflow-hidden"
     >
       {/* Background */}
