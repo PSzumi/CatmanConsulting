@@ -560,7 +560,7 @@ export function About() {
               href="#kontakt"
               className="text-[#b8860b] hover:text-[#d4a843] transition-colors font-medium inline-flex items-center gap-1 group"
             >
-              Umów rozmowę
+              Porozmawiajmy
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </p>

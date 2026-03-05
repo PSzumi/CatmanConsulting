@@ -336,7 +336,7 @@ export function TrustedBy() {
       </div>
 
       {/* Header Section */}
-      <div className="relative pt-16 sm:pt-24 md:pt-32 pb-10 sm:pb-16">
+      <div className="relative pt-14 sm:pt-20 md:pt-24 pb-8 sm:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <motion.div
             className="text-center"
@@ -394,7 +394,7 @@ export function TrustedBy() {
       </motion.div>
 
       {/* Testimonials Section */}
-      <div className="relative py-24 md:py-32">
+      <div className="relative py-12 md:py-16">
         {/* Decorative line */}
         <motion.div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-transparent via-[#b8860b]/30 to-transparent"
@@ -409,7 +409,7 @@ export function TrustedBy() {
           onMouseLeave={() => setIsHovered(false)}
         >
           {/* Testimonial content */}
-          <div className="relative min-h-[400px] md:min-h-[500px]">
+          <div className="relative min-h-[300px] md:min-h-[380px]">
             {testimonials.map((testimonial, index) => (
               <ImmersiveTestimonial
                 key={testimonial.author}
@@ -484,7 +484,7 @@ export function TrustedBy() {
       </div>
 
       {/* Stats Section */}
-      <div ref={statsRef} className="relative py-24 md:py-32 border-t border-white/[0.05]">
+      <div ref={statsRef} className="relative py-14 md:py-20 border-t border-white/[0.05]">
         {/* Background accent */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#b8860b]/[0.02] to-transparent" />
 
