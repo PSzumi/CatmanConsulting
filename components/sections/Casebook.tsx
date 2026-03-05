@@ -25,6 +25,8 @@ const caseStudies = [
     challenge: "Konflikty między działami",
     challengeFull:
       "Produkcja, sprzedaż i logistyka działały jak osobne królestwa. Komunikacja przez służbowe notatki, wzajemne obwinianie za problemy.",
+    whatWeDid:
+      "Diagnoza 360° z wywiadami w każdym dziale, warsztat kontrakt między działami, wdrożenie wspólnych KPI i cyklicznych spotkań trójstronnych.",
     duration: "6 miesięcy",
     metric: "+40%",
     metricLabel: "efektywności współpracy",
@@ -49,6 +51,8 @@ const caseStudies = [
     challenge: "Rotacja managerów 35% rocznie",
     challengeFull:
       "Co trzeci manager odchodził w ciągu roku. Brak spójnego przywództwa, każdy sklep działał inaczej, chaos w standardach.",
+    whatWeDid:
+      "12-miesięczny program Lider 2.0 dla 45 managerów, mentoringi 1:1, ścieżki kariery skrojone pod każdy poziom, wspólne standardy przywódcze.",
     duration: "12 miesięcy",
     metric: "-60%",
     metricLabel: "rotacji kadry",
@@ -73,6 +77,8 @@ const caseStudies = [
     challenge: "Zespoły zdalne nie współpracują",
     challengeFull:
       "Po pandemii – izolacja, brak spontanicznych rozmów, decyzje podejmowane w silosach, spadająca innowacyjność.",
+    whatWeDid:
+      "Team Reset (2 dni), wdrożenie rytuałów zespołowych, kontrakt zdalnej współpracy, kultura transparentności i regularnych retro.",
     duration: "4 miesiące",
     metric: "+35%",
     metricLabel: "produktywności",
@@ -157,16 +163,26 @@ function CaseStudySlide({
                 {study.company}
               </h3>
 
-              {/* Challenge */}
-              <div className="mb-8">
+              {/* Kontekst */}
+              <div className="mb-6">
                 <p className="text-sm uppercase tracking-widest text-foreground-muted mb-2">
-                  {t("challenge")}
+                  Kontekst
                 </p>
                 <p className="text-xl md:text-2xl font-semibold text-foreground mb-3">
                   {study.challenge}
                 </p>
-                <p className="text-foreground-secondary leading-relaxed">
+                <p className="text-foreground-secondary leading-relaxed text-sm">
                   {study.challengeFull}
+                </p>
+              </div>
+
+              {/* Co zrobiliśmy */}
+              <div className="mb-8">
+                <p className="text-sm uppercase tracking-widest text-foreground-muted mb-2">
+                  Co zrobiliśmy
+                </p>
+                <p className="text-foreground-secondary leading-relaxed text-sm">
+                  {study.whatWeDid}
                 </p>
               </div>
             </div>
@@ -192,7 +208,7 @@ function CaseStudySlide({
               style={{ backgroundColor: `${study.accentColor}12` }}
             >
               <p className="text-sm uppercase tracking-widest text-foreground-muted mb-4">
-                {t("results")} {study.duration}
+                Efekt · {study.duration}
               </p>
               <div className="flex items-end gap-4">
                 <span

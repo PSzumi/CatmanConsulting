@@ -85,6 +85,13 @@ export function Hero() {
             {t("subtitle")}
           </p>
 
+          {/* Partner signature */}
+          <p className="text-sm text-foreground-muted/70 italic tracking-wide">
+            {locale === "pl"
+              ? "Tomek i Mariusz — psychologia organizacji + praktyka zarządzania"
+              : "Tomek & Mariusz — organizational psychology + management practice"}
+          </p>
+
           {/* CTA Buttons - Magnetic */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             {/* Primary CTA - Magnetic */}

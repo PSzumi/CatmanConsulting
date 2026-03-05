@@ -786,37 +786,6 @@ function ContactFormStep({
         />
       </div>
 
-      <div className="grid sm:grid-cols-2 gap-5">
-        <AnimatedInput
-          id="phone"
-          name="phone"
-          type="tel"
-          label="Telefon"
-          value={formData.phone}
-          onChange={onChange}
-          onBlur={() => onValidate("phone")}
-          placeholder="+48 XXX XXX XXX"
-          validation={validation.phone}
-        />
-        <AnimatedInput
-          id="company"
-          name="company"
-          label="Firma"
-          value={formData.company}
-          onChange={onChange}
-          placeholder="Nazwa firmy"
-        />
-      </div>
-
-      <AnimatedInput
-        id="role"
-        name="role"
-        label="Twoja rola"
-        value={formData.role}
-        onChange={onChange}
-        placeholder="np. CEO, HR Director"
-      />
-
       <AnimatedInput
         id="message"
         name="message"

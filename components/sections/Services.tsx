@@ -76,8 +76,8 @@ const services = [
   },
   {
     id: "coaching",
-    title: "Executive Coaching",
-    subtitle: "Rozwój liderów",
+    title: "Coaching liderów",
+    subtitle: "Executive Coaching",
     icon: Target,
     color: "#6366f1",
     secondaryColor: "#818cf8",
@@ -97,8 +97,8 @@ const services = [
   },
   {
     id: "zespoly",
-    title: "Team Coaching",
-    subtitle: "Budowanie zespołów",
+    title: "Coaching zespołów",
+    subtitle: "Team Coaching",
     icon: Users,
     color: "#10b981",
     secondaryColor: "#34d399",
@@ -118,8 +118,8 @@ const services = [
   },
   {
     id: "transformacja",
-    title: "Change Management",
-    subtitle: "Wsparcie w transformacji",
+    title: "Zarządzanie zmianą",
+    subtitle: "Change Management",
     icon: Sparkles,
     color: "#f59e0b",
     secondaryColor: "#fbbf24",

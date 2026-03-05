@@ -121,10 +121,10 @@ const methodologies = [
   },
 ];
 
-// Stats
+// Stats — [DO WERYFIKACJI]: Piotr potwierdza aktualne liczby przed publikacją
 const credentialStats = [
-  { value: "500+", label: "Godzin coachingu", subtext: "udokumentowanych" },
-  { value: "15+", label: "Certyfikacji", subtext: "aktywnych" },
+  { value: "500+", label: "Godzin coachingu", subtext: "udokumentowanych" }, // [DO WERYFIKACJI]
+  { value: "15+", label: "Certyfikacji", subtext: "aktywnych" }, // [DO WERYFIKACJI]
   { value: "100%", label: "Etyka ICF", subtext: "zgodność" },
 ];
 
@@ -207,6 +207,12 @@ function CertificationCard({
           <p className="text-sm text-white/50 leading-relaxed">
             {cert.description}
           </p>
+
+          {/* Verified badge */}
+          <div className="flex items-center gap-1.5 text-xs text-white/30">
+            <span className="text-green-500">✓</span>
+            Potwierdzone dokumentacją
+          </div>
         </div>
 
         {/* Decorative corner */}

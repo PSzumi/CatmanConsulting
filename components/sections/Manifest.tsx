@@ -16,6 +16,11 @@ const manifestPrinciples = [
     subtitle: "zamiast domysłów",
     description:
       "Jasne zasady i rozmowy, które przesuwają sprawy do przodu. Nie zgadujemy — pytamy, słuchamy, nazywamy rzeczy po imieniu.",
+    promises: [
+      "Mówimy wprost, nie okrężnie",
+      "Zasady ustalamy na wejściu",
+      "Nazywamy trudne rzeczy po imieniu",
+    ],
     keyword: "CLARITY",
     accent: "#b8860b",
   },
@@ -26,6 +31,11 @@ const manifestPrinciples = [
     subtitle: "zamiast kontroli",
     description:
       "Ustalamy umowy, a nie mnożymy raporty. Dorośli ludzie nie potrzebują nadzorców — potrzebują jasnych oczekiwań i przestrzeni do działania.",
+    promises: [
+      "Kontraktujemy odpowiedzialność, nie kontrolę",
+      "Każda decyzja ma właściciela",
+      "Rozliczamy wyniki, nie raporty",
+    ],
     keyword: "TRUST",
     accent: "#2d5a7b",
   },
@@ -36,6 +46,11 @@ const manifestPrinciples = [
     subtitle: "ale nie prostacko",
     description:
       "Mówimy zrozumiale — wdrażamy rzeczy trudne. Złożoność jest w implementacji, nie w komunikacji.",
+    promises: [
+      "Złożone problemy, proste komunikaty",
+      "Wdrażamy, nie wykładamy",
+      "Skracamy dystans między decyzją a działaniem",
+    ],
     keyword: "ESSENCE",
     accent: "#b8860b",
   },
@@ -337,6 +352,28 @@ function PrincipleCard({
           <p className={`text-base sm:text-lg md:text-xl lg:text-2xl text-white/50 leading-relaxed max-w-xl ${isEven ? "" : "lg:ml-auto"}`}>
             {principle.description}
           </p>
+
+          {/* Behavior promises */}
+          <ul className={`mt-6 space-y-2 max-w-xl ${isEven ? "" : "lg:ml-auto"}`}>
+            {principle.promises.map((promise) => (
+              <li key={promise} className="flex items-center gap-3 text-sm text-white/35">
+                <span
+                  className="w-1.5 h-1.5 rounded-full shrink-0"
+                  style={{ backgroundColor: principle.accent }}
+                />
+                {promise}
+              </li>
+            ))}
+          </ul>
+
+          {/* Link to process */}
+          <a
+            href="#proces"
+            className="mt-5 inline-flex items-center gap-1 text-xs font-medium tracking-wider uppercase transition-opacity hover:opacity-70"
+            style={{ color: principle.accent }}
+          >
+            → Zobacz nasz proces
+          </a>
         </div>
       </motion.div>
 
