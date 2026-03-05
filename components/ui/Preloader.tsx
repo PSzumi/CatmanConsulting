@@ -58,7 +58,7 @@ export function Preloader() {
               transition={{ delay: 0.5, duration: 0.3 }}
             >
               <motion.div
-                className="h-full bg-gradient-to-r from-brand-red via-accent to-accent-light rounded-full"
+                className="h-full bg-gradient-to-r from-accent via-accent-light to-brand-red rounded-full"
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
                 transition={{ delay: 0.8, duration: 1, ease: "easeInOut" }}
