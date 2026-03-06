@@ -41,10 +41,10 @@ const testimonials = [
     quote:
       "Myślałem, że znam swój zespół. Diagnoza pokazała rzeczy, których nie widziałem przez lata. To był punkt zwrotny.",
     author: "Piotr Nowak",
-    role: "Managing Director",
+    role: "Dyrektor Zarządzający",
     company: "Firma technologiczna, 80 osób",
     metric: "100%",
-    metricLabel: "clarity",
+    metricLabel: "przejrzystość",
   },
 ];
 

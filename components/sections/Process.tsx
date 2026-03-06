@@ -114,22 +114,22 @@ const phases = [
 const processAdvantages = [
   {
     icon: Zap,
-    title: "Evidence-based",
+    title: "Oparte na badaniach",
     description: "Każdy krok oparty na badaniach i sprawdzonych metodologiach",
   },
   {
     icon: Users,
-    title: "Collaborative",
+    title: "Partnerskie",
     description: "Pracujemy Z organizacją, nie NAD organizacją",
   },
   {
     icon: Target,
-    title: "Measurable",
+    title: "Mierzalne",
     description: "Jasne KPI i mierzalne rezultaty na każdym etapie",
   },
   {
     icon: TrendingUp,
-    title: "Sustainable",
+    title: "Trwałe",
     description: "Zmiany, które przetrwają długo po zakończeniu projektu",
   },
 ];

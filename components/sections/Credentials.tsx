@@ -56,7 +56,7 @@ const assessmentTools = [
   {
     id: "hogan",
     name: "Hogan Assessments",
-    description: "Gold standard w ocenie potencjału przywódczego",
+    description: "Najwyższy standard w ocenie potencjału przywódczego",
     tools: ["HPI", "HDS", "MVPI"],
     icon: Brain,
     color: "#8B0000",
@@ -505,7 +505,7 @@ export function Credentials() {
                       Catman Consulting
                     </div>
                     <div className="text-sm text-white/40">
-                      Evidence-based approach
+                      Podejście oparte na badaniach
                     </div>
                   </div>
                 </footer>
@@ -513,7 +513,7 @@ export function Credentials() {
 
               {/* Bottom badges */}
               <div className="flex flex-wrap gap-3 mt-8 pt-8 border-t border-white/[0.05]">
-                {["ICF Code of Ethics", "GDPR Compliant", "NDA Standard"].map(
+                {["Kodeks etyki ICF", "Zgodność z RODO", "Umowa poufności (NDA)"].map(
                   (badge) => (
                     <span
                       key={badge}

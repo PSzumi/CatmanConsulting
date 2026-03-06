@@ -141,8 +141,8 @@ const conversationPaths = [
 const teamProfiles = [
   {
     name: "Tomek",
-    role: "Partner Zarzadzajacy",
-    specialty: "35 lat w zarzadzaniu",
+    role: "Partner Zarządzający",
+    specialty: "35 lat w zarządzaniu",
     avatar: "T",
     color: "#2d5a7b",
     linkedin: "https://linkedin.com/in/tomek",
