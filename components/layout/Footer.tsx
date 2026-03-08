@@ -478,6 +478,18 @@ export function Footer() {
             </div>
           </div>
 
+          {/* Made by */}
+          <motion.a
+            href="https://deep-devop.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-sm text-gray-400 hover:text-[#b8860b] transition-colors duration-300 group"
+            whileHover={{ y: -1 }}
+          >
+            <span className="text-xs font-mono text-gray-600 group-hover:text-[#b8860b]/70 transition-colors">&lt;/&gt;</span>
+            <span>deep-devop.com</span>
+          </motion.a>
+
           {/* Language & Back to top */}
           <div className="flex items-center gap-4">
             {/* Language switcher placeholder */}
