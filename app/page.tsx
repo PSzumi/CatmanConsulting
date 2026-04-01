@@ -9,7 +9,7 @@ import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Manifest } from "@/components/sections/Manifest";
 import { Credentials } from "@/components/sections/Credentials";
 import { Process } from "@/components/sections/Process";
-import { AsSeenIn } from "@/components/sections/AsSeenIn";
+
 import { AvailabilityBanner } from "@/components/sections/AvailabilityBanner";
 import { FAQ } from "@/components/sections/FAQ";
 import { Contact } from "@/components/sections/Contact";
@@ -67,7 +67,7 @@ export default function Home() {
       <Navbar />
       <main className="relative" style={{ overflow: "visible" }}>
         <Hero />
-        <AsSeenIn />
+
         <ForWhom />
         <About />
         <Services />
