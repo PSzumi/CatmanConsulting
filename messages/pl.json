@@ -304,57 +304,6 @@
       }
     }
   },
-  "credentials": {
-    "tagline": "Standardy jakości",
-    "title": "Certyfikaty i",
-    "titleHighlight": "narzędzia",
-    "subtitle": "Pracujemy według najwyższych międzynarodowych standardów, wykorzystując sprawdzone narzędzia diagnostyczne.",
-    "description": "Pracujemy według najwyższych międzynarodowych standardów, wykorzystując sprawdzone narzędzia diagnostyczne.",
-    "certifications": "Certyfikacje",
-    "tools": "Narzędzia diagnostyczne",
-    "methodologies": "Metodologie",
-    "items": {
-      "certifications": {
-        "title": "Certyfikaty i akredytacje",
-        "list": [
-          "ICF Professional Certified Coach (PCC)",
-          "Hogan Assessment Certification",
-          "MBTI Certified Practitioner",
-          "Change Management Practitioner"
-        ]
-      },
-      "tools": {
-        "title": "Narzędzia diagnostyczne",
-        "list": [
-          "Hogan Assessments",
-          "MBTI / 16PF",
-          "360-stopniowa ocena",
-          "Badania klimatu organizacyjnego"
-        ]
-      },
-      "experience": {
-        "title": "Doświadczenie branżowe",
-        "years": "35+",
-        "yearsLabel": "lat doświadczenia",
-        "projects": "200+",
-        "projectsLabel": "zrealizowanych projektów",
-        "industries": [
-          "Finanse i bankowość",
-          "Technologie",
-          "FMCG",
-          "Produkcja"
-        ]
-      },
-      "recognition": {
-        "title": "Wyróżnienia",
-        "list": [
-          "Top 10 firm coachingowych w Polsce",
-          "Prelegenci na konferencjach HR",
-          "Autorzy publikacji branżowych"
-        ]
-      }
-    }
-  },
   "casebook": {
     "tagline": "Case Studies",
     "title": "Historie",

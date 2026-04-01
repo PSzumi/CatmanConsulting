@@ -7,7 +7,7 @@ import { Offerings } from "@/components/sections/Offerings";
 import { Casebook } from "@/components/sections/Casebook";
 import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Manifest } from "@/components/sections/Manifest";
-import { Credentials } from "@/components/sections/Credentials";
+
 import { Process } from "@/components/sections/Process";
 
 import { AvailabilityBanner } from "@/components/sections/AvailabilityBanner";
@@ -76,7 +76,7 @@ export default function Home() {
         <Offerings />
         <Casebook />
         <TrustedBy />
-        <Credentials />
+
         <Manifest />
         <FAQ />
         <AvailabilityBanner />

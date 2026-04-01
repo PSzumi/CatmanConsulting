@@ -168,7 +168,7 @@ export function ForWhom() {
 
   const heading =
     locale === "pl"
-      ? "Pracujemy z zarządami, właścicielami i HR"
+      ? "Pracujemy z zarządami, managementem i HR"
       : "We work with boards, owners and HR";
   const subheading = locale === "pl" ? "gdy:" : "when:";
   const tagline = locale === "pl" ? "Dla kogo" : "Who we serve";

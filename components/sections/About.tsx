@@ -40,7 +40,7 @@ const stats = [
     icon: Award
   },
   {
-    value: 100,
+    value: 400,
     suffix: "+",
     label: "Zrealizowanych projektów",
     description: "Transformacje i zmiany",
@@ -54,8 +54,9 @@ const stats = [
     icon: TrendingUp
   },
   {
-    value: 95,
+    value: 99,
     suffix: "%",
+    hoverValue: "99,9%",
     label: "Klientów poleca",
     description: "Rekomendacje i powroty",
     icon: Users
@@ -291,14 +292,6 @@ function TeamMemberCard({ member, index, timeline, expertise, isLeft }: TeamMemb
             </div>
           </motion.div>
 
-          {/* "Learn more" indicator */}
-          <motion.div
-            className="absolute bottom-4 right-4 flex items-center gap-1 text-[#737373] group-hover:text-[#b8860b] transition-colors"
-            animate={{ x: isHovered ? 5 : 0 }}
-          >
-            <span className="text-xs">Więcej</span>
-            <ChevronRight className="w-4 h-4" />
-          </motion.div>
         </div>
       </div>
     </motion.div>
@@ -491,6 +484,7 @@ export function About() {
           <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-4 p-5 sm:p-8 lg:p-12">
             {stats.map((stat, index) => {
               const Icon = stat.icon;
+              const hasHoverValue = "hoverValue" in stat && stat.hoverValue;
               return (
                 <motion.div
                   key={stat.label}
@@ -512,9 +506,20 @@ export function About() {
                   </motion.div>
 
                   {/* Number */}
-                  <div className="text-4xl lg:text-5xl font-bold mb-2">
+                  <div className="text-4xl lg:text-5xl font-bold mb-2 relative">
                     <span className="bg-gradient-to-r from-[#d4a843] via-[#b8860b] to-[#d4a843] bg-clip-text text-transparent">
-                      <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                      {hasHoverValue ? (
+                        <>
+                          <span className="group-hover:hidden">
+                            <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                          </span>
+                          <span className="hidden group-hover:inline">
+                            {stat.hoverValue}
+                          </span>
+                        </>
+                      ) : (
+                        <AnimatedCounter value={stat.value} suffix={stat.suffix} />
+                      )}
                     </span>
                   </div>
 

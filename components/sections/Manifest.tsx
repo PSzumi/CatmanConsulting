@@ -366,14 +366,6 @@ function PrincipleCard({
             ))}
           </ul>
 
-          {/* Link to process */}
-          <a
-            href="#proces"
-            className="mt-5 inline-flex items-center gap-1 text-xs font-medium tracking-wider uppercase transition-opacity hover:opacity-70"
-            style={{ color: principle.accent }}
-          >
-            → Zobacz nasz proces
-          </a>
         </div>
       </motion.div>
 
