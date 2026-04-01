@@ -275,44 +275,15 @@ export function ShatteredWord({
     return () => observer.disconnect();
   }, []);
 
-  // Step 1: Decide if we should render portal (only when Hero is truly visible)
+  // Step 1: Decide if we should render portal (when element becomes visible)
   useEffect(() => {
     if (!isReady || hasPlayedOnce.current || !mounted || shouldRenderPortal) return;
 
-    const container = containerRef.current;
-    if (!container) return;
-
-    let cancelled = false;
-
-    const checkVisibility = () => {
-      if (cancelled || hasPlayedOnce.current || shouldRenderPortal) return;
-
-      const rect = container.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Element must be actually visible in viewport
-      const isInViewport = rect.top < viewportHeight && rect.bottom > 0 && rect.top > -rect.height;
-
-      if (isInViewport) {
-        setShouldRenderPortal(true);
-      }
-    };
-
-    // Wait for page to fully load and scroll to settle
-    if (document.readyState === 'complete') {
-      // Page already loaded - wait a bit for scroll restoration
-      const timer = setTimeout(checkVisibility, 500);
-      return () => { cancelled = true; clearTimeout(timer); };
-    } else {
-      // Wait for load event
-      const handleLoad = () => {
-        // After load, wait for scroll restoration
-        setTimeout(checkVisibility, 500);
-      };
-      window.addEventListener('load', handleLoad);
-      return () => { cancelled = true; window.removeEventListener('load', handleLoad); };
+    // Trigger portal render whenever the element enters the viewport
+    if (isVisible) {
+      setShouldRenderPortal(true);
     }
-  }, [isReady, mounted, shouldRenderPortal]);
+  }, [isReady, mounted, shouldRenderPortal, isVisible]);
 
   // Step 2: Once portal is rendered, wait for DOM and start animation
   useEffect(() => {
