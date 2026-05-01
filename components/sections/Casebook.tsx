@@ -96,7 +96,7 @@ const summaryStats = [
   { value: "100+", label: "Projektów" },
   { value: "50+", label: "Firm" },
   { value: "35+", label: "Lat doświadczenia" },
-  { value: "95%", label: "Poleca nas" },
+  { value: "99%", label: "Poleca nas" },
 ];
 
 // Single case study slide component

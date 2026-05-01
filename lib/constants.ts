@@ -96,6 +96,5 @@ export const navigation = [
   { name: "Jak pracujemy", href: "#oferta" },
   { name: "Diagnoza", href: "#diagnoza" },
   { name: "Case'y", href: "#casebook" },
-  { name: "Kalkulator ROI", href: "#kalkulator" },
   { name: "Kontakt", href: "#kontakt" },
 ];

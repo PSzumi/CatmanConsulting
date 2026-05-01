@@ -52,8 +52,8 @@ const testimonials = [
 const stats = [
   { value: 150, suffix: "+", label: "Liderów przeszkolonych", duration: 2 },
   { value: 45, suffix: "+", label: "Organizacji transformowanych", duration: 1.8 },
-  { value: 98, suffix: "%", label: "Satysfakcji klientów", duration: 2.2 },
-  { value: 12, suffix: "", label: "Lat doświadczenia", duration: 1.5 },
+  { value: 99, suffix: "%", label: "Satysfakcji klientów", duration: 2.2 },
+  { value: 31, suffix: "", label: "Lat doświadczenia", duration: 1.5 },
 ];
 
 // Animated counter hook

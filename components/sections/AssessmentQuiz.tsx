@@ -27,7 +27,7 @@ interface Question {
 const questions: Question[] = [
   {
     id: 1,
-    question: "Jak często w Twojej organizacji zdarzają się konflikty między działami?",
+    question: "Jak często w Twojej organizacji zdarzają się konflikty między działami i ludźmi?",
     options: [
       { text: "Rzadko, współpracujemy sprawnie", score: 4 },
       { text: "Czasami, ale je rozwiązujemy", score: 3 },
@@ -37,7 +37,7 @@ const questions: Question[] = [
   },
   {
     id: 2,
-    question: "Czy pracownicy wiedzą, czego się od nich oczekuje?",
+    question: "Czy masz pewność, że Twoi pracownicy wiedzą dokładnie, czego się od nich oczekuje?",
     options: [
       { text: "Tak, mamy jasne cele i miary", score: 4 },
       { text: "Raczej tak, choć mogłoby być lepiej", score: 3 },
@@ -57,7 +57,7 @@ const questions: Question[] = [
   },
   {
     id: 4,
-    question: "Czy liderzy w Twojej organizacji dają i przyjmują feedback?",
+    question: "Czy liderzy w Twojej organizacji potrafią dać i potrafią przyjąć feedback?",
     options: [
       { text: "Tak, to nasza kultura", score: 4 },
       { text: "Próbujemy, ale niekonsekwentnie", score: 3 },
@@ -77,7 +77,7 @@ const questions: Question[] = [
   },
   {
     id: 6,
-    question: "Czy zespoły biorą odpowiedzialność za wyniki?",
+    question: "Kultura odpowiedzialności — czy występuje u Ciebie?",
     options: [
       { text: "Tak, każdy wie za co odpowiada", score: 4 },
       { text: "Częściowo, bywa rozmycie", score: 3 },

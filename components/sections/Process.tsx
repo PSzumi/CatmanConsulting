@@ -32,15 +32,15 @@ const phases = [
     activities: [
       "Wywiady 1:1 z liderami",
       "Analiza dokumentacji i danych",
-      "Obserwacja spotkań i procesów",
-      "Assessment narzędziami diagnostycznymi",
+      "Obserwacja uczestnicząca spotkań i procesów",
+      "Assessment narzędziami diagnostycznymi i development center",
     ],
     deliverables: [
       "Raport diagnostyczny",
       "Mapa wyzwań i szans",
       "Rekomendacje wstępne",
     ],
-    quote: "Nie da się rozwiązać problemu, którego się nie rozumie.",
+    quote: "Trudno jest rozwiązać problem, którego się nie rozumie.",
   },
   {
     id: 2,
@@ -60,7 +60,7 @@ const phases = [
     deliverables: [
       "Plan transformacji",
       "Roadmapa z milestone'ami",
-      "Business case i ROI",
+      "Business case",
     ],
     quote: "Dobry plan to połowa sukcesu.",
   },
@@ -519,14 +519,7 @@ export function Process() {
             <div className="hidden md:block w-px h-16 bg-white/10" />
             <div>
               <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                ROI 300%+
-              </div>
-              <div className="text-white/50">Średni zwrot z inwestycji</div>
-            </div>
-            <div className="hidden md:block w-px h-16 bg-white/10" />
-            <div>
-              <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                95%
+                99%
               </div>
               <div className="text-white/50">Projektów zakończonych sukcesem</div>
             </div>

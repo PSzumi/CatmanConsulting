@@ -23,7 +23,6 @@ const commandItems = [
   { name: "Przejdź do: Case Studies", href: "#casebook", keywords: ["case", "projekty", "portfolio"] },
   { name: "Przejdź do: Kontakt", href: "#kontakt", keywords: ["kontakt", "contact", "email"] },
   { name: "Umów rozmowę", href: "#kontakt", keywords: ["rozmowa", "call", "book", "umów"] },
-  { name: "Kalkulator ROI", href: "#kalkulator", keywords: ["roi", "kalkulator", "calculator"] },
 ];
 
 // Magnetic link component

@@ -1,7 +1,6 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { AssessmentQuiz } from "@/components/sections/AssessmentQuiz";
-import { ROICalculator } from "@/components/sections/ROICalculator";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { CursorGlow } from "@/components/ui/CursorGlow";
 import { NoiseOverlay } from "@/components/ui/NoiseOverlay";
@@ -36,12 +35,11 @@ export default function DiagnozaPage() {
             Sprawdź gotowość swojej organizacji
           </h1>
           <p className="text-lg text-foreground-secondary max-w-2xl mx-auto">
-            Dwa bezpłatne narzędzia, które pomogą Ci zobaczyć gdzie jesteś i ile kosztuje Cię brak zmiany.
+            Bezpłatne narzędzie diagnostyczne, które pomoże Ci zobaczyć, gdzie jesteś.
           </p>
         </div>
 
         <AssessmentQuiz />
-        <ROICalculator />
       </main>
       <Footer />
     </>

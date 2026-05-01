@@ -35,8 +35,6 @@ import { CalendlyButton } from "@/components/ui/CalendlyButton";
 import { trackFormSubmission } from "@/components/Analytics";
 import { Konfetti } from "@/components/ui/Konfetti";
 import { VideoRecorder } from "@/components/ui/VideoRecorder";
-import { AvailabilityIndicator } from "@/components/ui/AvailabilityIndicator";
-import { ClientPortalPreview } from "@/components/ui/ClientPortalPreview";
 import { useLeadScoring } from "@/lib/useLeadScoring";
 
 // ============================================================================
@@ -78,8 +76,8 @@ const contactMethods = [
   {
     id: "call",
     icon: Video,
-    title: "Rozmowa wideo",
-    description: "20-minutowa sesja online",
+    title: "Kontakt 20 min",
+    description: "Bezpłatna sesja online",
     recommended: true,
     color: ACCENT_COLOR,
   },
@@ -1057,25 +1055,6 @@ function InfoPanel() {
             variant="primary"
           />
         </div>
-      </motion.div>
-
-      {/* Live Availability */}
-      <motion.div
-        className="p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.25 }}
-      >
-        <AvailabilityIndicator />
-      </motion.div>
-
-      {/* Client Portal Preview */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.28 }}
-      >
-        <ClientPortalPreview />
       </motion.div>
 
     </div>
