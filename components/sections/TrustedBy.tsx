@@ -70,13 +70,14 @@ function useCounter(end: number, duration: number, startAnimation: boolean) {
       if (!startTime) startTime = timestamp;
       const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
 
-      // Easing function (easeOutExpo)
-      const easeOutExpo = 1 - Math.pow(2, -10 * progress);
-      setCount(Math.floor(easeOutExpo * end));
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(animate);
+      if (progress >= 1) {
+        setCount(end);
+        return;
       }
+
+      const easeOutExpo = 1 - Math.pow(2, -10 * progress);
+      setCount(Math.round(easeOutExpo * end));
+      animationFrame = requestAnimationFrame(animate);
     };
 
     animationFrame = requestAnimationFrame(animate);
