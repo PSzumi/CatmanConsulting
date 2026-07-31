@@ -20,6 +20,7 @@ export interface LeadScore {
   calculatorSavings: number | null;
   contactFormStarted: boolean;
   contactFormStep: number;
+  phoneClicked: boolean;
   easterEggFound: boolean;
   scrollDepth: number;
   clickCount: number;
@@ -38,6 +39,7 @@ interface LeadScoringContextType {
   trackQuizComplete: (score: number) => void;
   trackCalculatorUse: (savings: number) => void;
   trackContactFormProgress: (step: number) => void;
+  trackPhoneClick: () => void;
   trackEasterEgg: () => void;
   resetData: () => void;
 }
@@ -93,6 +95,12 @@ function calculateScore(data: Partial<LeadScore>): { score: number; grade: LeadS
   const step = data.contactFormStep || 0;
   score += Math.min(7, step * 2);
 
+  // Phone click (10 points) - strongest intent signal we have
+  if (data.phoneClicked) {
+    score += 10;
+    alerts.push("Kliknął numer telefonu");
+  }
+
   // Return visit bonus (5 points)
   if (data.returnVisit) {
     score += 5;
@@ -125,6 +133,18 @@ function calculateScore(data: Partial<LeadScore>): { score: number; grade: LeadS
   return { score, grade, alerts };
 }
 
+// Returning visitors carry payloads written by older versions — keep only the
+// keys we still track so removed features don't linger in storage forever.
+function sanitize(stored: Partial<LeadScore>): LeadScore {
+  const empty = createEmptyLeadData() as unknown as Record<string, unknown>;
+  const source = stored as unknown as Record<string, unknown>;
+  const clean: Record<string, unknown> = {};
+  for (const key of Object.keys(empty)) {
+    clean[key] = key in source ? source[key] : empty[key];
+  }
+  return clean as unknown as LeadScore;
+}
+
 function createEmptyLeadData(): LeadScore {
   return {
     visitorId: generateId("v"),
@@ -140,6 +160,7 @@ function createEmptyLeadData(): LeadScore {
     calculatorSavings: null,
     contactFormStarted: false,
     contactFormStep: 0,
+    phoneClicked: false,
     easterEggFound: false,
     scrollDepth: 0,
     clickCount: 0,
@@ -213,7 +234,7 @@ export function LeadScoringProvider({ children }: { children: ReactNode }) {
       const sessionId = generateId("s");
 
       if (stored) {
-        const parsed: LeadScore = JSON.parse(stored);
+        const parsed: LeadScore = sanitize(JSON.parse(stored));
         const timeSinceLastVisit = Date.now() - new Date(parsed.lastActivity).getTime();
         const isReturnVisit = timeSinceLastVisit > 30 * 60 * 1000; // 30 min
 
@@ -372,6 +393,10 @@ export function LeadScoringProvider({ children }: { children: ReactNode }) {
     updateData({ contactFormStarted: true, contactFormStep: step });
   }, [updateData]);
 
+  const trackPhoneClick = useCallback(() => {
+    updateData({ phoneClicked: true });
+  }, [updateData]);
+
   const trackEasterEgg = useCallback(() => {
     updateData({ easterEggFound: true });
   }, [updateData]);
@@ -397,6 +422,7 @@ export function LeadScoringProvider({ children }: { children: ReactNode }) {
         trackQuizComplete,
         trackCalculatorUse,
         trackContactFormProgress,
+        trackPhoneClick,
         trackEasterEgg,
         resetData,
       }}
@@ -446,6 +472,7 @@ export function useLeadScoring() {
     trackQuizComplete: () => {},
     trackCalculatorUse: () => {},
     trackContactFormProgress: () => {},
+    trackPhoneClick: () => {},
     trackEasterEgg: () => {},
     resetData: () => {},
   };

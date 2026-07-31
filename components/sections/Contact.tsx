@@ -620,6 +620,8 @@ function ContactMethodSelector({
   selectedMethod: string | null;
   onSelect: (id: string) => void;
 }) {
+  const { trackPhoneClick } = useLeadScoring();
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -720,6 +722,7 @@ function ContactMethodSelector({
                 <a
                   key={profile.name}
                   href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                  onClick={trackPhoneClick}
                   className="flex items-center gap-3 p-4 rounded-xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/40 transition-colors"
                 >
                   <div
@@ -1006,6 +1009,8 @@ function SuccessMessage({ t }: { t: (key: string) => string }) {
 // ============================================================================
 
 function InfoPanel() {
+  const { trackPhoneClick } = useLeadScoring();
+
   return (
     <div className="space-y-6">
       {/* Hero card */}
@@ -1067,6 +1072,7 @@ function InfoPanel() {
               <a
                 key={profile.name}
                 href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                onClick={trackPhoneClick}
                 className="flex items-center gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-colors"
               >
                 <div
@@ -1099,7 +1105,7 @@ export function Contact() {
   const t = useTranslations("contact");
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const { leadData, trackContactFormProgress } = useLeadScoring();
+  const { leadData, trackContactFormProgress, trackPhoneClick } = useLeadScoring();
 
   // State
   const [currentStep, setCurrentStep] = useState(1);
@@ -1245,6 +1251,7 @@ export function Contact() {
           quizScore: leadData.quizScore,
           calculatorUsed: leadData.calculatorUsed,
           calculatorSavings: leadData.calculatorSavings,
+          phoneClicked: leadData.phoneClicked,
           easterEggFound: leadData.easterEggFound,
           alerts: leadData.alerts,
         } : undefined,
@@ -1545,6 +1552,7 @@ export function Contact() {
 
             <a
               href={`tel:${contactContent.phone.replace(/\s/g, "")}`}
+              onClick={trackPhoneClick}
               className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
             >
               <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
