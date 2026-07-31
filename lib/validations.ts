@@ -56,7 +56,6 @@ export const contactFormSchema = z.object({
   // Path selection from form
   path: z.string().optional(),
   contactMethod: z.string().optional(),
-  hasVideo: z.boolean().optional(),
   // Lead scoring data
   leadScore: leadScoreSchema,
 });

@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, phone, company, role, message, website, path, contactMethod, hasVideo, leadScore } = result.data;
+    const { name, email, phone, company, role, message, website, path, contactMethod, leadScore } = result.data;
 
     // Honeypot check - if website field is filled, it's a bot
     if (website && website.length > 0) {
@@ -109,7 +109,6 @@ export async function POST(request: NextRequest) {
     if (leadScore?.quizCompleted) signals.push(`✅ Ukończył quiz diagnostyczny${leadScore.quizScore ? ` (wynik: ${leadScore.quizScore})` : ""}`);
     if (leadScore?.calculatorUsed) signals.push(`✅ Użył kalkulatora ROI${leadScore.calculatorSavings ? ` (potencjał: ${leadScore.calculatorSavings.toLocaleString("pl-PL")} PLN)` : ""}`);
     if (leadScore?.calendlyClicked) signals.push("✅ Kliknął Calendly");
-    if (leadScore?.videoRecorded || hasVideo) signals.push("✅ Nagrał wideo");
     if (leadScore?.returnVisit) signals.push(`✅ Powracający użytkownik (${leadScore.visitCount || 1} wizyty)`);
     if (leadScore?.easterEggFound) signals.push("✅ Znalazł Easter Egg (ciekawski!)");
 
@@ -235,14 +234,6 @@ export async function POST(request: NextRequest) {
             ${message ? `
             <h2 style="color: #b8860b; margin: 25px 0 15px; font-size: 16px;">💬 Wiadomość</h2>
             <div style="background: #f9fafb; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; font-size: 14px; line-height: 1.6;">${message}</div>
-            ` : ""}
-
-            ${hasVideo ? `
-            <div style="margin-top: 20px; padding: 15px; background: #fef3c7; border-radius: 8px; border: 1px solid #f59e0b;">
-              <p style="margin: 0; color: #92400e; font-size: 14px;">
-                🎥 <strong>Ta osoba nagrała wiadomość wideo</strong> - sprawdź załączniki lub skontaktuj się, aby otrzymać nagranie.
-              </p>
-            </div>
             ` : ""}
 
             <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #9ca3af; font-size: 12px;">

@@ -32,7 +32,6 @@ import { cn } from "@/lib/utils";
 import { contactContent } from "@/lib/constants";
 import { trackFormSubmission } from "@/components/Analytics";
 import { Konfetti } from "@/components/ui/Konfetti";
-import { VideoRecorder } from "@/components/ui/VideoRecorder";
 import { useLeadScoring } from "@/lib/useLeadScoring";
 
 // ============================================================================
@@ -50,7 +49,6 @@ interface FormData {
   website: string;
   path: string;
   contactMethod: string;
-  hasVideo: boolean;
 }
 
 interface ValidationState {
@@ -754,20 +752,16 @@ function ContactFormStep({
   onChange,
   onValidate,
   onSubmit,
-  onVideoReady,
   isSubmitting,
   error,
-  hasVideo,
 }: {
   formData: FormData;
   validation: ValidationState;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onValidate: (field: string) => void;
   onSubmit: (e: React.FormEvent) => void;
-  onVideoReady: (blob: Blob | null, url: string | null) => void;
   isSubmitting: boolean;
   error: string | null;
-  hasVideo: boolean;
 }) {
   return (
     <motion.form
@@ -820,28 +814,6 @@ function ContactFormStep({
         multiline
         rows={4}
       />
-
-      {/* Video message option */}
-      <div className="relative">
-        <div className="flex items-center gap-2 mb-3">
-          <Video className="w-4 h-4 text-[#b8860b]" />
-          <span className="text-sm font-medium text-gray-300">
-            Lub nagraj wiadomość wideo
-          </span>
-          <span className="text-xs text-gray-500">(opcjonalne)</span>
-        </div>
-        <VideoRecorder onVideoReady={onVideoReady} maxDuration={60} />
-        {hasVideo && (
-          <motion.div
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mt-2 flex items-center gap-2 text-sm text-emerald-400"
-          >
-            <Check className="w-4 h-4" />
-            Wideo gotowe do wysłania
-          </motion.div>
-        )}
-      </div>
 
       <AnimatedCheckbox
         id="consent"
@@ -1127,7 +1099,7 @@ export function Contact() {
   const t = useTranslations("contact");
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-100px" });
-  const { leadData, trackContactFormProgress, trackVideoRecorded, trackCalendlyClick } = useLeadScoring();
+  const { leadData, trackContactFormProgress } = useLeadScoring();
 
   // State
   const [currentStep, setCurrentStep] = useState(1);
@@ -1149,10 +1121,7 @@ export function Contact() {
     website: "",
     path: "",
     contactMethod: "",
-    hasVideo: false,
   });
-
-  const [videoBlob, setVideoBlob] = useState<Blob | null>(null);
 
   const [validation, setValidation] = useState<ValidationState>({
     name: { valid: true, message: "", touched: false },
@@ -1232,14 +1201,6 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, contactMethod: id }));
   };
 
-  const handleVideoReady = (blob: Blob | null, url: string | null) => {
-    setVideoBlob(blob);
-    setFormData((prev) => ({ ...prev, hasVideo: blob !== null }));
-    if (blob) {
-      trackVideoRecorded();
-    }
-  };
-
   const handleNext = () => {
     if (currentStep < 3) {
       const nextStep = currentStep + 1;
@@ -1285,7 +1246,6 @@ export function Contact() {
           calculatorUsed: leadData.calculatorUsed,
           calculatorSavings: leadData.calculatorSavings,
           calendlyClicked: leadData.calendlyClicked,
-          videoRecorded: leadData.videoRecorded,
           easterEggFound: leadData.easterEggFound,
           alerts: leadData.alerts,
         } : undefined,
@@ -1462,10 +1422,8 @@ export function Contact() {
                           onChange={handleChange}
                           onValidate={validateField}
                           onSubmit={handleSubmit}
-                          onVideoReady={handleVideoReady}
                           isSubmitting={isSubmitting}
                           error={error}
-                          hasVideo={formData.hasVideo}
                         />
                       )}
                     </AnimatePresence>
