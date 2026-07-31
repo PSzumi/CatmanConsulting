@@ -60,7 +60,13 @@ export function ShatteredWord({
   const [shouldRenderPortal, setShouldRenderPortal] = useState(false);
   const hasPlayedOnce = useRef(false);
   const seedRef = useRef<number | null>(null);
-  const reducedFx = useReducedFx();
+  const { isSmallScreen, prefersReducedMotion } = useReducedFx();
+
+  // Mobile keeps the effect but with fewer, chunkier pieces and a shorter
+  // run — every shard is a composited layer while the timeline is alive.
+  const shardCount = isSmallScreen ? 4 : shardsPerLetter;
+  const shardDuration = isSmallScreen ? duration * 0.6 : duration;
+  const shardDelay = isSmallScreen ? Math.min(autoPlayDelay, 1) : autoPlayDelay;
 
   // Mount check for portal
   useEffect(() => {
@@ -77,8 +83,8 @@ export function ShatteredWord({
     const shards: ShardData[] = [];
 
     // Grid configuration for each letter
-    const cols = Math.ceil(Math.sqrt(shardsPerLetter * 1.5));
-    const rows = Math.ceil(shardsPerLetter / cols);
+    const cols = Math.ceil(Math.sqrt(shardCount * 1.5));
+    const rows = Math.ceil(shardCount / cols);
     const cellWidth = 100 / cols;
     const cellHeight = 100 / rows;
     const overlap = 3;
@@ -123,7 +129,7 @@ export function ShatteredWord({
     shards.sort((a, b) => a.order - b.order);
     setShardData(shards);
     setIsReady(true);
-  }, [word, shardsPerLetter]);
+  }, [word, shardCount]);
 
   // Play animation
   const playAnimation = useCallback(() => {
@@ -197,7 +203,7 @@ export function ShatteredWord({
 
     // Create timeline
     const tl = gsap.timeline({
-      delay: autoPlayDelay,
+      delay: shardDelay,
       onComplete: () => {
         setIsAnimating(false);
         setAnimationComplete(true);
@@ -219,7 +225,7 @@ export function ShatteredWord({
         x: 0,
         y: 0,
         rotation: 0,
-        duration: duration,
+        duration: shardDuration,
         ease: "expo.out",
         force3D: true,
       }, staggerDelay);
@@ -232,18 +238,18 @@ export function ShatteredWord({
         scale: 1.1,
         duration: 0.3,
         ease: "power2.out",
-      }, staggerAmount + duration * 0.4);
+      }, staggerAmount + shardDuration * 0.4);
 
       tl.to(glowElement, {
         opacity: 0,
         scale: 1,
         duration: 0.5,
         ease: "power2.inOut",
-      }, staggerAmount + duration * 0.6);
+      }, staggerAmount + shardDuration * 0.6);
     }
 
     hasPlayedOnce.current = true;
-  }, [isReady, shardData, duration, staggerAmount, autoPlayDelay]);
+  }, [isReady, shardData, shardDuration, staggerAmount, shardDelay]);
 
   // Hide shards when Hero section is not visible
   useEffect(() => {
@@ -293,7 +299,7 @@ export function ShatteredWord({
 
   // Step 2: Once portal is rendered, wait for DOM and start animation
   useEffect(() => {
-    if (!shouldRenderPortal || hasPlayedOnce.current || animationComplete || reducedFx) return;
+    if (!shouldRenderPortal || hasPlayedOnce.current || animationComplete || prefersReducedMotion) return;
 
     // Wait for portal to be in DOM
     const timer = setTimeout(() => {
@@ -304,12 +310,12 @@ export function ShatteredWord({
     }, 50);
 
     return () => clearTimeout(timer);
-  }, [shouldRenderPortal, animationComplete, playAnimation, reducedFx]);
+  }, [shouldRenderPortal, animationComplete, playAnimation, prefersReducedMotion]);
 
   const letters = word.split("");
 
   // Portal shards (rendered ONLY when shouldRenderPortal and not complete)
-  const portalShards = mounted && shouldRenderPortal && !animationComplete && !reducedFx ? createPortal(
+  const portalShards = mounted && shouldRenderPortal && !animationComplete && !prefersReducedMotion ? createPortal(
     <>
       {shardData.map((data, index) => (
         <span
@@ -364,7 +370,7 @@ export function ShatteredWord({
               paddingBottom: "0.25em",
               // Show original letters only after animation completes
               // (or immediately when the shatter effect is skipped)
-              visibility: animationComplete || reducedFx ? "visible" : "hidden",
+              visibility: animationComplete || prefersReducedMotion ? "visible" : "hidden",
             }}
           >
             <span className={letterClassName} style={{ display: "inline-block" }}>

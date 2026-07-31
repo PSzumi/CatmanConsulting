@@ -4,7 +4,8 @@ import { motion } from "framer-motion";
 import { useReducedFx } from "@/lib/useReducedFx";
 
 export function GradientMesh() {
-  const reducedFx = useReducedFx();
+  const { isSmallScreen, prefersReducedMotion } = useReducedFx();
+  const reducedFx = isSmallScreen || prefersReducedMotion;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">

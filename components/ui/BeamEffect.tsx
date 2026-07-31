@@ -9,9 +9,9 @@ interface BeamEffectProps {
 }
 
 export function BeamEffect({ className }: BeamEffectProps) {
-  const reducedFx = useReducedFx();
+  const { isSmallScreen, prefersReducedMotion } = useReducedFx();
 
-  if (reducedFx) return null;
+  if (isSmallScreen || prefersReducedMotion) return null;
 
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>

@@ -16,7 +16,8 @@ export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const t = useTranslations("hero");
   const locale = useLocale();
-  const reducedFx = useReducedFx();
+  const { isSmallScreen, prefersReducedMotion } = useReducedFx();
+  const reducedFx = isSmallScreen || prefersReducedMotion;
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],

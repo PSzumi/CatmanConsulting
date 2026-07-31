@@ -2,22 +2,33 @@
 
 import { useEffect, useState } from "react";
 
-// True on small screens or when the user asks for reduced motion.
-// Heavy hero effects (scroll parallax, backdrop blur, shard animation)
-// are skipped when this is on — they tank scroll performance on phones.
+// Small screens can't afford scroll parallax, backdrop blur or looping
+// background animation — they tank scroll performance. Reduced-motion goes
+// further and drops one-shot entrance animation too.
 export function useReducedFx() {
-  const [reduced, setReduced] = useState(false);
+  const [fx, setFx] = useState({
+    isSmallScreen: false,
+    prefersReducedMotion: false,
+  });
 
   useEffect(() => {
-    const query = window.matchMedia(
-      "(max-width: 768px), (prefers-reduced-motion: reduce)"
-    );
-    const update = () => setReduced(query.matches);
+    const small = window.matchMedia("(max-width: 768px)");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const update = () =>
+      setFx({
+        isSmallScreen: small.matches,
+        prefersReducedMotion: motion.matches,
+      });
 
     update();
-    query.addEventListener("change", update);
-    return () => query.removeEventListener("change", update);
+    small.addEventListener("change", update);
+    motion.addEventListener("change", update);
+    return () => {
+      small.removeEventListener("change", update);
+      motion.removeEventListener("change", update);
+    };
   }, []);
 
-  return reduced;
+  return fx;
 }

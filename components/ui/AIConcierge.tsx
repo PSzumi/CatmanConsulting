@@ -976,7 +976,7 @@ export function AIConcierge() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-6 right-6 z-50 w-[420px] max-w-[calc(100vw-48px)] rounded-3xl overflow-hidden"
+            className="fixed bottom-6 right-6 z-[60] flex flex-col w-[420px] max-w-[calc(100vw-48px)] max-h-[calc(100dvh-7rem)] rounded-3xl overflow-hidden"
             style={{
               background: "rgba(10, 10, 15, 0.97)",
               backdropFilter: "blur(40px)",
@@ -995,7 +995,7 @@ export function AIConcierge() {
           >
             {/* Header with Aurora Effect */}
             <div
-              className="relative px-5 py-4 border-b border-white/[0.06] overflow-hidden"
+              className="relative shrink-0 px-5 py-4 border-b border-white/[0.06] overflow-hidden"
               style={{
                 background:
                   "linear-gradient(135deg, rgba(184, 134, 11, 0.12) 0%, rgba(10, 10, 15, 0.95) 100%)",
@@ -1088,7 +1088,7 @@ export function AIConcierge() {
             </div>
 
             {/* Messages Area */}
-            <div className="h-[420px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+            <div className="flex-1 min-h-0 sm:flex-none sm:h-[420px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
               {messages.map((message) => (
                 <MessageBubble key={message.id} message={message} />
               ))}
@@ -1140,7 +1140,7 @@ export function AIConcierge() {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 border-t border-white/[0.06] bg-white/[0.02]">
+            <div className="shrink-0 p-4 border-t border-white/[0.06] bg-white/[0.02]">
               {/* Voice waveform when listening */}
               <AnimatePresence>
                 {isListening && (
