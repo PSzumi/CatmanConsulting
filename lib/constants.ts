@@ -86,7 +86,7 @@ export const contactContent = {
   title: "Rozpocznij rozmowę",
   subtitle: "Wstępna konsultacja — bez zobowiązań",
   email: "kontakt@catman.consulting",
-  phone: "+48 XXX XXX XXX",
+  phone: "+48 604 600 999",
   // Calendly URL - zamień na prawdziwy link klienta
   calendlyUrl: "https://calendly.com/catman-consulting/20min",
 };

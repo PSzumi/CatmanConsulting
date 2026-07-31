@@ -141,7 +141,7 @@ const teamProfiles = [
     specialty: "35 lat w zarządzaniu",
     avatar: "T",
     color: "#2d5a7b",
-    phone: "+48 XXX XXX XXX",
+    phone: "+48 604 600 999",
     linkedin: "https://linkedin.com/in/tomek",
   },
   {
@@ -150,7 +150,7 @@ const teamProfiles = [
     specialty: "Ekspert kultury organizacyjnej",
     avatar: "M",
     color: ACCENT_COLOR,
-    phone: "+48 XXX XXX XXX",
+    phone: "+48 509 245 875",
     linkedin: "https://linkedin.com/in/mariusz",
   },
 ];
