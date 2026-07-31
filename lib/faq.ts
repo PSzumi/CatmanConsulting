@@ -20,7 +20,9 @@ export interface FaqItem {
   answer: string;
 }
 
-const FAQ_ICONS: Record<string, LucideIcon> = {
+// Mapa zamiast funkcji zwracajacej komponent - wywolanie w renderze lamie
+// regule react-compilera "Cannot create components during render".
+export const FAQ_ICONS: Record<string, LucideIcon> = {
   Award,
   Building2,
   Clock,
@@ -31,9 +33,7 @@ const FAQ_ICONS: Record<string, LucideIcon> = {
   Wallet,
 };
 
-export function faqIcon(name: string): LucideIcon {
-  return FAQ_ICONS[name] ?? HelpCircle;
-}
+export const FAQ_ICON_FALLBACK = HelpCircle;
 
 export function useFaqItems(): FaqItem[] {
   const t = useTranslations("faq");
