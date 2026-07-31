@@ -1,40 +1,26 @@
 "use client";
 
-import { useState, useRef, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   X,
-  Send,
-  Mic,
-  MicOff,
   Sparkles,
-  Bot,
-  User,
   Calendar,
   ArrowRight,
+  ArrowLeft,
   Volume2,
   VolumeX,
   Zap,
 } from "lucide-react";
-import { useTranslations, useLocale } from "next-intl";
-
-// Helper function to get speech recognition language code
-function getSpeechRecognitionLang(locale: string): string {
-  return locale === "pl" ? "pl-PL" : "en-US";
-}
-
-// Types
-interface Message {
-  id: string;
-  role: "user" | "assistant";
-  content: string;
-  timestamp: Date;
-}
-
-interface QuickAction {
-  label: string;
-  action: string;
-}
+import { useTranslations } from "next-intl";
+import {
+  useFaqItems,
+  getRelated,
+  FAQ_ICONS,
+  FAQ_ICON_FALLBACK,
+  type FaqItem,
+} from "@/lib/faq";
+import { BOOK_CONSULTATION_EVENT } from "@/lib/constants";
 
 // ============================================
 // SOUND ENGINE - Web Audio API
@@ -53,29 +39,6 @@ class SoundEngine {
 
   setEnabled(enabled: boolean) {
     this.enabled = enabled;
-  }
-
-  // Subtle "pop" sound for sending message
-  playSend() {
-    if (!this.enabled) return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(ctx.destination);
-
-    oscillator.frequency.setValueAtTime(880, ctx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.05);
-    oscillator.type = "sine";
-
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-
-    oscillator.start(ctx.currentTime);
-    oscillator.stop(ctx.currentTime + 0.1);
   }
 
   // Gentle "ding" for receiving message
@@ -146,52 +109,6 @@ class SoundEngine {
     oscillator.stop(ctx.currentTime + 0.03);
   }
 
-  // Voice start beep
-  playVoiceStart() {
-    if (!this.enabled) return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(ctx.destination);
-
-    oscillator.frequency.setValueAtTime(440, ctx.currentTime);
-    oscillator.frequency.setValueAtTime(880, ctx.currentTime + 0.08);
-    oscillator.type = "sine";
-
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-
-    oscillator.start(ctx.currentTime);
-    oscillator.stop(ctx.currentTime + 0.15);
-  }
-
-  // Voice end beep
-  playVoiceEnd() {
-    if (!this.enabled) return;
-    const ctx = this.getContext();
-    if (!ctx) return;
-
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
-
-    oscillator.connect(gainNode);
-    gainNode.connect(ctx.destination);
-
-    oscillator.frequency.setValueAtTime(880, ctx.currentTime);
-    oscillator.frequency.setValueAtTime(440, ctx.currentTime + 0.08);
-    oscillator.type = "sine";
-
-    gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-
-    oscillator.start(ctx.currentTime);
-    oscillator.stop(ctx.currentTime + 0.15);
-  }
-
   // Notification sound
   playNotification() {
     if (!this.enabled) return;
@@ -221,317 +138,6 @@ class SoundEngine {
 
 // Global sound engine instance
 const soundEngine = typeof window !== "undefined" ? new SoundEngine() : null;
-
-// Enhanced knowledge base with comprehensive responses
-const getAIResponse = (input: string): { response: string; quickActions?: QuickAction[] } => {
-  const lowerInput = input.toLowerCase();
-
-  // Greetings
-  if (lowerInput.match(/cze[sś][cć]|hej|dzie[nń] dobry|witaj|siema|hello|hi\b/)) {
-    return {
-      response: "Witaj! 👋 Jestem AI asystentem CatMan Consulting.\n\nMogę pomóc Ci poznać nasze usługi, odpowiedzieć na pytania lub umówić bezpłatną konsultację.\n\nW czym mogę Ci dziś pomóc?",
-      quickActions: [
-        { label: "🔍 Poznaj usługi", action: "Jakie usługi oferujecie?" },
-        { label: "📅 Umów konsultację", action: "Chcę umówić konsultację" },
-        { label: "🎯 Executive Coaching", action: "Opowiedz o executive coaching" },
-      ],
-    };
-  }
-
-  // Services overview
-  if (lowerInput.match(/czym|zajmuj|us[łl]ug|ofert|co robi/)) {
-    return {
-      response: "Specjalizujemy się w transformacji organizacji i rozwoju liderów. Nasze główne obszary to:\n\n🔍 **Diagnoza organizacji** - kompleksowa analiza kultury i procesów\n\n🎯 **Executive Coaching** - indywidualny rozwój kadry zarządzającej (ICF PCC/MCC)\n\n👥 **Team Coaching** - budowanie wysokowydajnych zespołów\n\n✨ **Change Management** - wsparcie w transformacji\n\n🎓 **Warsztaty i szkolenia** - praktyczny rozwój kompetencji\n\nKtóry obszar Cię najbardziej interesuje?",
-      quickActions: [
-        { label: "Executive Coaching", action: "Opowiedz więcej o executive coaching" },
-        { label: "Diagnoza", action: "Na czym polega diagnoza organizacji?" },
-        { label: "Team Coaching", action: "Jak wygląda team coaching?" },
-      ],
-    };
-  }
-
-  // Executive Coaching
-  if (lowerInput.match(/executive|coaching.*lider|coaching.*kadra|coaching.*zarz[aą]d/)) {
-    return {
-      response: "Executive Coaching to nasz flagowy program dla kadry zarządzającej.\n\n**Co obejmuje:**\n• Sesje 1:1 z certyfikowanym coachem ICF PCC/MCC\n• Diagnozę stylu przywódczego (Hogan, DISC, EQ-i 2.0)\n• Feedback 360° od zespołu\n• Indywidualny plan rozwoju\n• Wsparcie między sesjami\n\n**Czas trwania:** 6-12 miesięcy\n**Efekty:** Średni wzrost efektywności lidera o **+40%**\n\nCzy chciałbyś poznać szczegóły lub umówić rozmowę?",
-      quickActions: [
-        { label: "📅 Umów rozmowę", action: "Chcę porozmawiać z konsultantem" },
-        { label: "💰 Ile to kosztuje?", action: "Jaki jest koszt executive coachingu?" },
-        { label: "📊 Case studies", action: "Pokaż przykłady sukcesów" },
-      ],
-    };
-  }
-
-  // Diagnosis
-  if (lowerInput.match(/diagnoz/)) {
-    return {
-      response: "Diagnoza organizacji to punkt wyjścia do świadomej transformacji.\n\n**W ciągu 2-4 tygodni przeprowadzamy:**\n• Wywiady z kluczowymi interesariuszami\n• Ankiety kulturowe i klimatyczne\n• Analizę procesów decyzyjnych\n• Mapowanie kompetencji\n• Identyfikację ukrytych barier\n\n**Efekt:** Raport z konkretnymi rekomendacjami strategicznymi.\n\nCzy Twoja organizacja stoi przed konkretnymi wyzwaniami?",
-      quickActions: [
-        { label: "Mamy wyzwania", action: "Tak, mamy kilka wyzwań w firmie" },
-        { label: "Ile trwa proces?", action: "Jak długo trwa cały proces?" },
-        { label: "📅 Umów konsultację", action: "Chcę umówić bezpłatną konsultację" },
-      ],
-    };
-  }
-
-  // Team coaching
-  if (lowerInput.match(/team|zespo[łl]/)) {
-    return {
-      response: "Team Coaching przekształca grupy ludzi w zintegrowane, wysokowydajne zespoły.\n\n**Pracujemy nad:**\n• Budowaniem zaufania i psychologicznego bezpieczeństwa\n• Komunikacją i rozwiązywaniem konfliktów\n• Wspólną wizją i celami\n• Kulturą feedbacku\n• Efektywnością współpracy\n\n**Format:** warsztaty + coaching zespołowy\n**Czas:** 3-6 miesięcy\n\nCzy Twój zespół mierzy się z konkretnymi wyzwaniami?",
-      quickActions: [
-        { label: "Konflikty w zespole", action: "Mamy konflikty w zespole" },
-        { label: "Nowy zespół", action: "Budujemy nowy zespół" },
-        { label: "📅 Umów warsztat", action: "Chcę umówić warsztat próbny" },
-      ],
-    };
-  }
-
-  // Change/Transformation
-  if (lowerInput.match(/zmian|transformacj|restrukturyzacj|fuzj|przej[eę]ci/)) {
-    return {
-      response: "Transformacja organizacji to maraton, nie sprint.\n\n**Nasze podejście Change Management:**\n\n**Faza 1: Diagnoza** - mapujemy sytuację i gotowość\n**Faza 2: Strategia** - definiujemy wizję i plan zmian\n**Faza 3: Wdrożenie** - krok po kroku z pomiarem postępów\n**Faza 4: Utrwalenie** - embedding nowych nawyków\n\nWspieramy organizacje w M&A, restrukturyzacjach, transformacjach cyfrowych i kulturowych.\n\nPrzed jakim wyzwaniem stoi Twoja organizacja?",
-      quickActions: [
-        { label: "Fuzja/przejęcie", action: "Planujemy fuzję z inną firmą" },
-        { label: "Zmiana kultury", action: "Chcemy zmienić kulturę organizacyjną" },
-        { label: "📞 Porozmawiajmy", action: "Chcę omówić naszą sytuację" },
-      ],
-    };
-  }
-
-  // Pricing
-  if (lowerInput.match(/cen|koszt|ile|bud[żz]et|wycen/)) {
-    return {
-      response: "Każdy projekt wyceniamy indywidualnie - zależy od skali, zakresu i czasu trwania.\n\n**Orientacyjne widełki:**\n• Executive Coaching: od 2,500 PLN/miesiąc\n• Team Coaching: od 8,000 PLN/warsztat\n• Diagnoza organizacji: od 15,000 PLN\n• Programy transformacyjne: wycena projektowa\n\n**Pierwsza konsultacja jest bezpłatna** i niezobowiązująca - porozmawiamy o Twoich potrzebach.\n\nCzy chcesz umówić rozmowę?",
-      quickActions: [
-        { label: "✅ Tak, umówmy się", action: "Chcę umówić bezpłatną konsultację" },
-        { label: "Mam więcej pytań", action: "Mam jeszcze kilka pytań" },
-      ],
-    };
-  }
-
-  // Booking/Contact
-  if (lowerInput.match(/um[oó]w|rozmo|spotka|termin|konsultac|kontakt|porozmaw/)) {
-    return {
-      response: "Świetnie! 🎯\n\n**Bezpłatna konsultacja to 30-minutowa rozmowa, podczas której:**\n✓ Poznamy Twoje wyzwania\n✓ Zaproponujemy wstępne kierunki działań\n✓ Odpowiemy na wszystkie pytania\n\nŻeby umówić termin, kliknij przycisk poniżej lub zostaw kontakt.\n\n📅 **Najbliższe wolne terminy:** jutro 10:00, 14:00 lub pojutrze 9:00.",
-      quickActions: [
-        { label: "📅 Umów termin", action: "BOOK_MEETING" },
-        { label: "📞 Zadzwońcie", action: "Proszę o kontakt telefoniczny" },
-      ],
-    };
-  }
-
-  // Case studies / Results
-  if (lowerInput.match(/przyk[łl]ad|case|sukces|klient|efekt|rezultat/)) {
-    return {
-      response: "Oto przykłady naszych realizacji:\n\n🏢 **Firma technologiczna (500 os.)**\nProgram rozwoju 40 liderów\n→ +35% engagement, -50% rotacji w zarządzie\n\n🏦 **Bank regionalny**\nTransformacja kulturowa po fuzji\n→ 18 miesięcy, 2000 pracowników zintegrowanych\n\n🏭 **Producent FMCG**\nExecutive coaching dla CEO i zarządu\n→ Firma podwoiła przychody w 3 lata\n\nWszystkie case studies dostępne szczegółowo na życzenie.",
-      quickActions: [
-        { label: "Opowiedz więcej", action: "Opowiedz więcej o transformacji w banku" },
-        { label: "Mamy podobne wyzwanie", action: "Mamy podobną sytuację" },
-        { label: "📅 Umów rozmowę", action: "Chcę umówić konsultację" },
-      ],
-    };
-  }
-
-  // Process / How it works
-  if (lowerInput.match(/jak.*wygl[aą]da|proces|etap|faz|wsp[oó][łl]prac|d[łl]ug/)) {
-    return {
-      response: "Typowa współpraca przebiega w 4 fazach:\n\n**1. DIAGNOZA** (2-4 tyg.)\nWywiady, analiza, raport sytuacyjny\n\n**2. STRATEGIA** (2-3 tyg.)\nPlan działań, cele, KPIs\n\n**3. WDROŻENIE** (3-12 mies.)\nSzkolenia, coaching, wsparcie\n\n**4. UTRWALENIE** (ongoing)\nMonitoring, adjustment, embedding\n\nTowarzyszymy do momentu, gdy zmiana staje się nową normą.\n\n95% klientów poleca nasze usługi.",
-      quickActions: [
-        { label: "Jakie są efekty?", action: "Jakie efekty osiągacie?" },
-        { label: "Dla jakich firm?", action: "Z jakimi firmami pracujecie?" },
-        { label: "📅 Umów rozmowę", action: "Chcę umówić konsultację" },
-      ],
-    };
-  }
-
-  // Target clients
-  if (lowerInput.match(/dla kogo|jak.*firm|wielko[sś][cć]|bran[żz]/)) {
-    return {
-      response: "Pracujemy głównie z:\n\n• **Firmami 50-500+ pracowników**\n• **Zarządami i kadrą menedżerską**\n• **Działami HR i People & Culture**\n\nNajlepsze efekty osiągamy, gdy liderzy są gotowi na szczerą rozmowę o wyzwaniach organizacji.\n\nNasi klienci to firmy z różnych branż - od tech, przez produkcję, po usługi finansowe.",
-      quickActions: [
-        { label: "Jak wygląda współpraca?", action: "Jak wygląda typowa współpraca?" },
-        { label: "Case studies", action: "Pokaż przykłady sukcesów" },
-        { label: "📅 Umów rozmowę", action: "Chcę umówić konsultację" },
-      ],
-    };
-  }
-
-  // Team / About
-  if (lowerInput.match(/zesp[oó][łl].*catman|kto.*jeste|partner|za[łl]o[żz]yciel/)) {
-    return {
-      response: "CatMan Consulting to butikowa firma doradcza:\n\n**Tomek** - Partner Zarządzający\n35 lat doświadczenia w zarządzaniu, ekspert transformacji organizacyjnych\n\n**Mariusz** - Partner\nPsycholog organizacji, specjalista kultury organizacyjnej i rozwoju liderów\n\nŁączymy twarde doświadczenie biznesowe z psychologicznym podejściem do zmiany.",
-      quickActions: [
-        { label: "Czym się zajmujecie?", action: "Jakie usługi oferujecie?" },
-        { label: "📅 Umów rozmowę", action: "Chcę umówić konsultację" },
-      ],
-    };
-  }
-
-  // Default fallback
-  return {
-    response: "Dziękuję za wiadomość! 🙏\n\nChętnie pomogę Ci poznać nasze usługi lub odpowiem na pytania.\n\n**Możesz zapytać o:**\n• Nasze usługi i podejście\n• Executive coaching i rozwój liderów\n• Transformację organizacji\n• Przykłady realizacji\n• Umówienie bezpłatnej konsultacji\n\nO czym chciałbyś porozmawiać?",
-    quickActions: [
-      { label: "🔍 Poznaj usługi", action: "Jakie usługi oferujecie?" },
-      { label: "📅 Umów konsultację", action: "Chcę umówić konsultację" },
-    ],
-  };
-};
-
-// Neural Network Thinking Animation - GOD TIER
-function NeuralThinking() {
-  const nodes = 8;
-  const connections = 12;
-
-  return (
-    <div className="flex items-center gap-4 p-4">
-      <div className="relative w-12 h-12">
-        {/* Neural network nodes */}
-        {[...Array(nodes)].map((_, i) => {
-          const angle = (i / nodes) * Math.PI * 2;
-          const radius = 18;
-          const x = Math.cos(angle) * radius + 24;
-          const y = Math.sin(angle) * radius + 24;
-
-          return (
-            <motion.div
-              key={`node-${i}`}
-              className="absolute w-2 h-2 rounded-full"
-              style={{
-                left: x - 4,
-                top: y - 4,
-                background: "linear-gradient(135deg, #b8860b, #d4a84b)",
-                boxShadow: "0 0 10px rgba(184, 134, 11, 0.5)",
-              }}
-              animate={{
-                scale: [1, 1.5, 1],
-                opacity: [0.5, 1, 0.5],
-              }}
-              transition={{
-                duration: 1.2,
-                repeat: Infinity,
-                delay: i * 0.1,
-              }}
-            />
-          );
-        })}
-
-        {/* Central core with pulse */}
-        <motion.div
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
-          style={{
-            background: "radial-gradient(circle, #d4a84b 0%, #b8860b 100%)",
-            boxShadow: "0 0 20px rgba(184, 134, 11, 0.8)",
-          }}
-          animate={{
-            scale: [1, 1.3, 1],
-            boxShadow: [
-              "0 0 20px rgba(184, 134, 11, 0.8)",
-              "0 0 40px rgba(184, 134, 11, 1)",
-              "0 0 20px rgba(184, 134, 11, 0.8)",
-            ],
-          }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        />
-
-        {/* Orbiting particles */}
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={`orbit-${i}`}
-            className="absolute w-1.5 h-1.5 rounded-full bg-[#b8860b]"
-            style={{
-              left: 22,
-              top: 22,
-            }}
-            animate={{
-              x: [0, Math.cos((i * 2 * Math.PI) / 3) * 20, 0],
-              y: [0, Math.sin((i * 2 * Math.PI) / 3) * 20, 0],
-              opacity: [0.3, 1, 0.3],
-            }}
-            transition={{
-              duration: 2,
-              repeat: Infinity,
-              delay: i * 0.3,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
-
-        {/* Pulse ring */}
-        <motion.div
-          className="absolute inset-0 rounded-full border border-[#b8860b]"
-          animate={{
-            scale: [1, 2],
-            opacity: [0.5, 0],
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-          }}
-        />
-      </div>
-
-      <div className="flex flex-col gap-1.5">
-        <motion.span
-          className="text-sm font-medium text-white/70"
-          animate={{ opacity: [0.5, 1, 0.5] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-        >
-          Analizuję zapytanie...
-        </motion.span>
-        <div className="flex gap-1">
-          {[...Array(4)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="w-1.5 h-1.5 rounded-full bg-[#b8860b]"
-              animate={{
-                y: [0, -6, 0],
-                opacity: [0.3, 1, 0.3],
-              }}
-              transition={{
-                duration: 0.6,
-                repeat: Infinity,
-                delay: i * 0.1,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// Voice Waveform Visualization
-function VoiceWaveform({ isActive }: { isActive: boolean }) {
-  const bars = 16;
-
-  return (
-    <div className="flex items-center justify-center gap-[3px] h-10">
-      {[...Array(bars)].map((_, i) => (
-        <motion.div
-          key={i}
-          className="w-1 rounded-full"
-          style={{
-            background: isActive
-              ? "linear-gradient(180deg, #d4a84b 0%, #b8860b 100%)"
-              : "rgba(255,255,255,0.2)",
-          }}
-          animate={
-            isActive
-              ? {
-                  height: [6, 24 + Math.sin(i * 0.5) * 12, 6],
-                }
-              : { height: 6 }
-          }
-          transition={{
-            duration: 0.4 + Math.random() * 0.2,
-            repeat: isActive ? Infinity : 0,
-            delay: i * 0.03,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
 
 // Aurora Floating Orb - The main button
 function AuroraOrb({
@@ -662,304 +268,110 @@ function AuroraOrb({
   );
 }
 
-// Message Bubble
-function MessageBubble({ message }: { message: Message }) {
-  const isUser = message.role === "user";
+// Single question row - used both in the list and under an answer
+function QuestionRow({
+  item,
+  onSelect,
+}: {
+  item: FaqItem;
+  onSelect: (id: string) => void;
+}) {
+  const Icon = FAQ_ICONS[item.icon] ?? FAQ_ICON_FALLBACK;
 
   return (
-    <motion.div
-      className={`flex gap-3 ${isUser ? "flex-row-reverse" : ""}`}
-      initial={{ opacity: 0, y: 20, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ duration: 0.3 }}
+    <motion.button
+      className="w-full flex items-center gap-3 p-3 rounded-xl text-left bg-white/[0.03] border border-white/[0.06] hover:bg-[#b8860b]/10 hover:border-[#b8860b]/30 transition-colors"
+      onClick={() => {
+        soundEngine?.playClick();
+        onSelect(item.id);
+      }}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
     >
-      {/* Avatar */}
-      <div
-        className={`shrink-0 w-9 h-9 rounded-xl flex items-center justify-center ${
-          isUser
-            ? "bg-gradient-to-br from-[#6366f1]/30 to-[#6366f1]/10 border border-[#6366f1]/30"
-            : "bg-gradient-to-br from-[#b8860b] to-[#8b6914]"
-        }`}
-        style={{
-          boxShadow: isUser ? "none" : "0 4px 15px rgba(184, 134, 11, 0.3)",
-        }}
-      >
-        {isUser ? (
-          <User className="w-4 h-4 text-[#6366f1]" />
-        ) : (
-          <Bot className="w-4 h-4 text-white" />
-        )}
-      </div>
-
-      {/* Message */}
-      <div
-        className={`max-w-[80%] px-4 py-3 rounded-2xl ${
-          isUser
-            ? "bg-gradient-to-br from-[#6366f1] to-[#4f46e5] text-white rounded-tr-sm"
-            : "bg-white/[0.05] backdrop-blur-sm text-white/90 rounded-tl-sm border border-white/10"
-        }`}
-        style={{
-          boxShadow: isUser
-            ? "0 4px 20px rgba(99, 102, 241, 0.3)"
-            : "0 4px 20px rgba(0,0,0,0.2)",
-        }}
-      >
-        <p className="text-sm whitespace-pre-wrap leading-relaxed">
-          {message.content}
-        </p>
-        <p
-          className={`text-[10px] mt-2 ${
-            isUser ? "text-white/50" : "text-white/30"
-          }`}
-        >
-          {message.timestamp.toLocaleTimeString("pl-PL", {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}
-        </p>
-      </div>
-    </motion.div>
+      <span className="shrink-0 w-9 h-9 rounded-lg bg-[#b8860b]/15 flex items-center justify-center">
+        <Icon className="w-4 h-4 text-[#d4a84b]" />
+      </span>
+      <span className="text-sm text-white/80 leading-snug">{item.question}</span>
+    </motion.button>
   );
 }
 
-// Quick Action Buttons
-function QuickActions({
-  actions,
-  onSelect,
-}: {
-  actions: QuickAction[];
-  onSelect: (action: string) => void;
-}) {
-  const handleClick = (action: string) => {
-    soundEngine?.playClick();
-    onSelect(action);
-  };
-
+// Booking CTA - hands off to the contact form via a window event
+function BookCta({ label, onBook }: { label: string; onBook: () => void }) {
   return (
-    <motion.div
-      className="flex flex-wrap gap-2 mt-3 ml-12"
-      initial={{ opacity: 0, y: 10 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.2 }}
+    <button
+      type="button"
+      onClick={onBook}
+      className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-transform hover:scale-[1.02]"
+      style={{
+        background: "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)",
+        color: "#0a0a0f",
+        boxShadow: "0 8px 30px rgba(184, 134, 11, 0.4)",
+      }}
     >
-      {actions.map((action, i) => (
-        <motion.button
-          key={action.label}
-          className="px-3 py-2 text-xs font-medium rounded-xl bg-white/[0.03] text-white/70 border border-white/10 hover:bg-[#b8860b]/20 hover:border-[#b8860b]/40 hover:text-[#d4a84b] transition-all duration-200"
-          onClick={() => handleClick(action.action)}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3 + i * 0.1 }}
-          whileHover={{ scale: 1.02, y: -1 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          {action.label}
-        </motion.button>
-      ))}
-    </motion.div>
+      <Calendar className="w-4 h-4" />
+      {label}
+      <ArrowRight className="w-4 h-4" />
+    </button>
   );
 }
 
 // Main AIConcierge Component
 export function AIConcierge() {
   const t = useTranslations("aiConcierge");
-  const locale = useLocale();
+  const items = useFaqItems();
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [inputValue, setInputValue] = useState("");
-  const [isThinking, setIsThinking] = useState(false);
-  const [isListening, setIsListening] = useState(false);
+  const [activeId, setActiveId] = useState<string | null>(null);
   const [hasNotification, setHasNotification] = useState(false);
-  const [quickActions, setQuickActions] = useState<QuickAction[]>([]);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [voiceSupported, setVoiceSupported] = useState(false);
-  const [interimTranscript, setInterimTranscript] = useState("");
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
-  const recognitionRef = useRef<any>(null);
-
-  // Check for voice support and setup recognition
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        setVoiceSupported(true);
-        const recognition = new SpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = true;
-        recognition.lang = getSpeechRecognitionLang(locale);
-
-        recognition.onresult = (event: any) => {
-          let interim = "";
-          let final = "";
-
-          for (let i = event.resultIndex; i < event.results.length; i++) {
-            const transcript = event.results[i][0].transcript;
-            if (event.results[i].isFinal) {
-              final += transcript;
-            } else {
-              interim += transcript;
-            }
-          }
-
-          if (final) {
-            setInputValue(final);
-            setInterimTranscript("");
-          } else {
-            setInterimTranscript(interim);
-          }
-        };
-
-        recognition.onend = () => {
-          setIsListening(false);
-          soundEngine?.playVoiceEnd();
-        };
-
-        recognition.onerror = (event: any) => {
-          console.log("Speech recognition error:", event.error);
-          setIsListening(false);
-          setInterimTranscript("");
-        };
-
-        recognitionRef.current = recognition;
-      }
-    }
-  }, []);
-
-  // Update speech recognition language when locale changes
-  useEffect(() => {
-    if (recognitionRef.current) {
-      recognitionRef.current.lang = getSpeechRecognitionLang(locale);
-    }
-  }, [locale]);
+  const activeItem = activeId
+    ? items.find((item) => item.id === activeId) ?? null
+    : null;
+  const related = activeId ? getRelated(items, activeId) : [];
 
   // Sync sound enabled state
   useEffect(() => {
     soundEngine?.setEnabled(soundEnabled);
   }, [soundEnabled]);
 
-  // Auto-scroll to bottom
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isThinking]);
-
-  // Focus input when opened
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 300);
-      setHasNotification(false);
-    }
-  }, [isOpen]);
-
   // Show notification after delay if not opened
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (!isOpen && messages.length === 0) {
+      if (!isOpen && activeId === null) {
         setHasNotification(true);
         soundEngine?.playNotification();
       }
     }, 8000);
     return () => clearTimeout(timer);
-  }, [isOpen, messages.length]);
+  }, [isOpen, activeId]);
 
-  // Send message
-  const sendMessage = useCallback(async (content: string) => {
-    if (!content.trim()) return;
-
-    // Handle booking action
-    if (content === "BOOK_MEETING") {
-      soundEngine?.playClick();
-      const contactSection = document.getElementById("kontakt");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth" });
-      }
-      setIsOpen(false);
-      return;
-    }
-
-    // Play send sound
-    soundEngine?.playSend();
-
-    // Add user message
-    const userMessage: Message = {
-      id: `user-${Date.now()}`,
-      role: "user",
-      content: content.trim(),
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, userMessage]);
-    setInputValue("");
-    setQuickActions([]);
-
-    // Simulate thinking
-    setIsThinking(true);
-    await new Promise((resolve) =>
-      setTimeout(resolve, 1000 + Math.random() * 1000)
-    );
-    setIsThinking(false);
-
-    // Get AI response
-    const { response, quickActions: newQuickActions } = getAIResponse(content);
-
-    // Play receive sound
-    soundEngine?.playReceive();
-
-    const assistantMessage: Message = {
-      id: `assistant-${Date.now()}`,
-      role: "assistant",
-      content: response,
-      timestamp: new Date(),
-    };
-    setMessages((prev) => [...prev, assistantMessage]);
-
-    if (newQuickActions) {
-      setQuickActions(newQuickActions);
-    }
-  }, []);
-
-  // Handle opening with greeting
   const handleOpen = useCallback(() => {
     soundEngine?.playOpen();
     setIsOpen(true);
-    if (messages.length === 0) {
-      setTimeout(() => {
-        const greeting: Message = {
-          id: "greeting",
-          role: "assistant",
-          content: t("greeting"),
-          timestamp: new Date(),
-        };
-        setMessages([greeting]);
-        soundEngine?.playReceive();
-        setQuickActions([
-          { label: t("quickActions.services"), action: locale === "pl" ? "Jakie usługi oferujecie?" : "What services do you offer?" },
-          { label: t("quickActions.booking"), action: locale === "pl" ? "Chcę umówić konsultację" : "I want to book a consultation" },
-          { label: t("quickActions.coaching"), action: locale === "pl" ? "Opowiedz o executive coaching" : "Tell me about executive coaching" },
-        ]);
-      }, 400);
-    }
-  }, [messages.length, t, locale]);
+    setHasNotification(false);
+  }, []);
 
-  // Real voice input with Web Speech API
-  const toggleVoice = useCallback(() => {
-    if (!recognitionRef.current) return;
+  const handleSelect = useCallback((id: string) => {
+    setActiveId(id);
+    soundEngine?.playReceive();
+  }, []);
 
-    if (isListening) {
-      recognitionRef.current.stop();
-      setIsListening(false);
-      setInterimTranscript("");
-    } else {
-      try {
-        setInterimTranscript("");
-        recognitionRef.current.start();
-        setIsListening(true);
-        soundEngine?.playVoiceStart();
-      } catch (e) {
-        console.log("Speech recognition error:", e);
-      }
-    }
-  }, [isListening]);
+  const handleBack = useCallback(() => {
+    soundEngine?.playClick();
+    setActiveId(null);
+  }, []);
+
+  // Close first, then ask the contact form to open - otherwise the panel exit
+  // animation fights the scroll.
+  const handleBook = useCallback(() => {
+    soundEngine?.playClick();
+    setIsOpen(false);
+    window.dispatchEvent(new CustomEvent(BOOK_CONSULTATION_EVENT));
+  }, []);
 
   return (
     <>
@@ -972,7 +384,7 @@ export function AIConcierge() {
         </AnimatePresence>
       </div>
 
-      {/* Chat Window */}
+      {/* Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -1042,12 +454,7 @@ export function AIConcierge() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white flex items-center gap-2">
-                      AI Concierge
-                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-[#b8860b]/20 text-[#d4a84b]">
-                        Pro
-                      </span>
-                    </h3>
+                    <h3 className="font-semibold text-white">{t("title")}</h3>
                     <p className="text-xs text-white/40 flex items-center gap-1.5">
                       <Zap className="w-3 h-3 text-emerald-400" />
                       {t("subtitle")}
@@ -1066,7 +473,6 @@ export function AIConcierge() {
                       }
                     }}
                     className="p-2.5 rounded-xl hover:bg-white/5 transition-colors"
-                    title={soundEnabled ? (locale === "pl" ? "Wycisz dźwięki" : "Mute sounds") : (locale === "pl" ? "Włącz dźwięki" : "Enable sounds")}
                   >
                     {soundEnabled ? (
                       <Volume2 className="w-4 h-4 text-white/40" />
@@ -1079,6 +485,7 @@ export function AIConcierge() {
                       soundEngine?.playClick();
                       setIsOpen(false);
                     }}
+                    aria-label={t("closeButton")}
                     className="p-2.5 rounded-xl hover:bg-white/5 transition-colors"
                   >
                     <X className="w-5 h-5 text-white/40" />
@@ -1087,166 +494,79 @@ export function AIConcierge() {
               </div>
             </div>
 
-            {/* Messages Area */}
-            <div className="flex-1 min-h-0 sm:flex-none sm:h-[420px] overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-              {messages.map((message) => (
-                <MessageBubble key={message.id} message={message} />
-              ))}
-
-              {/* Quick actions */}
-              {quickActions.length > 0 &&
-                messages.length > 0 &&
-                messages[messages.length - 1].role === "assistant" &&
-                !isThinking && (
-                  <QuickActions
-                    actions={quickActions}
-                    onSelect={(action) => sendMessage(action)}
-                  />
-                )}
-
-              {/* Booking button when relevant */}
-              {messages.length > 0 &&
-                (messages[messages.length - 1].content.includes("Najbliższe wolne terminy") ||
-                 messages[messages.length - 1].content.includes("available slots")) &&
-                !isThinking && (
+            {/* Content: question list or a single answer */}
+            <div
+              data-lenis-prevent
+              className="flex-1 min-h-0 sm:flex-none sm:h-[420px] overflow-y-auto overscroll-contain p-4 space-y-3 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
+            >
+              <AnimatePresence mode="wait">
+                {activeItem ? (
                   <motion.div
-                    className="ml-12 mt-3"
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
+                    key="answer"
+                    className="space-y-4"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <a
-                      href="#kontakt"
-                      onClick={() => setIsOpen(false)}
-                      className="inline-flex items-center gap-2 px-5 py-3 rounded-xl font-medium text-sm transition-all hover:scale-[1.02]"
-                      style={{
-                        background:
-                          "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)",
-                        color: "#0a0a0f",
-                        boxShadow: "0 8px 30px rgba(184, 134, 11, 0.4)",
-                      }}
+                    <button
+                      type="button"
+                      onClick={handleBack}
+                      className="inline-flex items-center gap-1.5 text-xs text-white/40 hover:text-white/70 transition-colors"
                     >
-                      <Calendar className="w-4 h-4" />
-                      {locale === "pl" ? "Wybierz termin konsultacji" : "Book Your Consultation"}
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </motion.div>
-                )}
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      {t("back")}
+                    </button>
 
-              {/* Neural thinking animation */}
-              {isThinking && <NeuralThinking />}
+                    <h4 className="text-base font-semibold text-white leading-snug">
+                      {activeItem.question}
+                    </h4>
 
-              <div ref={messagesEndRef} />
-            </div>
+                    <p className="text-sm text-white/70 leading-relaxed whitespace-pre-wrap">
+                      {activeItem.answer}
+                    </p>
 
-            {/* Input Area */}
-            <div className="shrink-0 p-4 border-t border-white/[0.06] bg-white/[0.02]">
-              {/* Voice waveform when listening */}
-              <AnimatePresence>
-                {isListening && (
-                  <motion.div
-                    className="mb-3 p-4 rounded-xl"
-                    style={{
-                      background:
-                        "linear-gradient(135deg, rgba(184, 134, 11, 0.1) 0%, rgba(10, 10, 15, 0.9) 100%)",
-                      border: "1px solid rgba(184, 134, 11, 0.3)",
-                    }}
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                  >
-                    <VoiceWaveform isActive={isListening} />
-                    {interimTranscript ? (
-                      <p className="text-sm text-center text-white/80 mt-2 font-medium">
-                        &ldquo;{interimTranscript}&rdquo;
-                      </p>
-                    ) : (
-                      <motion.p
-                        className="text-xs text-center text-[#d4a84b] mt-2 font-medium"
-                        animate={{ opacity: [0.5, 1, 0.5] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        {t("listening")}
-                      </motion.p>
+                    {related.length > 0 && (
+                      <div className="space-y-2 pt-2">
+                        <p className="text-[11px] uppercase tracking-wider text-white/30">
+                          {t("related")}
+                        </p>
+                        {related.map((item) => (
+                          <QuestionRow
+                            key={item.id}
+                            item={item}
+                            onSelect={handleSelect}
+                          />
+                        ))}
+                      </div>
                     )}
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="list"
+                    className="space-y-2"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <p className="text-sm text-white/50 pb-1">{t("greeting")}</p>
+                    {items.map((item) => (
+                      <QuestionRow
+                        key={item.id}
+                        item={item}
+                        onSelect={handleSelect}
+                      />
+                    ))}
                   </motion.div>
                 )}
               </AnimatePresence>
+            </div>
 
-              <div className="flex items-center gap-2">
-                {/* Voice button - only show if supported */}
-                {voiceSupported && (
-                  <motion.button
-                    className={`shrink-0 p-3 rounded-xl transition-all ${
-                      isListening
-                        ? "bg-[#b8860b] text-white shadow-lg"
-                        : "bg-white/[0.03] text-white/40 hover:bg-white/[0.06] hover:text-white/60"
-                    }`}
-                    style={{
-                      boxShadow: isListening
-                        ? "0 0 30px rgba(184, 134, 11, 0.5)"
-                        : "none",
-                    }}
-                    onClick={toggleVoice}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    title={locale === "pl" ? "Naciśnij aby mówić" : "Press to speak"}
-                  >
-                    {isListening ? (
-                      <MicOff className="w-5 h-5" />
-                    ) : (
-                      <Mic className="w-5 h-5" />
-                    )}
-                  </motion.button>
-                )}
-
-                {/* Text input */}
-                <div className="flex-1 relative">
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" && !e.shiftKey) {
-                        e.preventDefault();
-                        sendMessage(inputValue);
-                      }
-                    }}
-                    placeholder={t("placeholder")}
-                    className="w-full px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white placeholder-white/30 focus:outline-none focus:border-[#b8860b]/40 focus:bg-white/[0.05] transition-all text-sm"
-                    disabled={isListening}
-                  />
-                </div>
-
-                {/* Send button */}
-                <motion.button
-                  className="shrink-0 p-3 rounded-xl disabled:opacity-30 disabled:cursor-not-allowed"
-                  style={{
-                    background:
-                      inputValue.trim() && !isThinking
-                        ? "linear-gradient(135deg, #b8860b 0%, #d4a84b 100%)"
-                        : "rgba(255,255,255,0.03)",
-                    color: inputValue.trim() && !isThinking ? "#0a0a0f" : "rgba(255,255,255,0.3)",
-                    boxShadow:
-                      inputValue.trim() && !isThinking
-                        ? "0 4px 20px rgba(184, 134, 11, 0.4)"
-                        : "none",
-                  }}
-                  onClick={() => sendMessage(inputValue)}
-                  disabled={!inputValue.trim() || isThinking}
-                  whileHover={inputValue.trim() ? { scale: 1.05 } : {}}
-                  whileTap={inputValue.trim() ? { scale: 0.95 } : {}}
-                >
-                  <Send className="w-5 h-5" />
-                </motion.button>
-              </div>
-
-              {/* Powered by */}
-              <div className="flex items-center justify-center gap-1.5 mt-3 text-[10px] text-white/20">
-                <Sparkles className="w-3 h-3" />
-                <span>{t("poweredBy")} • CatMan Consulting</span>
-              </div>
+            {/* Footer CTA */}
+            <div className="shrink-0 p-4 border-t border-white/[0.06] bg-white/[0.02] space-y-2">
+              <p className="text-center text-xs text-white/40">{t("noAnswer")}</p>
+              <BookCta label={t("bookCta")} onBook={handleBook} />
             </div>
           </motion.div>
         )}

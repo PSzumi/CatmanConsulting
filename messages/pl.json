@@ -744,31 +744,14 @@
     }
   },
   "aiConcierge": {
-    "title": "AI Concierge",
-    "subtitle": "Odpowiadam natychmiast",
-    "welcome": "Witaj! Jestem Twoim wirtualnym asystentem. Jak mogę Ci pomóc?",
-    "placeholder": "Napisz wiadomość...",
-    "listening": "Słucham... mów teraz",
-    "poweredBy": "Powered by AI",
-    "greeting": "Witaj! Jestem AI asystentem CatMan Consulting.\n\nMogę pomóc Ci poznać nasze usługi, odpowiedzieć na pytania lub umówić bezpłatną konsultację.\n\nW czym mogę Ci dziś pomóc?",
-    "quickActions": {
-      "services": "Poznaj usługi",
-      "booking": "Umów konsultację",
-      "coaching": "Executive Coaching"
-    },
-    "suggestions": [
-      "Jakie usługi oferujecie?",
-      "Ile kosztuje współpraca?",
-      "Jak wygląda proces?",
-      "Chcę umówić rozmowę"
-    ],
-    "thinking": "Myślę...",
-    "error": "Przepraszam, wystąpił błąd. Spróbuj ponownie.",
-    "offline": "Asystent jest obecnie niedostępny.",
-    "typing": "Pisze...",
-    "sendButton": "Wyślij",
-    "closeButton": "Zamknij",
-    "minimizeButton": "Minimalizuj"
+    "title": "Szybkie odpowiedzi",
+    "subtitle": "Najczęstsze pytania",
+    "greeting": "Wybierz pytanie — odpowiedź pojawi się od razu.",
+    "related": "Powiązane pytania",
+    "back": "Wróć do pytań",
+    "noAnswer": "Nie ma Twojego pytania?",
+    "bookCta": "Umów bezpłatną konsultację",
+    "closeButton": "Zamknij"
   },
   "common": {
     "loading": "Ładowanie...",

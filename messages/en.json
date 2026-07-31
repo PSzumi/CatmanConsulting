@@ -799,31 +799,14 @@
     }
   },
   "aiConcierge": {
-    "title": "AI Concierge",
-    "subtitle": "Instant responses",
-    "welcome": "Hello! I'm your virtual assistant. How can I help you?",
-    "placeholder": "Write a message...",
-    "listening": "Listening... speak now",
-    "poweredBy": "Powered by AI",
-    "greeting": "Hello! I'm the AI assistant for CatMan Consulting.\n\nI can help you learn about our services, answer questions, or schedule a free consultation.\n\nHow can I help you today?",
-    "quickActions": {
-      "services": "Explore Services",
-      "booking": "Book Consultation",
-      "coaching": "Executive Coaching"
-    },
-    "suggestions": [
-      "What services do you offer?",
-      "How much does it cost?",
-      "What does the process look like?",
-      "I want to schedule a call"
-    ],
-    "thinking": "Thinking...",
-    "error": "Sorry, an error occurred. Please try again.",
-    "offline": "Assistant is currently unavailable.",
-    "typing": "Typing...",
-    "sendButton": "Send",
-    "closeButton": "Close",
-    "minimizeButton": "Minimize"
+    "title": "Quick answers",
+    "subtitle": "Frequently asked questions",
+    "greeting": "Pick a question — the answer shows up right away.",
+    "related": "Related questions",
+    "back": "Back to questions",
+    "noAnswer": "Question not listed?",
+    "bookCta": "Book a free consultation",
+    "closeButton": "Close"
   },
   "common": {
     "loading": "Loading...",
