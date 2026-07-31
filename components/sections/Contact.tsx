@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Send,
   Mail,
@@ -29,7 +29,7 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { contactContent } from "@/lib/constants";
+import { contactContent, BOOK_CONSULTATION_EVENT } from "@/lib/constants";
 import { trackFormSubmission } from "@/components/Analytics";
 import { Konfetti } from "@/components/ui/Konfetti";
 import { useLeadScoring } from "@/lib/useLeadScoring";
@@ -1008,7 +1008,7 @@ function SuccessMessage({ t }: { t: (key: string) => string }) {
 // INFO PANEL (RIGHT SIDE)
 // ============================================================================
 
-function InfoPanel() {
+function InfoPanel({ onBookConsultation }: { onBookConsultation: () => void }) {
   const { trackPhoneClick } = useLeadScoring();
 
   return (
@@ -1040,22 +1040,23 @@ function InfoPanel() {
               <Clock className="w-6 h-6" style={{ color: ACCENT_COLOR }} />
             </div>
             <div>
-              <p className="font-semibold text-white">Bezplatna konsultacja</p>
-              <p className="text-sm text-gray-400">bez zobowiazan</p>
+              <p className="font-semibold text-white">Bezpłatna konsultacja</p>
+              <p className="text-sm text-gray-400">bez zobowiązań</p>
             </div>
           </div>
 
           <div className="mb-6">
             <p className="text-5xl font-bold text-white mb-2">20 min</p>
             <p className="text-gray-400">
-              wystarczy, zeby zrozumiec Twoje wyzwanie i zaproponowac kierunek dzialania
+              wystarczy, żeby zrozumieć Twoje wyzwanie i zaproponować kierunek działania
             </p>
           </div>
 
           <div className="space-y-3">
-            <a
-              href="#kontakt-formularz"
-              className="flex items-center gap-4 p-4 rounded-2xl bg-[#b8860b] hover:bg-[#d4a843] transition-colors"
+            <button
+              type="button"
+              onClick={onBookConsultation}
+              className="w-full flex items-center gap-4 p-4 rounded-2xl bg-[#b8860b] hover:bg-[#d4a843] transition-colors"
             >
               <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
                 <MessageSquare className="w-6 h-6 text-white" />
@@ -1063,10 +1064,10 @@ function InfoPanel() {
               <div className="text-left">
                 <div className="font-bold text-white">Umów konsultację</div>
                 <div className="text-sm text-white/80">
-                  Wypełnij formularz — odezwiemy się
+                  Zostaw kontakt — odzwaniamy w 24h
                 </div>
               </div>
-            </a>
+            </button>
 
             {teamProfiles.map((profile) => (
               <a
@@ -1115,6 +1116,8 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showKonfetti, setShowKonfetti] = useState(false);
+  const [highlightForm, setHighlightForm] = useState(false);
+  const formRef = useRef<HTMLDivElement>(null);
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -1220,6 +1223,29 @@ export function Contact() {
       setCurrentStep((prev) => prev - 1);
     }
   };
+
+  // CTA "Umow konsultacje" - preselekcja domyslnej sciezki i skok do danych
+  // kontaktowych. Settery zamiast handlePathSelect/handleMethodSelect, zeby
+  // handler byl stabilny - inaczej nasluch zdarzenia przepinalby sie co render.
+  const handleBookConsultation = useCallback(() => {
+    if (isSubmitted) return;
+    setSelectedPath("rozmowa");
+    setSelectedMethod("call");
+    setFormData((prev) => ({ ...prev, path: "rozmowa", contactMethod: "call" }));
+    setCurrentStep(3);
+    trackContactFormProgress(3);
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    setHighlightForm(true);
+    setTimeout(() => setHighlightForm(false), 1500);
+  }, [isSubmitted, trackContactFormProgress]);
+
+  // Widget FAQ prosi o otwarcie formularza tym samym przeplywem co przycisk
+  // w panelu informacyjnym.
+  useEffect(() => {
+    window.addEventListener(BOOK_CONSULTATION_EVENT, handleBookConsultation);
+    return () =>
+      window.removeEventListener(BOOK_CONSULTATION_EVENT, handleBookConsultation);
+  }, [handleBookConsultation]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -1388,8 +1414,19 @@ export function Contact() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           {/* Left side - Form */}
-          <div id="kontakt-formularz" className="order-2 lg:order-1 scroll-mt-24">
-            <div className="p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
+          <div
+            ref={formRef}
+            id="kontakt-formularz"
+            className="order-2 lg:order-1 scroll-mt-24"
+          >
+            <div
+              className={cn(
+                "p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-gray-900/50 backdrop-blur-sm border transition-all duration-500",
+                highlightForm
+                  ? "border-[#b8860b] ring-2 ring-[#b8860b]/40"
+                  : "border-gray-800/50"
+              )}
+            >
               <AnimatePresence mode="wait">
                 {isSubmitted ? (
                   <SuccessMessage key="success" t={t} />
@@ -1495,7 +1532,7 @@ export function Contact() {
 
           {/* Right side - Info panel */}
           <div className="order-1 lg:order-2 lg:sticky lg:top-24">
-            <InfoPanel />
+            <InfoPanel onBookConsultation={handleBookConsultation} />
           </div>
         </motion.div>
 
