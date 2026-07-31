@@ -10,11 +10,13 @@ import { BeamEffect } from "@/components/ui/BeamEffect";
 import { ShatteredWord } from "@/components/ui/ShatteredWord";
 import { DynamicGreeting } from "@/components/ui/DynamicGreeting";
 import { useTranslations, useLocale } from "next-intl";
+import { useReducedFx } from "@/lib/useReducedFx";
 
 export function Hero() {
   const containerRef = useRef<HTMLElement>(null);
   const t = useTranslations("hero");
   const locale = useLocale();
+  const reducedFx = useReducedFx();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -48,7 +50,11 @@ export function Hero() {
 
       {/* Content */}
       <motion.div
-        style={{ scale, opacity, y: textY, overflow: "visible" }}
+        style={
+          reducedFx
+            ? { overflow: "visible" }
+            : { scale, opacity, y: textY, overflow: "visible" }
+        }
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28 md:py-32 text-center"
       >
         <div className="space-y-5 sm:space-y-8" style={{ overflow: "visible" }}>

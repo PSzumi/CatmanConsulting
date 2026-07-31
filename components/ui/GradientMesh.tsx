@@ -1,8 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useReducedFx } from "@/lib/useReducedFx";
 
 export function GradientMesh() {
+  const reducedFx = useReducedFx();
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       {/* Animated gradient blobs - Intellectual Warmth palette */}
@@ -13,11 +16,15 @@ export function GradientMesh() {
           background:
             "radial-gradient(circle, rgba(184,134,11,0.25) 0%, rgba(184,134,11,0.08) 40%, transparent 70%)",
         }}
-        animate={{
-          x: [0, 40, 20, 0],
-          y: [0, -20, 20, 0],
-          scale: [1, 1.03, 0.98, 1],
-        }}
+        animate={
+          reducedFx
+            ? undefined
+            : {
+                x: [0, 40, 20, 0],
+                y: [0, -20, 20, 0],
+                scale: [1, 1.03, 0.98, 1],
+              }
+        }
         transition={{
           duration: 40,
           repeat: Infinity,
@@ -32,11 +39,15 @@ export function GradientMesh() {
           background:
             "radial-gradient(circle, rgba(45,90,123,0.25) 0%, rgba(45,90,123,0.08) 40%, transparent 70%)",
         }}
-        animate={{
-          x: [0, -30, 15, 0],
-          y: [0, 30, -15, 0],
-          scale: [1, 0.97, 1.02, 1],
-        }}
+        animate={
+          reducedFx
+            ? undefined
+            : {
+                x: [0, -30, 15, 0],
+                y: [0, 30, -15, 0],
+                scale: [1, 0.97, 1.02, 1],
+              }
+        }
         transition={{
           duration: 50,
           repeat: Infinity,
@@ -44,13 +55,15 @@ export function GradientMesh() {
         }}
       />
 
-      {/* Noise texture overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.02]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
-        }}
-      />
+      {/* Noise texture overlay - skipped on mobile, NoiseOverlay already covers the page */}
+      {!reducedFx && (
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+          }}
+        />
+      )}
 
       {/* Grid overlay */}
       <div

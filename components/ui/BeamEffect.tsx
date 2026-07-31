@@ -2,12 +2,17 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { useReducedFx } from "@/lib/useReducedFx";
 
 interface BeamEffectProps {
   className?: string;
 }
 
 export function BeamEffect({ className }: BeamEffectProps) {
+  const reducedFx = useReducedFx();
+
+  if (reducedFx) return null;
+
   return (
     <div className={cn("absolute inset-0 overflow-hidden pointer-events-none", className)}>
       {/* Single subtle horizontal beam - premium restraint */}

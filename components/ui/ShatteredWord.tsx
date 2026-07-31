@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import { gsap } from "gsap";
+import { useReducedFx } from "@/lib/useReducedFx";
 
 interface ShatteredWordProps {
   word: string;
@@ -59,6 +60,7 @@ export function ShatteredWord({
   const [shouldRenderPortal, setShouldRenderPortal] = useState(false);
   const hasPlayedOnce = useRef(false);
   const seedRef = useRef<number | null>(null);
+  const reducedFx = useReducedFx();
 
   // Mount check for portal
   useEffect(() => {
@@ -169,10 +171,14 @@ export function ShatteredWord({
       const startX = centerX + data.startX * maxDist;
       const startY = centerY + data.startY * maxDist;
 
+      // Anchor at the final letter position and offset with transforms only —
+      // animating left/top would force a layout pass per shard per frame.
       gsap.set(shard, {
         position: "fixed",
-        left: startX,
-        top: startY,
+        left: letterRect.left,
+        top: letterRect.top,
+        x: startX - letterRect.left,
+        y: startY - letterRect.top,
         width: letterRect.width,
         height: letterRect.height,
         rotation: data.rotation,
@@ -210,8 +216,8 @@ export function ShatteredWord({
       const staggerDelay = data.order * staggerAmount;
 
       tl.to(shard, {
-        left: letterRect.left,
-        top: letterRect.top,
+        x: 0,
+        y: 0,
         rotation: 0,
         duration: duration,
         ease: "expo.out",
@@ -287,7 +293,7 @@ export function ShatteredWord({
 
   // Step 2: Once portal is rendered, wait for DOM and start animation
   useEffect(() => {
-    if (!shouldRenderPortal || hasPlayedOnce.current || animationComplete) return;
+    if (!shouldRenderPortal || hasPlayedOnce.current || animationComplete || reducedFx) return;
 
     // Wait for portal to be in DOM
     const timer = setTimeout(() => {
@@ -298,12 +304,12 @@ export function ShatteredWord({
     }, 50);
 
     return () => clearTimeout(timer);
-  }, [shouldRenderPortal, animationComplete, playAnimation]);
+  }, [shouldRenderPortal, animationComplete, playAnimation, reducedFx]);
 
   const letters = word.split("");
 
   // Portal shards (rendered ONLY when shouldRenderPortal and not complete)
-  const portalShards = mounted && shouldRenderPortal && !animationComplete ? createPortal(
+  const portalShards = mounted && shouldRenderPortal && !animationComplete && !reducedFx ? createPortal(
     <>
       {shardData.map((data, index) => (
         <span
@@ -316,7 +322,7 @@ export function ShatteredWord({
             WebkitClipPath: data.polygon,
             visibility: "hidden", // Hidden until animation starts
             pointerEvents: "none",
-            willChange: "transform, left, top",
+            willChange: "transform",
           }}
         >
           {data.letter}
@@ -357,7 +363,8 @@ export function ShatteredWord({
               overflow: "visible",
               paddingBottom: "0.25em",
               // Show original letters only after animation completes
-              visibility: animationComplete ? "visible" : "hidden",
+              // (or immediately when the shatter effect is skipped)
+              visibility: animationComplete || reducedFx ? "visible" : "hidden",
             }}
           >
             <span className={letterClassName} style={{ display: "inline-block" }}>
