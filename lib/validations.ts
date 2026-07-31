@@ -13,8 +13,6 @@ export const leadScoreSchema = z.object({
   quizScore: z.number().nullable().optional(),
   calculatorUsed: z.boolean().optional(),
   calculatorSavings: z.number().nullable().optional(),
-  calendlyClicked: z.boolean().optional(),
-  videoRecorded: z.boolean().optional(),
   easterEggFound: z.boolean().optional(),
   alerts: z.array(z.string()).optional(),
 }).optional();

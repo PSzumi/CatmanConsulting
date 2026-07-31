@@ -14,8 +14,6 @@ import {
   Target,
   MessageSquare,
   Calculator,
-  Calendar,
-  Video,
   Sparkles,
 } from "lucide-react";
 import { useLeadScoring } from "@/lib/useLeadScoring";
@@ -169,16 +167,6 @@ export function LeadScoreIndicator() {
                   icon={Calculator}
                   label="Calculator"
                   active={leadData.calculatorUsed}
-                />
-                <SignalBadge
-                  icon={Calendar}
-                  label="Calendly"
-                  active={leadData.calendlyClicked}
-                />
-                <SignalBadge
-                  icon={Video}
-                  label="Video"
-                  active={leadData.videoRecorded}
                 />
                 <SignalBadge
                   icon={Target}

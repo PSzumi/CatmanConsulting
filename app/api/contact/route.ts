@@ -108,7 +108,6 @@ export async function POST(request: NextRequest) {
     const signals: string[] = [];
     if (leadScore?.quizCompleted) signals.push(`✅ Ukończył quiz diagnostyczny${leadScore.quizScore ? ` (wynik: ${leadScore.quizScore})` : ""}`);
     if (leadScore?.calculatorUsed) signals.push(`✅ Użył kalkulatora ROI${leadScore.calculatorSavings ? ` (potencjał: ${leadScore.calculatorSavings.toLocaleString("pl-PL")} PLN)` : ""}`);
-    if (leadScore?.calendlyClicked) signals.push("✅ Kliknął Calendly");
     if (leadScore?.returnVisit) signals.push(`✅ Powracający użytkownik (${leadScore.visitCount || 1} wizyty)`);
     if (leadScore?.easterEggFound) signals.push("✅ Znalazł Easter Egg (ciekawski!)");
 

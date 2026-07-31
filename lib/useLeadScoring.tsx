@@ -20,8 +20,6 @@ export interface LeadScore {
   calculatorSavings: number | null;
   contactFormStarted: boolean;
   contactFormStep: number;
-  videoRecorded: boolean;
-  calendlyClicked: boolean;
   easterEggFound: boolean;
   scrollDepth: number;
   clickCount: number;
@@ -40,8 +38,6 @@ interface LeadScoringContextType {
   trackQuizComplete: (score: number) => void;
   trackCalculatorUse: (savings: number) => void;
   trackContactFormProgress: (step: number) => void;
-  trackVideoRecorded: () => void;
-  trackCalendlyClick: () => void;
   trackEasterEgg: () => void;
   resetData: () => void;
 }
@@ -96,16 +92,6 @@ function calculateScore(data: Partial<LeadScore>): { score: number; grade: LeadS
   }
   const step = data.contactFormStep || 0;
   score += Math.min(7, step * 2);
-  if (data.videoRecorded) {
-    score += 5;
-    alerts.push("Nagrał wideo");
-  }
-
-  // Calendly click (10 points) - strong intent signal
-  if (data.calendlyClicked) {
-    score += 10;
-    alerts.push("Kliknął Calendly");
-  }
 
   // Return visit bonus (5 points)
   if (data.returnVisit) {
@@ -154,8 +140,6 @@ function createEmptyLeadData(): LeadScore {
     calculatorSavings: null,
     contactFormStarted: false,
     contactFormStep: 0,
-    videoRecorded: false,
-    calendlyClicked: false,
     easterEggFound: false,
     scrollDepth: 0,
     clickCount: 0,
@@ -388,14 +372,6 @@ export function LeadScoringProvider({ children }: { children: ReactNode }) {
     updateData({ contactFormStarted: true, contactFormStep: step });
   }, [updateData]);
 
-  const trackVideoRecorded = useCallback(() => {
-    updateData({ videoRecorded: true });
-  }, [updateData]);
-
-  const trackCalendlyClick = useCallback(() => {
-    updateData({ calendlyClicked: true });
-  }, [updateData]);
-
   const trackEasterEgg = useCallback(() => {
     updateData({ easterEggFound: true });
   }, [updateData]);
@@ -421,8 +397,6 @@ export function LeadScoringProvider({ children }: { children: ReactNode }) {
         trackQuizComplete,
         trackCalculatorUse,
         trackContactFormProgress,
-        trackVideoRecorded,
-        trackCalendlyClick,
         trackEasterEgg,
         resetData,
       }}
@@ -472,8 +446,6 @@ export function useLeadScoring() {
     trackQuizComplete: () => {},
     trackCalculatorUse: () => {},
     trackContactFormProgress: () => {},
-    trackVideoRecorded: () => {},
-    trackCalendlyClick: () => {},
     trackEasterEgg: () => {},
     resetData: () => {},
   };

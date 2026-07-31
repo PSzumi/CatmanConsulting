@@ -1245,7 +1245,6 @@ export function Contact() {
           quizScore: leadData.quizScore,
           calculatorUsed: leadData.calculatorUsed,
           calculatorSavings: leadData.calculatorSavings,
-          calendlyClicked: leadData.calendlyClicked,
           easterEggFound: leadData.easterEggFound,
           alerts: leadData.alerts,
         } : undefined,

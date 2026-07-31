@@ -111,15 +111,6 @@ export function trackFormSubmission(formName: string, success: boolean) {
 }
 
 /**
- * Track Calendly interactions
- */
-export function trackCalendlyOpen(location: string) {
-  trackEvent("calendly_open", {
-    calendly_location: location,
-  });
-}
-
-/**
  * Track scroll depth milestones
  */
 export function trackScrollDepth(percentage: number) {
