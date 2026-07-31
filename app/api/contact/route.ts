@@ -15,7 +15,7 @@ const pathLabels: Record<string, string> = {
 const methodLabels: Record<string, string> = {
   call: "Rozmowa wideo",
   email: "Email",
-  calendar: "Calendly",
+  phone: "Telefon",
 };
 
 // Grade config for email styling

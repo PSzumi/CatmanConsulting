@@ -27,6 +27,21 @@ interface VideoRecorderProps {
 
 type RecordingState = "idle" | "preview" | "recording" | "recorded" | "playing";
 
+// Safari/iOS can't record webm and older Android can't do vp9 — take the first
+// container the browser actually supports instead of assuming vp9/opus.
+const MIME_CANDIDATES = [
+  "video/webm;codecs=vp9,opus",
+  "video/webm;codecs=vp8,opus",
+  "video/webm",
+  "video/mp4;codecs=avc1.42E01E,mp4a.40.2",
+  "video/mp4",
+];
+
+function pickMimeType(): string | undefined {
+  if (typeof MediaRecorder.isTypeSupported !== "function") return undefined;
+  return MIME_CANDIDATES.find((type) => MediaRecorder.isTypeSupported(type));
+}
+
 export function VideoRecorder({
   onVideoReady,
   maxDuration = 60,
@@ -91,9 +106,11 @@ export function VideoRecorder({
     setTimeElapsed(0);
 
     try {
-      const mediaRecorder = new MediaRecorder(streamRef.current, {
-        mimeType: "video/webm;codecs=vp9,opus",
-      });
+      const mimeType = pickMimeType();
+      const mediaRecorder = new MediaRecorder(
+        streamRef.current,
+        mimeType ? { mimeType } : undefined
+      );
 
       mediaRecorder.ondataavailable = (event) => {
         if (event.data.size > 0) {
@@ -102,7 +119,9 @@ export function VideoRecorder({
       };
 
       mediaRecorder.onstop = () => {
-        const blob = new Blob(chunksRef.current, { type: "video/webm" });
+        const blob = new Blob(chunksRef.current, {
+          type: mediaRecorder.mimeType || mimeType || "video/webm",
+        });
         recordedBlobRef.current = blob;
 
         if (videoRef.current) {

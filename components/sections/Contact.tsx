@@ -27,11 +27,9 @@ import {
   ChevronRight,
   Video,
   MessageSquare,
-  CalendarCheck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { contactContent } from "@/lib/constants";
-import { CalendlyButton } from "@/components/ui/CalendlyButton";
 import { trackFormSubmission } from "@/components/Analytics";
 import { Konfetti } from "@/components/ui/Konfetti";
 import { VideoRecorder } from "@/components/ui/VideoRecorder";
@@ -90,10 +88,10 @@ const contactMethods = [
     color: "#2d5a7b",
   },
   {
-    id: "calendar",
-    icon: CalendarCheck,
-    title: "Zaplanuj spotkanie",
-    description: "Wybierz dogodny termin",
+    id: "phone",
+    icon: Phone,
+    title: "Zadzwon do nas",
+    description: "Numer do Tomka lub Mariusza",
     recommended: false,
     color: "#1e3d52",
   },
@@ -143,6 +141,7 @@ const teamProfiles = [
     specialty: "35 lat w zarządzaniu",
     avatar: "T",
     color: "#2d5a7b",
+    phone: "+48 XXX XXX XXX",
     linkedin: "https://linkedin.com/in/tomek",
   },
   {
@@ -151,6 +150,7 @@ const teamProfiles = [
     specialty: "Ekspert kultury organizacyjnej",
     avatar: "M",
     color: ACCENT_COLOR,
+    phone: "+48 XXX XXX XXX",
     linkedin: "https://linkedin.com/in/mariusz",
   },
 ];
@@ -618,11 +618,9 @@ function PathSelector({
 function ContactMethodSelector({
   selectedMethod,
   onSelect,
-  onCalendlyClick,
 }: {
   selectedMethod: string | null;
   onSelect: (id: string) => void;
-  onCalendlyClick: () => void;
 }) {
   return (
     <motion.div
@@ -645,12 +643,7 @@ function ContactMethodSelector({
           return (
             <motion.button
               key={method.id}
-              onClick={() => {
-                onSelect(method.id);
-                if (method.id === "calendar") {
-                  onCalendlyClick();
-                }
-              }}
+              onClick={() => onSelect(method.id)}
               className={cn(
                 "relative w-full p-5 rounded-2xl text-left transition-all duration-300 overflow-hidden",
                 "border-2 group flex items-center gap-5"
@@ -714,6 +707,39 @@ function ContactMethodSelector({
           );
         })}
       </div>
+
+      {/* Direct numbers, revealed when they pick the phone route */}
+      <AnimatePresence>
+        {selectedMethod === "phone" && (
+          <motion.div
+            initial={{ opacity: 0, height: 0, marginTop: 0 }}
+            animate={{ opacity: 1, height: "auto", marginTop: 16 }}
+            exit={{ opacity: 0, height: 0, marginTop: 0 }}
+            className="overflow-hidden"
+          >
+            <div className="grid sm:grid-cols-2 gap-3">
+              {teamProfiles.map((profile) => (
+                <a
+                  key={profile.name}
+                  href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                  className="flex items-center gap-3 p-4 rounded-xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/40 transition-colors"
+                >
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
+                    style={{ backgroundColor: `${profile.color}20` }}
+                  >
+                    <Phone className="w-5 h-5" style={{ color: profile.color }} />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-semibold text-white">{profile.name}</div>
+                    <div className="text-sm text-gray-400">{profile.phone}</div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -1049,11 +1075,43 @@ function InfoPanel() {
             </p>
           </div>
 
-          <CalendlyButton
-            url={contactContent.calendlyUrl}
-            className="w-full justify-center bg-[#b8860b] hover:bg-[#d4a843] border-none"
-            variant="primary"
-          />
+          <div className="space-y-3">
+            <a
+              href="#kontakt-formularz"
+              className="flex items-center gap-4 p-4 rounded-2xl bg-[#b8860b] hover:bg-[#d4a843] transition-colors"
+            >
+              <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center flex-shrink-0">
+                <MessageSquare className="w-6 h-6 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="font-bold text-white">Umów konsultację</div>
+                <div className="text-sm text-white/80">
+                  Wypełnij formularz — odezwiemy się
+                </div>
+              </div>
+            </a>
+
+            {teamProfiles.map((profile) => (
+              <a
+                key={profile.name}
+                href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                className="flex items-center gap-4 p-4 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-colors"
+              >
+                <div
+                  className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                  style={{ backgroundColor: `${profile.color}20` }}
+                >
+                  <Phone className="w-5 h-5" style={{ color: profile.color }} />
+                </div>
+                <div className="text-left min-w-0">
+                  <div className="font-semibold text-white">
+                    {profile.name} — {profile.phone}
+                  </div>
+                  <div className="text-sm text-gray-400">{profile.role}</div>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
       </motion.div>
 
@@ -1172,10 +1230,6 @@ export function Contact() {
   const handleMethodSelect = (id: string) => {
     setSelectedMethod(id);
     setFormData((prev) => ({ ...prev, contactMethod: id }));
-  };
-
-  const handleCalendlyClick = () => {
-    // Calendly is handled by the CalendlyButton component
   };
 
   const handleVideoReady = (blob: Blob | null, url: string | null) => {
@@ -1368,7 +1422,7 @@ export function Contact() {
           transition={{ duration: 0.8, delay: 0.3 }}
         >
           {/* Left side - Form */}
-          <div className="order-2 lg:order-1">
+          <div id="kontakt-formularz" className="order-2 lg:order-1 scroll-mt-24">
             <div className="p-5 sm:p-6 md:p-8 lg:p-10 rounded-2xl sm:rounded-3xl bg-gray-900/50 backdrop-blur-sm border border-gray-800/50">
               <AnimatePresence mode="wait">
                 {isSubmitted ? (
@@ -1397,7 +1451,6 @@ export function Contact() {
                           key="step2"
                           selectedMethod={selectedMethod}
                           onSelect={handleMethodSelect}
-                          onCalendlyClick={handleCalendlyClick}
                         />
                       )}
 
