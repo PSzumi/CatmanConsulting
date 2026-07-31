@@ -18,13 +18,11 @@
 - **Commity:** repo jest na `main`. Przed pierwszym commitem załóż gałąź `feat/faq-widget`. Commituj po każdym zadaniu.
 - **Ikony w JSON nie istnieją** — w messages trzymamy nazwę ikony jako string, mapowanie na komponent lucide siedzi w `lib/faq.ts`.
 
-## Otwarte kwestie do potwierdzenia u klienta
+## Ustalenia dotyczące treści (zatwierdzone 2026-07-31)
 
-Nie blokują wdrożenia — plan używa wartości wskazanych niżej jako tymczasowych, ale przed publikacją muszą zostać potwierdzone:
-
-1. **Czas konsultacji.** `Contact.tsx` obiecuje 20 min, `FAQ.tsx` i widget mówią 30 min. Plan ujednolica na **20 min**, bo tyle deklaruje faktyczny formularz rezerwacji.
-2. **Ceny.** Trzy sprzeczne zestawy (patrz spec). Plan przyjmuje wersję z `FAQ.tsx`: diagnoza 15-25 tys. PLN, transformacja 50-150 tys. PLN, coaching od 800 PLN/h.
-3. **Liczby w odpowiedziach** — „95% projektów kończy się sukcesem", „15+ lat doświadczenia", zwrot pieniędzy po 3 sesjach. Przeniesione bez zmian z `FAQ.tsx`, ale nie zostały przez nikogo zweryfikowane.
+1. **Czas konsultacji: 20 minut** w całym serwisie. Wcześniej `Contact.tsx` mówił 20 min, a `FAQ.tsx` i widget 30 min.
+2. **Ceny** — obowiązuje zestaw z `FAQ.tsx`: diagnoza 15-25 tys. PLN, transformacja 50-150 tys. PLN, coaching od 800 PLN/h. Dwa pozostałe zestawy usunięte.
+3. **Liczby w odpowiedziach** — „95% projektów kończy się sukcesem", „15+ lat doświadczenia", zwrot pieniędzy po 3 sesjach coachingu: zatwierdzone bez zmian.
 
 ## Struktura plików
 

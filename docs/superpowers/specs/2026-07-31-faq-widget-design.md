@@ -56,9 +56,9 @@ Nowy moduł `lib/faq.ts`:
 Konsumenci: `components/sections/FAQ.tsx` oraz `components/ui/AIConcierge.tsx`. Zahardkodowane
 tablice `faqItems` i `categories` znikają z `FAQ.tsx` — sekcja przestaje być PL-only przy okazji.
 
-### Otwarta kwestia: sprzeczne ceny
+### Rozstrzygnięcie: sprzeczne ceny
 
-Trzy źródła podają różne stawki:
+Trzy źródła podawały różne stawki:
 
 | Źródło | Coaching | Diagnoza |
 |---|---|---|
@@ -66,9 +66,10 @@ Trzy źródła podają różne stawki:
 | `AIConcierge.tsx` (zahardkodowane) | od 2500 PLN/mies. | od 15 tys. PLN |
 | `messages/*.json` (nieużywane) | sesja od 1500 PLN | — |
 
-Do wdrożenia wchodzi wersja z `FAQ.tsx`. Właściwe stawki wymagają potwierdzenia u klienta — do tego
-czasu jest to wartość tymczasowa, nie ustalenie. Ta sama uwaga dotyczy pozostałych liczb w
-odpowiedziach (odsetek poleceń, wskaźniki efektów, przykłady wdrożeń).
+Obowiązuje wersja z `FAQ.tsx` — zatwierdzona 2026-07-31. Pozostałe dwa zestawy usunięte.
+Zatwierdzone tym samym są liczby w odpowiedziach (95% projektów kończy się sukcesem, 15+ lat
+doświadczenia, zwrot pieniędzy po 3 sesjach coachingu) oraz czas bezpłatnej konsultacji: **20 minut**
+w całym serwisie, zamiast wcześniejszego rozjazdu 20 min w formularzu i 30 min w FAQ.
 
 ## 2. Widget — dwa widoki
 
