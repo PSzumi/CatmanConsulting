@@ -177,14 +177,16 @@ export function ShatteredWord({
       const startX = centerX + data.startX * maxDist;
       const startY = centerY + data.startY * maxDist;
 
-      // Anchor at the final letter position and offset with transforms only —
-      // animating left/top would force a layout pass per shard per frame.
+      // Mobile anchors at the final letter position and offsets with transforms
+      // only — animating left/top there forces a layout pass per shard per frame.
+      // Desktop keeps the original left/top flight, where the look matters more
+      // than the frame budget.
       gsap.set(shard, {
         position: "fixed",
-        left: letterRect.left,
-        top: letterRect.top,
-        x: startX - letterRect.left,
-        y: startY - letterRect.top,
+        left: isSmallScreen ? letterRect.left : startX,
+        top: isSmallScreen ? letterRect.top : startY,
+        x: isSmallScreen ? startX - letterRect.left : 0,
+        y: isSmallScreen ? startY - letterRect.top : 0,
         width: letterRect.width,
         height: letterRect.height,
         rotation: data.rotation,
@@ -222,8 +224,9 @@ export function ShatteredWord({
       const staggerDelay = data.order * staggerAmount;
 
       tl.to(shard, {
-        x: 0,
-        y: 0,
+        ...(isSmallScreen
+          ? { x: 0, y: 0 }
+          : { left: letterRect.left, top: letterRect.top }),
         rotation: 0,
         duration: shardDuration,
         ease: "expo.out",
@@ -249,7 +252,7 @@ export function ShatteredWord({
     }
 
     hasPlayedOnce.current = true;
-  }, [isReady, shardData, shardDuration, staggerAmount, shardDelay]);
+  }, [isReady, shardData, shardDuration, staggerAmount, shardDelay, isSmallScreen]);
 
   // Hide shards when Hero section is not visible
   useEffect(() => {
@@ -328,7 +331,7 @@ export function ShatteredWord({
             WebkitClipPath: data.polygon,
             visibility: "hidden", // Hidden until animation starts
             pointerEvents: "none",
-            willChange: "transform",
+            willChange: isSmallScreen ? "transform" : "transform, left, top",
           }}
         >
           {data.letter}
