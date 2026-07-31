@@ -17,6 +17,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { siteConfig } from "@/lib/constants";
 
 // Footer navigation structure - keys for translation
@@ -171,12 +172,14 @@ export function Footer() {
           {/* Column 1: Brand & Social */}
           <motion.div variants={itemVariants} className="lg:col-span-3">
             <a href="#" className="inline-block mb-6 group">
-              <span className="text-2xl font-bold text-white group-hover:text-[#8b1a1a] transition-colors duration-300">
-                Catman
-              </span>
-              <span className="text-2xl font-bold text-[#8b1a1a] ml-1">
-                Consulting
-              </span>
+              <Image
+                src="/images/logo.webp"
+                alt={siteConfig.name}
+                width={1200}
+                height={324}
+                className="h-11 w-auto"
+              />
+              <span className="sr-only">{siteConfig.name}</span>
             </a>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
               {t("description")}

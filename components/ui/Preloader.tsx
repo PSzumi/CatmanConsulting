@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
@@ -27,27 +28,19 @@ export function Preloader() {
           <div className="relative">
             {/* Logo animation */}
             <motion.div
-              className="flex items-center gap-2"
+              className="flex items-center justify-center"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
             >
-              <motion.span
-                className="text-3xl font-bold text-foreground"
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                Catman
-              </motion.span>
-              <motion.span
-                className="text-3xl font-bold text-accent"
-                initial={{ x: 20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4 }}
-              >
-                Consulting
-              </motion.span>
+              <Image
+                src="/images/logo.webp"
+                alt="Catman Consulting"
+                width={1200}
+                height={324}
+                priority
+                className="h-12 w-auto"
+              />
             </motion.div>
 
             {/* Loading bar */}

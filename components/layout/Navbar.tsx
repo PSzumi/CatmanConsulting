@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, AnimatePresence, useMotionValue, useSp
 import { Menu, X, Sun, Moon, Command, Search } from "lucide-react";
 import { useState, useEffect, useRef, useCallback, forwardRef } from "react";
 import { useTheme } from "next-themes";
+import Image from "next/image";
 import { siteConfig } from "@/lib/constants";
 
 // Navigation items
@@ -360,30 +361,19 @@ export function Navbar() {
             {/* Logo with hover animation */}
             <motion.a
               href="#"
-              className="relative z-10 text-xl font-bold tracking-tight group"
+              className="relative z-10 block group"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="text-foreground group-hover:text-brand-red transition-colors duration-300">
-                {siteConfig.name.split(" ")[0]}
-              </span>
-              <span className="text-brand-red ml-1">
-                {siteConfig.name.split(" ")[1]}
-              </span>
-
-              {/* Animated dot */}
-              <motion.span
-                className="absolute -right-2 -top-1 w-1.5 h-1.5 rounded-full bg-brand-red"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [1, 0.7, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+              <Image
+                src="/images/logo.webp"
+                alt={siteConfig.name}
+                width={1200}
+                height={324}
+                priority
+                className="h-9 w-auto"
               />
+              <span className="sr-only">{siteConfig.name}</span>
             </motion.a>
 
             {/* Desktop Navigation with section indicator */}
