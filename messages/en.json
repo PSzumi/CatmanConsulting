@@ -469,37 +469,72 @@
     "searchPlaceholder": "Search questions...",
     "categories": {
       "all": "All",
-      "general": "General",
-      "process": "Process",
-      "pricing": "Pricing",
+      "start": "Getting started",
+      "cost": "Pricing",
+      "work": "Collaboration",
       "results": "Results"
     },
     "contact": "Didn't find your answer?",
     "contactCta": "Contact us",
+    "noResults": "No results found",
+    "noResultsHint": "Try a different search or",
+    "clearFilters": "clear filters",
     "items": [
       {
-        "question": "What does a typical collaboration project look like?",
-        "answer": "Every project starts with a Discovery phase where we get to know your organization and goals. Then we move through design, implementation, and consolidation of changes. A typical project lasts 3 to 18 months, depending on scope."
+        "id": "pierwsza-rozmowa",
+        "category": "start",
+        "icon": "MessageCircle",
+        "question": "What does the first conversation look like?",
+        "answer": "The first conversation is a free, 20-minute online session. We get to know your challenges, goals and organizational context. There are no obligations — it is time to get to know each other and check whether we can help. After the call you receive concrete recommendations, regardless of any further collaboration."
       },
       {
-        "question": "Do you work with small companies?",
-        "answer": "Yes, we work with both large corporations and smaller companies from around 50 employees. We adjust the scope and intensity of collaboration to the client's needs and capabilities."
-      },
-      {
+        "id": "koszty",
+        "category": "cost",
+        "icon": "Wallet",
         "question": "How much do your services cost?",
-        "answer": "Prices depend on project scope and client needs. Coaching sessions start from 1500 PLN, and larger projects are priced individually. The first consultation is always free."
+        "answer": "Our rates depend on the scope and complexity of the project. A typical organizational diagnosis is 15-25k PLN. A transformation project (3-6 months) is usually 50-150k PLN. Individual coaching for leaders starts at 800 PLN/h. We always present a detailed quote before we start, with no hidden costs."
       },
       {
-        "question": "Do you offer results guarantees?",
-        "answer": "We believe in our competencies and methods. We define clear KPIs at the start of every project and monitor them regularly. In some projects, we offer a success fee model."
+        "id": "czas-trwania",
+        "category": "work",
+        "icon": "Clock",
+        "question": "How long does a typical project take?",
+        "answer": "Diagnosis and strategy: 3-5 weeks. Full transformation: 4-8 months. Leadership coaching: at least 3 months for lasting effects. We adapt the pace to your capacity — we do not impose rigid timelines. Every project ends with a consolidation stage so the organization can continue developing on its own."
       },
       {
-        "question": "How quickly can results be seen?",
-        "answer": "First changes are often visible within 4-6 weeks. Full effects of development programs are measurable after 6-12 months from the start."
+        "id": "praca-zdalna",
+        "category": "work",
+        "icon": "Globe",
+        "question": "Do you work remotely?",
+        "answer": "Yes, we work in a hybrid model. Strategic workshops and key sessions run on site — the energy of the group is incomparable then. Coaching, consultations and working meetings work very well online. We work with clients across Poland, and we run part of our sessions in English for international teams."
       },
       {
-        "question": "Do you conduct online sessions?",
-        "answer": "Yes, we work both in-person and online. Many of our clients prefer a hybrid model - key workshops in-person, coaching sessions online."
+        "id": "wyroznik",
+        "category": "results",
+        "icon": "Award",
+        "question": "What sets you apart from other consulting firms?",
+        "answer": "Three things: 1) We do not leave reports on a shelf — we work WITH the organization, not ON it. 2) We combine hard business tools with the psychology of change. 3) We measure results and take responsibility for them. Our team are practitioners with 15+ years of experience, not consultants straight out of university."
+      },
+      {
+        "id": "pomiar-efektow",
+        "category": "results",
+        "icon": "Target",
+        "question": "How do you measure the impact of your work?",
+        "answer": "Every project starts by defining concrete KPIs — these can be business metrics (sales, turnover, NPS) or behavioural ones (changes in leader behaviour, quality of communication). We measure before, during and after the project. We report progress regularly and adjust our actions to the results."
+      },
+      {
+        "id": "dla-kogo",
+        "category": "start",
+        "icon": "Building2",
+        "question": "What kind of companies do you work with?",
+        "answer": "We most often work with medium and large companies (50-5000 employees) from technology, manufacturing, finance and professional services. Our clients are usually organizations in a phase of rapid growth, transformation or generational change. We do not work with companies we cannot genuinely help."
+      },
+      {
+        "id": "gwarancja",
+        "category": "results",
+        "icon": "Shield",
+        "question": "Do you guarantee results?",
+        "answer": "We offer something better — transparency and shared accountability. We define goals and success measures together, and we tie part of our fee to reaching them. For coaching — if you see no value after 3 sessions, we refund the money, no questions asked. 95% of our projects end in success."
       }
     ]
   },
@@ -764,31 +799,14 @@
     }
   },
   "aiConcierge": {
-    "title": "AI Concierge",
-    "subtitle": "Instant responses",
-    "welcome": "Hello! I'm your virtual assistant. How can I help you?",
-    "placeholder": "Write a message...",
-    "listening": "Listening... speak now",
-    "poweredBy": "Powered by AI",
-    "greeting": "Hello! I'm the AI assistant for CatMan Consulting.\n\nI can help you learn about our services, answer questions, or schedule a free consultation.\n\nHow can I help you today?",
-    "quickActions": {
-      "services": "Explore Services",
-      "booking": "Book Consultation",
-      "coaching": "Executive Coaching"
-    },
-    "suggestions": [
-      "What services do you offer?",
-      "How much does it cost?",
-      "What does the process look like?",
-      "I want to schedule a call"
-    ],
-    "thinking": "Thinking...",
-    "error": "Sorry, an error occurred. Please try again.",
-    "offline": "Assistant is currently unavailable.",
-    "typing": "Typing...",
-    "sendButton": "Send",
-    "closeButton": "Close",
-    "minimizeButton": "Minimize"
+    "title": "Quick answers",
+    "subtitle": "Frequently asked questions",
+    "greeting": "Pick a question — the answer shows up right away.",
+    "related": "Related questions",
+    "back": "Back to questions",
+    "noAnswer": "Question not listed?",
+    "bookCta": "Book a free consultation",
+    "closeButton": "Close"
   },
   "common": {
     "loading": "Loading...",

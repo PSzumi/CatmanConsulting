@@ -414,37 +414,72 @@
     "searchPlaceholder": "Szukaj pytania...",
     "categories": {
       "all": "Wszystkie",
-      "general": "Ogólne",
-      "process": "Proces",
-      "pricing": "Cennik",
-      "results": "Efekty"
+      "start": "Rozpoczęcie",
+      "cost": "Koszty",
+      "work": "Współpraca",
+      "results": "Rezultaty"
     },
     "contact": "Nie znalazłeś odpowiedzi?",
     "contactCta": "Skontaktuj się z nami",
+    "noResults": "Nie znaleziono wyników",
+    "noResultsHint": "Spróbuj innego wyszukiwania lub",
+    "clearFilters": "wyczyść filtry",
     "items": [
       {
-        "question": "Jak wygląda typowy projekt współpracy?",
-        "answer": "Każdy projekt zaczynamy od fazy Discovery, gdzie poznajemy Twoją organizację i cele. Następnie przechodzimy przez projektowanie, realizację i utrwalenie zmian. Typowy projekt trwa od 3 do 18 miesięcy, w zależności od zakresu."
+        "id": "pierwsza-rozmowa",
+        "category": "start",
+        "icon": "MessageCircle",
+        "question": "Jak wygląda pierwsza rozmowa?",
+        "answer": "Pierwsza rozmowa to bezpłatna, 20-minutowa sesja online. Poznajemy Twoje wyzwania, cele i kontekst organizacji. Nie ma żadnych zobowiązań — to czas na wzajemne poznanie się i sprawdzenie, czy możemy Ci pomóc. Po rozmowie otrzymasz konkretne rekomendacje, niezależnie od dalszej współpracy."
       },
       {
-        "question": "Czy pracujecie z małymi firmami?",
-        "answer": "Tak, współpracujemy zarówno z dużymi korporacjami, jak i z mniejszymi firmami od około 50 pracowników. Dostosowujemy zakres i intensywność współpracy do potrzeb i możliwości klienta."
-      },
-      {
+        "id": "koszty",
+        "category": "cost",
+        "icon": "Wallet",
         "question": "Ile kosztują Wasze usługi?",
-        "answer": "Ceny zależą od zakresu projektu i potrzeb klienta. Sesja coachingowa zaczyna się od 1500 PLN, a większe projekty wyceniamy indywidualnie. Pierwsza konsultacja jest zawsze bezpłatna."
+        "answer": "Nasze stawki zależą od zakresu i złożoności projektu. Typowa diagnoza organizacji to 15-25 tys. PLN. Projekt transformacyjny (3-6 miesięcy) to zazwyczaj 50-150 tys. PLN. Coaching indywidualny dla liderów — od 800 PLN/h. Zawsze przedstawiamy szczegółową wycenę przed rozpoczęciem współpracy, bez ukrytych kosztów."
       },
       {
-        "question": "Czy oferujecie gwarancję wyników?",
-        "answer": "Wierzymy w nasze kompetencje i metody. Definiujemy jasne KPIs na początku każdego projektu i regularnie je monitorujemy. W niektórych projektach oferujemy model success fee."
+        "id": "czas-trwania",
+        "category": "work",
+        "icon": "Clock",
+        "question": "Jak długo trwa typowy projekt?",
+        "answer": "Diagnoza i strategia: 3-5 tygodni. Pełna transformacja: 4-8 miesięcy. Coaching liderów: minimum 3 miesiące dla trwałych efektów. Dostosowujemy tempo do Waszych możliwości — nie narzucamy sztywnych ram. Każdy projekt kończy się etapem utrwalania zmian, by organizacja mogła samodzielnie kontynuować rozwój."
       },
       {
-        "question": "Jak szybko można zobaczyć wyniki?",
-        "answer": "Pierwsze zmiany są często widoczne już po 4-6 tygodniach. Pełne efekty programów rozwojowych są mierzalne po 6-12 miesiącach od rozpoczęcia."
+        "id": "praca-zdalna",
+        "category": "work",
+        "icon": "Globe",
+        "question": "Czy pracujecie zdalnie?",
+        "answer": "Tak, pracujemy w modelu hybrydowym. Warsztaty strategiczne i kluczowe sesje prowadzimy na miejscu — energia grupy jest wtedy nieporównywalna. Coaching, konsultacje i spotkania robocze świetnie sprawdzają się online. Pracujemy z klientami w całej Polsce, a część sesji prowadzimy również w języku angielskim dla międzynarodowych zespołów."
       },
       {
-        "question": "Czy prowadzicie sesje online?",
-        "answer": "Tak, pracujemy zarówno stacjonarnie, jak i online. Wielu naszych klientów preferuje model hybrydowy - kluczowe warsztaty stacjonarnie, sesje coachingowe online."
+        "id": "wyroznik",
+        "category": "results",
+        "icon": "Award",
+        "question": "Co Was wyróżnia od innych firm consultingowych?",
+        "answer": "Trzy rzeczy: 1) Nie zostawiamy raportów na półce — pracujemy Z organizacją, nie NAD organizacją. 2) Łączymy twarde narzędzia biznesowe z psychologią zmiany. 3) Mierzymy efekty i bierzemy za nie odpowiedzialność. Nasz zespół to praktycy z 15+ letnim doświadczeniem, nie konsultanci prosto po studiach."
+      },
+      {
+        "id": "pomiar-efektow",
+        "category": "results",
+        "icon": "Target",
+        "question": "Jak mierzycie efekty swojej pracy?",
+        "answer": "Każdy projekt zaczyna się od zdefiniowania konkretnych KPI — to mogą być wskaźniki biznesowe (sprzedaż, rotacja, NPS) lub behawioralne (zmiana zachowań liderów, jakość komunikacji). Prowadzimy pomiary przed, w trakcie i po projekcie. Regularnie raportujemy postępy i dostosowujemy działania do wyników."
+      },
+      {
+        "id": "dla-kogo",
+        "category": "start",
+        "icon": "Building2",
+        "question": "Dla jakich firm pracujecie?",
+        "answer": "Najczęściej współpracujemy z firmami średnimi i dużymi (50-5000 pracowników) z branż: technologicznej, produkcyjnej, finansowej i profesjonalnych usług. Nasi klienci to zazwyczaj organizacje w fazie szybkiego wzrostu, transformacji lub zmiany pokoleniowej. Nie pracujemy z firmami, którym nie możemy realnie pomóc."
+      },
+      {
+        "id": "gwarancja",
+        "category": "results",
+        "icon": "Shield",
+        "question": "Czy oferujecie gwarancję rezultatów?",
+        "answer": "Oferujemy coś lepszego — transparentność i współodpowiedzialność. Definiujemy wspólnie cele i miary sukcesu, a część naszego wynagrodzenia uzależniamy od ich osiągnięcia. W przypadku coachingu — jeśli po 3 sesjach nie widzisz wartości, zwracamy pieniądze bez pytań. 95% naszych projektów kończy się sukcesem."
       }
     ]
   },
@@ -709,31 +744,14 @@
     }
   },
   "aiConcierge": {
-    "title": "AI Concierge",
-    "subtitle": "Odpowiadam natychmiast",
-    "welcome": "Witaj! Jestem Twoim wirtualnym asystentem. Jak mogę Ci pomóc?",
-    "placeholder": "Napisz wiadomość...",
-    "listening": "Słucham... mów teraz",
-    "poweredBy": "Powered by AI",
-    "greeting": "Witaj! Jestem AI asystentem CatMan Consulting.\n\nMogę pomóc Ci poznać nasze usługi, odpowiedzieć na pytania lub umówić bezpłatną konsultację.\n\nW czym mogę Ci dziś pomóc?",
-    "quickActions": {
-      "services": "Poznaj usługi",
-      "booking": "Umów konsultację",
-      "coaching": "Executive Coaching"
-    },
-    "suggestions": [
-      "Jakie usługi oferujecie?",
-      "Ile kosztuje współpraca?",
-      "Jak wygląda proces?",
-      "Chcę umówić rozmowę"
-    ],
-    "thinking": "Myślę...",
-    "error": "Przepraszam, wystąpił błąd. Spróbuj ponownie.",
-    "offline": "Asystent jest obecnie niedostępny.",
-    "typing": "Pisze...",
-    "sendButton": "Wyślij",
-    "closeButton": "Zamknij",
-    "minimizeButton": "Minimalizuj"
+    "title": "Szybkie odpowiedzi",
+    "subtitle": "Najczęstsze pytania",
+    "greeting": "Wybierz pytanie — odpowiedź pojawi się od razu.",
+    "related": "Powiązane pytania",
+    "back": "Wróć do pytań",
+    "noAnswer": "Nie ma Twojego pytania?",
+    "bookCta": "Umów bezpłatną konsultację",
+    "closeButton": "Zamknij"
   },
   "common": {
     "loading": "Ładowanie...",

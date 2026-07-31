@@ -5,7 +5,6 @@ import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useRef, useState, useMemo } from "react";
 import {
   Plus,
-  ChevronDown,
   Search,
   MessageCircle,
   ArrowRight,
@@ -13,89 +12,25 @@ import {
   Clock,
   Wallet,
   Users,
-  Globe,
-  Award,
   Target,
-  Shield,
-  Building2,
+  type LucideIcon,
 } from "lucide-react";
+import {
+  useFaqItems,
+  useFaqCategories,
+  FAQ_ICONS,
+  FAQ_ICON_FALLBACK,
+  type FaqItem,
+} from "@/lib/faq";
 
-// FAQ categories
-const categories = [
-  { id: "all", label: "Wszystkie", icon: Sparkles },
-  { id: "start", label: "Rozpoczęcie", icon: Clock },
-  { id: "cost", label: "Koszty", icon: Wallet },
-  { id: "work", label: "Współpraca", icon: Users },
-  { id: "results", label: "Rezultaty", icon: Target },
-];
-
-// FAQ items with categories
-const faqItems = [
-  {
-    id: 1,
-    question: "Jak wygląda pierwsza rozmowa?",
-    answer:
-      "Pierwsza rozmowa to bezpłatna, 30-minutowa sesja online. Poznajemy Twoje wyzwania, cele i kontekst organizacji. Nie ma żadnych zobowiązań — to czas na wzajemne poznanie się i sprawdzenie, czy możemy Ci pomóc. Po rozmowie otrzymasz konkretne rekomendacje, niezależnie od dalszej współpracy.",
-    category: "start",
-    icon: MessageCircle,
-  },
-  {
-    id: 2,
-    question: "Ile kosztują Wasze usługi?",
-    answer:
-      "Nasze stawki zależą od zakresu i złożoności projektu. Typowa diagnoza organizacji to 15-25 tys. PLN. Projekt transformacyjny (3-6 miesięcy) to zazwyczaj 50-150 tys. PLN. Coaching indywidualny dla liderów — od 800 PLN/h. Zawsze przedstawiamy szczegółową wycenę przed rozpoczęciem współpracy, bez ukrytych kosztów.",
-    category: "cost",
-    icon: Wallet,
-  },
-  {
-    id: 3,
-    question: "Jak długo trwa typowy projekt?",
-    answer:
-      "Diagnoza i strategia: 3-5 tygodni. Pełna transformacja: 4-8 miesięcy. Coaching liderów: minimum 3 miesiące dla trwałych efektów. Dostosowujemy tempo do Waszych możliwości — nie narzucamy sztywnych ram. Każdy projekt kończy się etapem utrwalania zmian, by organizacja mogła samodzielnie kontynuować rozwój.",
-    category: "work",
-    icon: Clock,
-  },
-  {
-    id: 4,
-    question: "Czy pracujecie zdalnie?",
-    answer:
-      "Tak, pracujemy w modelu hybrydowym. Warsztaty strategiczne i kluczowe sesje prowadzimy na miejscu — energia grupy jest wtedy nieporównywalna. Coaching, konsultacje i spotkania robocze świetnie sprawdzają się online. Pracujemy z klientami w całej Polsce, a część sesji prowadzimy również w języku angielskim dla międzynarodowych zespołów.",
-    category: "work",
-    icon: Globe,
-  },
-  {
-    id: 5,
-    question: "Co Was wyróżnia od innych firm consultingowych?",
-    answer:
-      "Trzy rzeczy: 1) Nie zostawiamy raportów na półce — pracujemy Z organizacją, nie NAD organizacją. 2) Łączymy twarde narzędzia biznesowe z psychologią zmiany. 3) Mierzymy efekty i bierzemy za nie odpowiedzialność. Nasz zespół to praktycy z 15+ letnim doświadczeniem, nie konsultanci prosto po studiach.",
-    category: "results",
-    icon: Award,
-  },
-  {
-    id: 6,
-    question: "Jak mierzycie efekty swojej pracy?",
-    answer:
-      "Każdy projekt zaczyna się od zdefiniowania konkretnych KPI — to mogą być wskaźniki biznesowe (sprzedaż, rotacja, NPS) lub behawioralne (zmiana zachowań liderów, jakość komunikacji). Prowadzimy pomiary przed, w trakcie i po projekcie. Regularnie raportujemy postępy i dostosowujemy działania do wyników.",
-    category: "results",
-    icon: Target,
-  },
-  {
-    id: 7,
-    question: "Dla jakich firm pracujecie?",
-    answer:
-      "Najczęściej współpracujemy z firmami średnimi i dużymi (50-5000 pracowników) z branż: technologicznej, produkcyjnej, finansowej i profesjonalnych usług. Nasi klienci to zazwyczaj organizacje w fazie szybkiego wzrostu, transformacji lub zmiany pokoleniowej. Nie pracujemy z firmami, którym nie możemy realnie pomóc.",
-    category: "start",
-    icon: Building2,
-  },
-  {
-    id: 8,
-    question: "Czy oferujecie gwarancję rezultatów?",
-    answer:
-      "Oferujemy coś lepszego — transparentność i współodpowiedzialność. Definiujemy wspólnie cele i miary sukcesu, a część naszego wynagrodzenia uzależniamy od ich osiągnięcia. W przypadku coachingu — jeśli po 3 sesjach nie widzisz wartości, zwracamy pieniądze bez pytań. 95% naszych projektów kończy się sukcesem.",
-    category: "results",
-    icon: Shield,
-  },
-];
+// Ikony filtrow kategorii - warstwa prezentacji, zostaje w komponencie sekcji.
+const CATEGORY_ICONS: Record<string, LucideIcon> = {
+  all: Sparkles,
+  start: Clock,
+  cost: Wallet,
+  work: Users,
+  results: Target,
+};
 
 // Single FAQ Item Component
 function FAQItem({
@@ -104,12 +39,12 @@ function FAQItem({
   onToggle,
   index,
 }: {
-  item: (typeof faqItems)[0];
+  item: FaqItem;
   isOpen: boolean;
   onToggle: () => void;
   index: number;
 }) {
-  const Icon = item.icon;
+  const Icon = FAQ_ICONS[item.icon] ?? FAQ_ICON_FALLBACK;
 
   return (
     <motion.div
@@ -293,9 +228,11 @@ function SearchInput({
 
 // Category Filter Component
 function CategoryFilter({
+  categories,
   activeCategory,
   onCategoryChange,
 }: {
+  categories: { id: string; label: string }[];
   activeCategory: string;
   onCategoryChange: (category: string) => void;
 }) {
@@ -308,7 +245,7 @@ function CategoryFilter({
       transition={{ duration: 0.5, delay: 0.2 }}
     >
       {categories.map((category) => {
-        const Icon = category.icon;
+        const Icon = CATEGORY_ICONS[category.id] ?? Sparkles;
         const isActive = activeCategory === category.id;
 
         return (
@@ -414,13 +351,16 @@ export function FAQ() {
   const headerRef = useRef<HTMLDivElement>(null);
   const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
 
-  const [openItem, setOpenItem] = useState<number | null>(null);
+  const items = useFaqItems();
+  const categories = useFaqCategories();
+
+  const [openItem, setOpenItem] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
 
   // Filter FAQ items based on search and category
   const filteredItems = useMemo(() => {
-    return faqItems.filter((item) => {
+    return items.filter((item) => {
       const matchesSearch =
         searchQuery === "" ||
         item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -431,13 +371,13 @@ export function FAQ() {
 
       return matchesSearch && matchesCategory;
     });
-  }, [searchQuery, activeCategory]);
+  }, [items, searchQuery, activeCategory]);
 
   // Split items into two columns for desktop
   const leftColumn = filteredItems.filter((_, i) => i % 2 === 0);
   const rightColumn = filteredItems.filter((_, i) => i % 2 === 1);
 
-  const handleToggle = (id: number) => {
+  const handleToggle = (id: string) => {
     setOpenItem(openItem === id ? null : id);
   };
 
@@ -517,6 +457,7 @@ export function FAQ() {
 
         {/* Category filters */}
         <CategoryFilter
+          categories={categories}
           activeCategory={activeCategory}
           onCategoryChange={setActiveCategory}
         />
@@ -560,10 +501,10 @@ export function FAQ() {
           >
             <Search className="w-12 h-12 text-white/20 mx-auto mb-4" />
             <h3 className="text-xl font-medium text-white/60 mb-2">
-              Nie znaleziono wynikow
+              {t("noResults")}
             </h3>
             <p className="text-white/40">
-              Sprobuj innego wyszukiwania lub{" "}
+              {t("noResultsHint")}{" "}
               <button
                 onClick={() => {
                   setSearchQuery("");
@@ -571,7 +512,7 @@ export function FAQ() {
                 }}
                 className="text-[#b8860b] hover:underline"
               >
-                wyczysc filtry
+                {t("clearFilters")}
               </button>
             </p>
           </motion.div>

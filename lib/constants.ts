@@ -2,6 +2,9 @@
 // "Prosto o rzeczach złożonych"
 // Premium positioning: Selective engagement, intellectual warmth
 
+// Widget FAQ prosi sekcje kontaktu o otwarcie formularza rezerwacji.
+export const BOOK_CONSULTATION_EVENT = "catman:book-consultation";
+
 export const siteConfig = {
   name: "Catman Consulting",
   tagline: "Prosto o rzeczach złożonych",
