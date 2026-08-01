@@ -18,7 +18,7 @@ export const heroContent = {
   headline: "Prosto o rzeczach",
   headlineAccent: "złożonych",
   subheadline:
-    "Prowadzimy ograniczoną liczbę projektów rocznie. Każdy klient otrzymuje nasze pełne zaangażowanie — od diagnozy przez wdrożenie po trwałe rezultaty.",
+    "Prowadzimy ograniczoną liczbę projektów rocznie. Każdy klient otrzymuje nasze pełne zaangażowanie — od diagnozy przez wdrożenie po efekty.",
   cta: {
     primary: "Aplikuj o rozmowę",
     secondary: "Zobacz rezultaty",
@@ -88,7 +88,7 @@ export const manifestContent = {
 export const contactContent = {
   title: "Rozpocznij rozmowę",
   subtitle: "Wstępna konsultacja — bez zobowiązań",
-  email: "kontakt@catman.consulting",
+  email: "kontakt@catman.com.pl",
   phone: "+48 604 600 999",
 };
 

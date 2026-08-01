@@ -8,7 +8,6 @@ import {
   Target,
   Compass,
   Rocket,
-  TrendingUp,
   CheckCircle2,
   Clock,
   FileText,
@@ -121,16 +120,6 @@ const processAdvantages = [
     icon: Users,
     title: "Partnerskie",
     description: "Pracujemy Z organizacją, nie NAD organizacją",
-  },
-  {
-    icon: Target,
-    title: "Mierzalne",
-    description: "Jasne KPI i mierzalne rezultaty na każdym etapie",
-  },
-  {
-    icon: TrendingUp,
-    title: "Trwałe",
-    description: "Zmiany, które przetrwają długo po zakończeniu projektu",
   },
 ];
 
@@ -475,7 +464,7 @@ export function Process() {
 
         {/* Process Advantages */}
         <motion.div
-          className="mt-20 grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="mt-20 grid sm:grid-cols-2 gap-6"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -10,7 +10,6 @@ import {
   Send,
   CheckCircle,
   Shield,
-  Award,
   Users,
   Clock,
   Globe,
@@ -53,17 +52,10 @@ const footerNavigationKeys = {
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
   { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-  { name: "Email", icon: Mail, href: "mailto:kontakt@catman.consulting" },
+  { name: "Email", icon: Mail, href: "mailto:kontakt@catman.com.pl" },
 ];
 
 const trustBadgesConfig = [
-  {
-    icon: Award,
-    labelKey: "trustBadges.icf.label",
-    sublabelKey: "trustBadges.icf.sublabel",
-    labelFallback: "ICF Certified",
-    sublabelFallback: "International Coach Federation",
-  },
   {
     icon: Users,
     labelKey: "trustBadges.recommend.label",
@@ -420,7 +412,7 @@ export function Footer() {
           animate={isInView ? "visible" : "hidden"}
           className="py-10 border-t border-white/10"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {trustBadgesConfig.map((badge, index) => (
               <motion.div
                 key={badge.labelKey}

@@ -40,7 +40,7 @@ const situationsPl = [
     accent: "#d4a843",
   },
   {
-    text: "Nowy zarząd buduje kulturę od zera",
+    text: "Nowy zarząd buduje kulturę od zera lub chce ją udoskonalić do zmieniającego się otoczenia",
     icon: Sprout,
     accent: "#8b6508",
   },
@@ -73,7 +73,7 @@ const situationsEn = [
     accent: "#d4a843",
   },
   {
-    text: "New leadership is building culture from scratch",
+    text: "New leadership is building culture from scratch — or adapting it to a changing environment",
     icon: Sprout,
     accent: "#8b6508",
   },

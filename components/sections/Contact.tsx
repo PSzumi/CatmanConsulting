@@ -1587,17 +1587,24 @@ export function Contact() {
               <div className="text-sm text-white font-medium break-all">{contactContent.email}</div>
             </a>
 
-            <a
-              href={`tel:${contactContent.phone.replace(/\s/g, "")}`}
-              onClick={trackPhoneClick}
-              className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-[#b8860b]/30 transition-all group"
-            >
-              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center group-hover:bg-[#b8860b]/20 transition-colors mb-3">
-                <Phone className="w-5 h-5 text-gray-400 group-hover:text-[#b8860b] transition-colors" />
+            <div className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50">
+              <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center mb-3">
+                <Phone className="w-5 h-5 text-gray-400" />
               </div>
               <div className="text-xs text-gray-500 mb-1">Telefon</div>
-              <div className="text-sm text-white font-medium">{contactContent.phone}</div>
-            </a>
+              <div className="flex flex-col gap-1">
+                {teamProfiles.map((profile) => (
+                  <a
+                    key={profile.name}
+                    href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                    onClick={trackPhoneClick}
+                    className="text-sm text-white font-medium hover:text-[#b8860b] transition-colors"
+                  >
+                    {profile.name} — {profile.phone}
+                  </a>
+                ))}
+              </div>
+            </div>
 
             <div className="flex flex-col items-center justify-center text-center p-5 rounded-2xl bg-gray-900/50 border border-gray-800/50">
               <div className="w-12 h-12 rounded-xl bg-gray-800/50 flex items-center justify-center mb-3">

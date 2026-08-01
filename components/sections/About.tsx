@@ -427,7 +427,7 @@ export function About() {
           >
             Prowadzimy ograniczoną liczbę projektów rocznie, zapewniając każdemu klientowi{" "}
             <span className="text-[#b8860b] font-medium">pełne zaangażowanie</span>{" "}
-            obu partnerów.
+            partnerów.
           </motion.p>
 
           {/* Decorative line */}
