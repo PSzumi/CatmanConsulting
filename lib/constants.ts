@@ -10,7 +10,7 @@ export const siteConfig = {
   tagline: "Prosto o rzeczach złożonych",
   description:
     "Transformacja organizacyjna dla wymagających liderów. Prowadzimy ograniczoną liczbę projektów rocznie, zapewniając pełne zaangażowanie i mierzalne rezultaty.",
-  url: "https://catman.consulting",
+  url: "https://www.catman.pl",
 };
 
 export const heroContent = {

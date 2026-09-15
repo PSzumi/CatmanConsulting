@@ -27,11 +27,15 @@ export const viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: `${siteConfig.name} | ${siteConfig.tagline}`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  // Apex przekierowuje na www, ale linki z zewnątrz i tak trafiają na oba —
+  // kanoniczny URL trzyma indeks przy jednej wersji.
+  alternates: { canonical: "/" },
   keywords: [
     "konsulting",
     "szkolenia",
