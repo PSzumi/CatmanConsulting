@@ -88,7 +88,7 @@ export const manifestContent = {
 export const contactContent = {
   title: "Rozpocznij rozmowę",
   subtitle: "Wstępna konsultacja — bez zobowiązań",
-  email: "kontakt@catman.com.pl",
+  email: "biuro@catman.com.pl",
   phone: "+48 604 600 999",
 };
 

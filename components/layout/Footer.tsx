@@ -52,7 +52,7 @@ const footerNavigationKeys = {
 const socialLinks = [
   { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
   { name: "Twitter", icon: Twitter, href: "https://twitter.com" },
-  { name: "Email", icon: Mail, href: "mailto:kontakt@catman.com.pl" },
+  { name: "Email", icon: Mail, href: "mailto:biuro@catman.com.pl" },
 ];
 
 const trustBadgesConfig = [
