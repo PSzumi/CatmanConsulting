@@ -253,13 +253,14 @@ export async function POST(request: NextRequest) {
     // Send email if Resend is configured
     if (resend) {
       try {
-        await resend.emails.send({
-          from: `${siteConfig.name} <onboarding@resend.dev>`, // Change to your verified domain
+        const { error } = await resend.emails.send({
+          from: `${siteConfig.name} <formularz@deep-devops.com>`,
           to: [contactContent.email],
           replyTo: email,
           subject: emailSubject,
           html: emailHtml,
         });
+        if (error) console.error("Email sending failed:", error);
       } catch (emailError) {
         console.error("Email sending failed:", emailError);
         // Don't fail the request - log for debugging but still return success
