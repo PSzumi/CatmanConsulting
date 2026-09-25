@@ -151,7 +151,7 @@ function AuroraOrb({
 
   return (
     <motion.button
-      className="relative w-16 h-16 rounded-full cursor-pointer outline-none"
+      className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full cursor-pointer outline-none"
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -376,7 +376,7 @@ export function AIConcierge() {
   return (
     <>
       {/* Floating Orb Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <AnimatePresence mode="wait">
           {!isOpen && (
             <AuroraOrb onClick={handleOpen} hasNotification={hasNotification} />

@@ -113,7 +113,7 @@ function CaseStudySlide({
 
   return (
     <motion.div
-      className="relative min-w-[85vw] md:min-w-[70vw] lg:min-w-[60vw] h-[480px] sm:h-[550px] md:h-[650px] mx-4 first:ml-[10vw] last:mr-[10vw]"
+      className="relative w-[85vw] md:w-[70vw] lg:w-[60vw] lg:h-[650px]"
       animate={{
         scale: isActive ? 1 : 0.95,
         opacity: isActive ? 1 : 0.5,
@@ -136,7 +136,7 @@ function CaseStudySlide({
         />
 
         {/* Content grid */}
-        <div className="relative h-full grid lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 p-5 sm:p-8 md:p-12 lg:p-16">
+        <div className="relative h-full grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8 p-5 sm:p-8 md:p-12 lg:p-16">
           {/* Left column - Info */}
           <div className="flex flex-col justify-between">
             {/* Header */}
@@ -204,13 +204,13 @@ function CaseStudySlide({
           <div className="flex flex-col justify-between">
             {/* Big metric */}
             <div
-              className="p-8 rounded-2xl"
+              className="p-5 sm:p-8 rounded-2xl"
               style={{ backgroundColor: `${study.accentColor}12` }}
             >
               <p className="text-sm uppercase tracking-widest text-foreground-muted mb-4">
                 Efekt · {study.duration}
               </p>
-              <div className="flex items-end gap-4">
+              <div className="flex flex-wrap items-end gap-x-4 gap-y-2">
                 <span
                   className="text-6xl md:text-7xl lg:text-8xl font-bold leading-none"
                   style={{ color: study.accentColor }}
@@ -282,7 +282,7 @@ export function Casebook() {
     const slides = scrollRef.current.children;
     if (slides[index]) {
       const slide = slides[index] as HTMLElement;
-      const scrollLeft = slide.offsetLeft - window.innerWidth * 0.1;
+      const scrollLeft = slide.offsetLeft - (scrollRef.current.clientWidth - slide.offsetWidth) / 2;
       scrollRef.current.scrollTo({ left: scrollLeft, behavior: "smooth" });
       setActiveIndex(index);
     }
@@ -290,9 +290,14 @@ export function Casebook() {
 
   const handleScroll = () => {
     if (!scrollRef.current) return;
-    const scrollLeft = scrollRef.current.scrollLeft;
-    const slideWidth = window.innerWidth * 0.7;
-    const newIndex = Math.round(scrollLeft / slideWidth);
+    const container = scrollRef.current;
+    const center = container.scrollLeft + container.clientWidth / 2;
+    const slides = Array.from(container.children) as HTMLElement[];
+    const newIndex = slides.reduce((best, slide, i) => {
+      const d = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - center);
+      const bestSlide = slides[best];
+      return d < Math.abs(bestSlide.offsetLeft + bestSlide.offsetWidth / 2 - center) ? i : best;
+    }, 0);
     if (newIndex !== activeIndex && newIndex >= 0 && newIndex < caseStudies.length) {
       setActiveIndex(newIndex);
     }
@@ -371,7 +376,7 @@ export function Casebook() {
       {/* Horizontal scroll container */}
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8"
+        className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-8 px-[7.5vw] md:px-[15vw] lg:px-[20vw]"
         onScroll={handleScroll}
         style={{
           scrollbarWidth: "none",
@@ -379,7 +384,7 @@ export function Casebook() {
         }}
       >
         {caseStudies.map((study, index) => (
-          <div key={study.id} className="snap-center">
+          <div key={study.id} className="snap-center flex">
             <CaseStudySlide study={study} isActive={index === activeIndex} t={t} />
           </div>
         ))}

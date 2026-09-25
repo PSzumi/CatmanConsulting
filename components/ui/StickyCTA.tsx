@@ -41,7 +41,7 @@ export function StickyCTA() {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed bottom-24 right-6 z-40 flex items-center gap-2"
+          className="fixed bottom-24 right-6 z-40 hidden sm:flex items-center gap-2"
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}

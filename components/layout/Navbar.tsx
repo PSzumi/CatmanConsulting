@@ -560,7 +560,7 @@ export function Navbar() {
 
               {/* Mobile command hint */}
               <motion.p
-                className="absolute bottom-8 text-sm text-foreground-muted"
+                className="absolute bottom-8 hidden [@media(hover:hover)]:block text-sm text-foreground-muted"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}

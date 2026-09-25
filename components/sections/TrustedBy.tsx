@@ -96,11 +96,11 @@ function InfiniteMarquee({ children, speed = 30, pauseOnHover = true }: {
   return (
     <div className="relative overflow-hidden">
       {/* Gradient masks */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#0a0a0f] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#0a0a0f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute left-0 top-0 bottom-0 w-10 md:w-32 bg-gradient-to-r from-[#0a0a0f] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-10 md:w-32 bg-gradient-to-l from-[#0a0a0f] to-transparent z-10 pointer-events-none" />
 
       <motion.div
-        className={`flex gap-12 ${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}`}
+        className={`flex w-max ${pauseOnHover ? "hover:[animation-play-state:paused]" : ""}`}
         animate={{ x: ["0%", "-50%"] }}
         transition={{
           x: {
@@ -121,14 +121,14 @@ function InfiniteMarquee({ children, speed = 30, pauseOnHover = true }: {
 // Client Logo Component
 function ClientLogo({ client }: { client: typeof clients[0] }) {
   return (
-    <div className="group relative flex-shrink-0 px-10 py-8">
+    <div className="group relative flex-shrink-0 px-3 md:px-10 py-8">
       <div className="relative">
         {/* Glow effect on hover */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#b8860b]/0 to-[#2d5a7b]/0 group-hover:from-[#b8860b]/10 group-hover:to-[#2d5a7b]/10 rounded-2xl blur-xl transition-all duration-500" />
 
-        <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#b8860b]/30 rounded-2xl px-10 py-6 transition-all duration-500">
+        <div className="relative bg-white/[0.03] backdrop-blur-sm border border-white/[0.05] group-hover:border-[#b8860b]/30 rounded-2xl px-6 md:px-10 py-6 transition-all duration-500">
           {/* Placeholder for real logo */}
-          <div className="text-center min-w-[140px]">
+          <div className="text-center min-w-[120px] md:min-w-[140px]">
             <div className="text-xl font-semibold text-white/60 group-hover:text-white/90 transition-colors duration-300 tracking-tight">
               {client.name}
             </div>
@@ -174,7 +174,7 @@ function ImmersiveTestimonial({
 
             {/* Metric badge */}
             <motion.div
-              className="absolute -top-8 right-0 md:right-20"
+              className="relative w-fit md:absolute md:-top-8 md:right-20"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   Briefcase,
   Brain,
@@ -90,6 +90,9 @@ function TeamMemberCard({ member, index, timeline, expertise, isLeft }: TeamMemb
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-50px" });
   const [isHovered, setIsHovered] = useState(false);
+  const [canHover, setCanHover] = useState(true);
+  useEffect(() => setCanHover(window.matchMedia("(hover: hover)").matches), []);
+  const showDetails = isHovered || !canHover;
 
   const { scrollYProgress } = useScroll({
     target: cardRef,
@@ -230,7 +233,7 @@ function TeamMemberCard({ member, index, timeline, expertise, isLeft }: TeamMemb
           <motion.div
             className="mb-8"
             initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0.6 }}
+            animate={{ opacity: showDetails ? 1 : 0.6 }}
             transition={{ duration: 0.5 }}
           >
             <h4 className="text-sm font-semibold text-[#737373] uppercase tracking-wider mb-4 text-center">
@@ -268,8 +271,8 @@ function TeamMemberCard({ member, index, timeline, expertise, isLeft }: TeamMemb
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{
-              opacity: isHovered ? 1 : 0,
-              height: isHovered ? "auto" : 0
+              opacity: showDetails ? 1 : 0,
+              height: showDetails ? "auto" : 0
             }}
             transition={{ duration: 0.5 }}
             className="overflow-hidden"
@@ -283,7 +286,7 @@ function TeamMemberCard({ member, index, timeline, expertise, isLeft }: TeamMemb
                   key={item}
                   className="px-3 py-1.5 text-xs font-medium text-[#fafaf9] bg-[#2e2e2e] border border-[#3a3a3a] rounded-full hover:border-[#b8860b]/50 hover:bg-[#b8860b]/10 transition-all cursor-default"
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: isHovered ? 1 : 0, scale: isHovered ? 1 : 0.8 }}
+                  animate={{ opacity: showDetails ? 1 : 0, scale: showDetails ? 1 : 0.8 }}
                   transition={{ duration: 0.3, delay: i * 0.05 }}
                 >
                   {item}
