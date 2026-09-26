@@ -250,8 +250,18 @@ export async function POST(request: NextRequest) {
       </html>
     `;
 
+    // Tell the user the lead did not arrive, with a direct fallback contact
+    const deliveryFailed = () =>
+      NextResponse.json(
+        {
+          error: `Nie udało się wysłać wiadomości. Napisz bezpośrednio na ${contactContent.email} lub zadzwoń: ${contactContent.phone}.`,
+        },
+        { status: 502 }
+      );
+
     // Send email if Resend is configured
     if (resend) {
+      let sendError: unknown = null;
       try {
         const { error } = await resend.emails.send({
           from: `${siteConfig.name} <formularz@deep-devops.com>`,
@@ -260,12 +270,17 @@ export async function POST(request: NextRequest) {
           subject: emailSubject,
           html: emailHtml,
         });
-        if (error) console.error("Email sending failed:", error);
+        sendError = error;
       } catch (emailError) {
-        console.error("Email sending failed:", emailError);
-        // Don't fail the request - log for debugging but still return success
-        // This way the user doesn't see an error, but we're notified of the issue
+        sendError = emailError;
       }
+      if (sendError) {
+        console.error("Email sending failed:", sendError);
+        return deliveryFailed();
+      }
+    } else if (process.env.NODE_ENV === "production") {
+      console.error("Email sending failed: RESEND_API_KEY is not set");
+      return deliveryFailed();
     } else {
       // Log to console if Resend is not configured (development)
       console.log("\n========================================");
